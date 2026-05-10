@@ -1,0 +1,911 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Yaub Móvil — El primer MVNO con IA conversacional nativa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="landing.css">
+</head>
+<body>
+
+<!-- ============== NAV ============== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-brand" aria-label="Yaub Móvil">
+      <img class="mark-img logo-full" src="assets/yaubmovil-logo-v2.png" alt="Yaub Móvil" />
+    </a>
+    <div class="nav-links">
+      <div class="nav-drop" data-aud-trigger="b2c">
+        <button class="nav-drop-btn" type="button">
+          <span class="nav-dot" style="background:var(--cyan)"></span>
+          Yaub Móvil
+          <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 4.5l3 3 3-3"/></svg>
+        </button>
+        <div class="nav-menu">
+          <span class="nav-menu-eye">PARA TODOS</span>
+          <a href="#planes" class="nav-menu-item"><b>Planes</b><span>9 planes desde $77</span></a>
+          <a href="#agent" class="nav-menu-item"><b>Yaub Pal · Agente IA</b><span>WhatsApp 24/7</span></a>
+          <a href="#stack" class="nav-menu-item"><b>App iOS &amp; Android</b><span>Visualiza, recarga, chatea</span></a>
+          <a href="#planes" class="nav-menu-item"><b>Recompensas en GB</b><span>Programa NOTABLES</span></a>
+          <a href="#planes" class="nav-menu-item"><b>Portabilidad</b><span>Trae tu número, gratis</span></a>
+        </div>
+      </div>
+      <div class="nav-drop" data-aud-trigger="b2b">
+        <button class="nav-drop-btn" type="button">
+          <span class="nav-dot" style="background:var(--purple)"></span>
+          Yaub Móvil Business
+          <svg width="10" height="10" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 4.5l3 3 3-3"/></svg>
+        </button>
+        <div class="nav-menu nav-menu--b2b">
+          <span class="nav-menu-eye">PARA EMPRESAS</span>
+          <a href="#planes" class="nav-menu-item"><b>Planes B2B</b><span>Descuento por nómina</span></a>
+          <a href="#stack" class="nav-menu-item"><b>Activación masiva</b><span>Hasta 5,000 líneas</span></a>
+          <a href="#stack" class="nav-menu-item"><b>HR Dashboard</b><span>Consumo en vivo</span></a>
+          <a href="#sms" class="nav-menu-item"><b>Yaub SMS · Envío masivo</b><span>Campañas, OTPs, cobranza</span></a>
+          <a href="Yaub SMS Console.html" class="nav-menu-item is-app"><b>Consola SMS ↗</b><span>Abrir plataforma</span></a>
+          <a href="#cobranza" class="nav-menu-item"><b>Equipos + MDM</b><span>Recovery 5× superior</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="nav-cta">
+      <a href="https://yaub.ai" target="_blank" rel="noopener" class="btn">Conoce Yaub AI ↗</a>
+      <a href="#planes" class="btn primary">Conocer planes</a>
+    </div>
+    <button class="nav-toggle" type="button" aria-label="Menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ============== HERO ============== -->
+<header class="hero" data-screen-label="01 Hero">
+  <div class="hero-bg">
+    <div class="grid"></div>
+    <div class="glow"></div>
+  </div>
+  <div class="container hero-content">
+    <span class="hero-eyebrow"><span class="dot"></span>MVNO · MÉXICO</span>
+
+    <div class="orb-stage" aria-hidden="true">
+      <div class="orb-rings">
+        <div class="ring r1"></div>
+        <div class="ring r2"></div>
+        <div class="ring r3"></div>
+        <div class="orbit r1"><div class="satellite"></div></div>
+        <div class="orbit r2"><div class="satellite"></div></div>
+        <div class="orbit r3"><div class="satellite"></div></div>
+      </div>
+      <div class="orb-waves"><span></span><span></span><span></span></div>
+      <div class="orb-core">
+        <img class="orb-icon" src="assets/yaubmovil-icon-v2.png" alt="" />
+        <div class="orb-connector"><span class="orb-spark"></span></div>
+        <div class="orb-sim"></div>
+      </div>
+    </div>
+
+    <h1 class="h1">
+      Telefonía móvil que <span class="grad-cyan">conversa, fideliza,<br/>recompensa y ejecuta con inteligencia.</span>
+    </h1>
+    <p class="lede">
+      El primer MVNO mexicano con un agente IA conversacional dentro de cada SIM,
+      cobranza fidelizada que premia el pago puntual, y YaubPay nativo.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#planes" class="btn primary lg">Conocer planes
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="https://yaub.ai" target="_blank" rel="noopener" class="btn lg">Conoce Yaub AI
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M7 17L17 7M9 7h8v8"/></svg>
+      </a>
+      <a href="#cta" class="btn lg">Book Demo</a>
+    </div>
+
+    <div class="hero-poweredby">
+      <span class="pb-label">Powered by</span>
+      <div class="pb-logos">
+        <img class="pb-logo pb-yaub" src="assets/logo-yaubai.png" alt="Yaub AI" />
+        <span class="pb-sep"></span>
+        <img class="pb-logo pb-altan" src="assets/logo-altan.png" alt="Altán Redes" />
+        <span class="pb-sep"></span>
+        <img class="pb-logo pb-like" src="assets/logo-likephone.png" alt="Like Phone" />
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============== AUDIENCE SWITCHER + PLANES ============== -->
+<section class="audience" id="planes" data-screen-label="02 Audiencia">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">¿PARA QUIÉN ES YAUB MÓVIL?</span>
+      <h2 class="h2">Una sola red. <span class="grad-cyan">Dos formas</span> de usarla.</h2>
+      <p class="lede">Elige tu camino. Los planes, beneficios y el agente IA se adaptan a cada uno.</p>
+    </div>
+
+    <div class="aud-switch" role="tablist">
+      <button class="aud-tab is-b2c active" data-aud="b2c" role="tab">
+        <span class="aud-ico aud-ico--b2c" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>
+        </span>
+        <span class="aud-text">
+          <span class="aud-eye">PARA TODOS · B2C</span>
+          <span class="aud-name">Yaub Móvil para <em>Todos</em></span>
+          <span class="aud-sub">Personal · Familia · Líneas individuales</span>
+        </span>
+      </button>
+      <button class="aud-tab is-b2b" data-aud="b2b" role="tab">
+        <span class="aud-ico aud-ico--b2b" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 21V8l9-5 9 5v13"/><path d="M9 21v-6h6v6"/><path d="M3 21h18"/></svg>
+        </span>
+        <span class="aud-text">
+          <span class="aud-eye">PARA EMPRESAS · B2B</span>
+          <span class="aud-name">Yaub Móvil para <em>Empresas</em></span>
+          <span class="aud-sub">Flotillas · Descuento nómina · HR Dashboard</span>
+        </span>
+      </button>
+    </div>
+
+    <!-- B2C Plans -->
+    <div class="plans-block" data-aud-content="b2c">
+      <div class="plans-head">
+        <span class="plans-eye plans-eye--b2c">CATÁLOGO PERSONAL</span>
+        <h3 class="plans-title">9 planes Yaub. <span class="grad-cyan">Para cada bolsillo.</span></h3>
+        <p class="plans-lede">Recargas semanales, quincenales o mensuales. Activación por WhatsApp en 38 segundos.</p>
+      </div>
+      <div class="plans-grid plans-grid--b2c">
+        <article class="plan-card b2c"><span class="plan-gb">2GB</span><h4>Yaub Flash</h4><div class="plan-price"><span class="px">$77</span><span class="pd">/ 7 días</span></div><ul><li>10,830 min</li><li>875 SMS</li><li>Recompensa GB</li></ul></article>
+        <article class="plan-card b2c"><span class="plan-gb">6GB</span><h4>Yaub Go</h4><div class="plan-price"><span class="px">$99</span><span class="pd">/ 7 días</span></div><ul><li>10,830 min</li><li>SMS ilimitado</li><li>Recompensa GB</li></ul></article>
+        <article class="plan-card b2c"><span class="plan-gb">5GB</span><h4>Yaub Chill</h4><div class="plan-price"><span class="px">$135</span><span class="pd">/ 15 días</span></div><ul><li>23,100 min</li><li>SMS ilimitado</li><li>Recompensa GB</li></ul></article>
+        <article class="plan-card b2c"><span class="plan-gb">2GB</span><h4>Yaub More</h4><div class="plan-price"><span class="px">$169</span><span class="pd">/ 30 días</span></div><ul><li>45,450 min</li><li>SMS ilimitado</li><li>Recompensa GB</li></ul></article>
+        <article class="plan-card b2c"><span class="plan-gb">3GB</span><h4>Yaub Yeah</h4><div class="plan-price"><span class="px">$193</span><span class="pd">/ 30 días</span></div><ul><li>45,450 min</li><li>3,500 SMS</li><li>Recompensa GB</li></ul></article>
+        <article class="plan-card b2c"><span class="plan-gb">4GB</span><h4>Yaub ON</h4><div class="plan-price"><span class="px">$230</span><span class="pd">/ 30 días</span></div><ul><li>45,450 min</li><li>SMS ilimitado</li><li>Recompensa GB</li></ul></article>
+        <article class="plan-card b2c is-pop"><span class="plan-flag">MÁS POPULAR</span><span class="plan-gb">12GB</span><h4>Yaub Play</h4><div class="plan-price"><span class="px">$280</span><span class="pd">/ 30 días</span></div><ul><li>45,450 min</li><li>3,500 SMS</li><li>Recompensa GB</li></ul></article>
+        <article class="plan-card b2c"><span class="plan-gb">24GB</span><h4>Yaub UP</h4><div class="plan-price"><span class="px">$340</span><span class="pd">/ 30 días</span></div><ul><li>45,450 min</li><li>3,500 SMS</li><li>Recompensa GB</li></ul></article>
+        <article class="plan-card b2c"><span class="plan-gb">35GB</span><h4>Yaub WOW</h4><div class="plan-price"><span class="px">$400</span><span class="pd">/ 30 días</span></div><ul><li>45,450 min</li><li>3,500 SMS</li><li>Recompensa GB</li></ul></article>
+      </div>
+      <div class="plans-foot">
+        <span class="chip chip--cyan">Agente IA 24/7 incluido</span>
+        <span class="chip chip--cyan">Recompensas en GB</span>
+        <span class="chip chip--cyan">Recargas por WhatsApp</span>
+        <span class="chip chip--cyan">YaubPay nativo</span>
+      </div>
+    </div>
+
+    <!-- B2B Plans -->
+    <div class="plans-block" data-aud-content="b2b" hidden>
+      <div class="plans-head">
+        <span class="plans-eye plans-eye--b2b">CATÁLOGO EMPRESARIAL</span>
+        <h3 class="plans-title">8 planes con <span class="grad-aurora">descuento por nómina.</span></h3>
+        <p class="plans-lede">Activación masiva, facturación por centro de costos, dashboard del HR. Telefonía como prestación laboral.</p>
+      </div>
+      <div class="plans-grid plans-grid--b2b">
+        <article class="plan-card b2b"><span class="plan-gb">2GB</span><h4>Yaub Check</h4><div class="plan-price"><span class="px">$62</span><span class="pd">/ 7 días</span></div><ul><li>Alta masiva</li><li>Nómina autom.</li><li>HR dashboard</li></ul></article>
+        <article class="plan-card b2b"><span class="plan-gb">6GB</span><h4>Yaub Market</h4><div class="plan-price"><span class="px">$80</span><span class="pd">/ 7 días</span></div><ul><li>Alta masiva</li><li>Nómina autom.</li><li>HR dashboard</li></ul></article>
+        <article class="plan-card b2b"><span class="plan-gb">5GB</span><h4>Yaub Smart</h4><div class="plan-price"><span class="px">$108</span><span class="pd">/ 15 días</span></div><ul><li>Alta masiva</li><li>Centro de costos</li><li>HR dashboard</li></ul></article>
+        <article class="plan-card b2b"><span class="plan-gb">2GB</span><h4>Yaub Team</h4><div class="plan-price"><span class="px">$135</span><span class="pd">/ 30 días</span></div><ul><li>45,450 min</li><li>Nómina autom.</li><li>HR dashboard</li></ul></article>
+        <article class="plan-card b2b is-pop"><span class="plan-flag">MÁS ELEGIDO</span><span class="plan-gb">4GB</span><h4>Yaub Pro</h4><div class="plan-price"><span class="px">$184</span><span class="pd">/ 30 días</span></div><ul><li>45,450 min</li><li>Centro de costos</li><li>HR dashboard</li></ul></article>
+        <article class="plan-card b2b"><span class="plan-gb">12GB</span><h4>Yaub Dynamic</h4><div class="plan-price"><span class="px">$230</span><span class="pd">/ 30 días</span></div><ul><li>45,450 min</li><li>Centro de costos</li><li>HR dashboard</li></ul></article>
+        <article class="plan-card b2b"><span class="plan-gb">24GB</span><h4>Yaub Elite</h4><div class="plan-price"><span class="px">$290</span><span class="pd">/ 30 días</span></div><ul><li>45,450 min</li><li>Centro de costos</li><li>HR dashboard</li></ul></article>
+        <article class="plan-card b2b"><span class="plan-gb">35GB</span><h4>Yaub Corpo</h4><div class="plan-price"><span class="px">$330</span><span class="pd">/ 30 días</span></div><ul><li>45,450 min</li><li>Centro de costos</li><li>HR dashboard</li></ul></article>
+      </div>
+      <div class="plans-foot">
+        <span class="chip chip--purple">Activación masiva</span>
+        <span class="chip chip--purple">Descuento nómina automático</span>
+        <span class="chip chip--purple">Facturación por centro de costos</span>
+        <span class="chip chip--purple">Dashboard HR</span>
+        <span class="chip chip--purple">Equipos a crédito + MDM</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== STACK FLOW ============== -->
+<section class="stack-section" id="stack" data-screen-label="03 Stack">
+  <div class="stack-bg"></div>
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">EL STACK YAUB MÓVIL</span>
+      <h2 class="h2">Un MVNO que <span class="grad-cyan">no solo conecta</span>.</h2>
+      <p class="lede">Desde la SIM hasta el cobro: cinco capas integradas que ningún operador tradicional ofrece junto.</p>
+      <div class="tabs" role="tablist">
+        <button class="tab active" data-tab="b2c">B2C · CONSUMIDOR</button>
+        <button class="tab" data-tab="b2b">B2B · EMPRESARIAL</button>
+      </div>
+    </div>
+
+    <!-- B2C PIPELINE -->
+    <div class="pipe pipe-b2c" data-flow="b2c">
+      <div class="pipe-row">
+        <div class="pipe-step">
+          <span class="pipe-num">01</span>
+          <span class="pipe-label">RED FÍSICA</span>
+          <h4 class="pipe-name">Altán Redes</h4>
+          <p class="pipe-desc">La cobertura más amplia en México. 4G LTE nacional sobre infraestructura mayorista compartida.</p>
+          <div class="pipe-tag">INFRAESTRUCTURA</div>
+        </div>
+        <svg class="pipe-arrow" viewBox="0 0 80 24" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="12" x2="80" y2="12" /><polyline points="68,4 80,12 68,20" fill="none"/></svg>
+        <div class="pipe-step">
+          <span class="pipe-num">02</span>
+          <span class="pipe-label">SIM / eSIM</span>
+          <h4 class="pipe-name">Yaub SIM</h4>
+          <p class="pipe-desc">Activación por WhatsApp en 38s. Portabilidad asistida.</p>
+          <div class="pipe-tag">DISTRIBUCIÓN</div>
+        </div>
+        <svg class="pipe-arrow" viewBox="0 0 80 24" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="12" x2="80" y2="12" /><polyline points="68,4 80,12 68,20" fill="none"/></svg>
+        <div class="pipe-step is-core">
+          <span class="pipe-num">03</span>
+          <span class="pipe-label">CEREBRO IA</span>
+          <h4 class="pipe-name">Yaub Pal Agent</h4>
+          <p class="pipe-desc">Agente IA conversacional con 26+ tools. Vende, recarga, fideliza.</p>
+          <div class="pipe-tag">CÓDIGO PROPIO</div>
+        </div>
+        <svg class="pipe-arrow" viewBox="0 0 80 24" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="12" x2="80" y2="12" /><polyline points="68,4 80,12 68,20" fill="none"/></svg>
+        <div class="pipe-step">
+          <span class="pipe-num">04</span>
+          <span class="pipe-label">CANAL</span>
+          <h4 class="pipe-name">WhatsApp + App</h4>
+          <p class="pipe-desc">iOS, Android y WA. Mismo agente, tres puertas.</p>
+          <div class="pipe-tag">INTERFAZ</div>
+        </div>
+        <svg class="pipe-arrow" viewBox="0 0 80 24" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="12" x2="80" y2="12" /><polyline points="68,4 80,12 68,20" fill="none"/></svg>
+        <div class="pipe-step is-dest">
+          <span class="pipe-num">05</span>
+          <span class="pipe-label">USUARIO</span>
+          <h4 class="pipe-name">Cliente final</h4>
+          <p class="pipe-desc">Tu plan, tus GB, tu cuate IA. Listo en 38 segundos.</p>
+          <div class="pipe-tag">EXPERIENCIA</div>
+        </div>
+      </div>
+      <div class="pipe-aux">
+        <div class="pipe-aux-head">
+          <span class="pipe-aux-eye">CAPAS PROPIAS QUE ENVUELVEN EL FLUJO</span>
+        </div>
+        <div class="pipe-aux-grid">
+          <div class="pipe-aux-card"><span class="ax-ico">$</span><span class="ax-name">YaubPay</span><span class="ax-sub">Tarjeta · SPEI · OXXO</span></div>
+          <div class="pipe-aux-card"><span class="ax-ico">★</span><span class="ax-name">Recompensas</span><span class="ax-sub">+GB por puntualidad</span></div>
+          <div class="pipe-aux-card"><span class="ax-ico">↻</span><span class="ax-name">Portabilidad</span><span class="ax-sub">Trae tu número, gratis</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- B2B PIPELINE -->
+    <div class="pipe pipe-b2b" data-flow="b2b" hidden>
+      <div class="pipe-row">
+        <div class="pipe-step">
+          <span class="pipe-num">01</span>
+          <span class="pipe-label">RH / NÓMINA</span>
+          <h4 class="pipe-name">CSV de empleados</h4>
+          <p class="pipe-desc">Sube RFC, plan y centro de costos. Plantilla lista.</p>
+          <div class="pipe-tag">ENTRADA</div>
+        </div>
+        <svg class="pipe-arrow" viewBox="0 0 80 24" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="12" x2="80" y2="12" /><polyline points="68,4 80,12 68,20" fill="none"/></svg>
+        <div class="pipe-step">
+          <span class="pipe-num">02</span>
+          <span class="pipe-label">eSIM CORP</span>
+          <h4 class="pipe-name">Activación masiva</h4>
+          <p class="pipe-desc">Hasta 5,000 líneas en bulk. QR por colaborador.</p>
+          <div class="pipe-tag">PROVISIONAMIENTO</div>
+        </div>
+        <svg class="pipe-arrow" viewBox="0 0 80 24" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="12" x2="80" y2="12" /><polyline points="68,4 80,12 68,20" fill="none"/></svg>
+        <div class="pipe-step is-core">
+          <span class="pipe-num">03</span>
+          <span class="pipe-label">CEREBRO IA</span>
+          <h4 class="pipe-name">Yaub B2B Agent</h4>
+          <p class="pipe-desc">Tool-set empresarial: alta, baja, MDM, nómina, SMS.</p>
+          <div class="pipe-tag">CÓDIGO PROPIO</div>
+        </div>
+        <svg class="pipe-arrow" viewBox="0 0 80 24" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="12" x2="80" y2="12" /><polyline points="68,4 80,12 68,20" fill="none"/></svg>
+        <div class="pipe-step">
+          <span class="pipe-num">04</span>
+          <span class="pipe-label">DASHBOARD</span>
+          <h4 class="pipe-name">HR Console</h4>
+          <p class="pipe-desc">Consumo en vivo, alertas, reportes por CC.</p>
+          <div class="pipe-tag">CONTROL</div>
+        </div>
+        <svg class="pipe-arrow" viewBox="0 0 80 24" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="12" x2="80" y2="12" /><polyline points="68,4 80,12 68,20" fill="none"/></svg>
+        <div class="pipe-step is-dest">
+          <span class="pipe-num">05</span>
+          <span class="pipe-label">EMPLEADO</span>
+          <h4 class="pipe-name">Línea + equipo</h4>
+          <p class="pipe-desc">Plan listo, descuento automático en su nómina.</p>
+          <div class="pipe-tag">ENTREGA</div>
+        </div>
+      </div>
+      <div class="pipe-aux">
+        <div class="pipe-aux-head">
+          <span class="pipe-aux-eye">SISTEMAS PROPIOS QUE LO HACEN POSIBLE</span>
+        </div>
+        <div class="pipe-aux-grid">
+          <a href="Yaub SMS Console.html" class="pipe-aux-card pipe-aux-link"><span class="ax-ico">✉</span><span class="ax-name">Consola SMS B2B</span><span class="ax-sub">Envío masivo · OTPs · campañas <span class="ax-go">Abrir →</span></span></a>
+          <div class="pipe-aux-card"><span class="ax-ico">⏚</span><span class="ax-name">Descuento nómina</span><span class="ax-sub">Integración con nominador</span></div>
+          <div class="pipe-aux-card"><span class="ax-ico">⊞</span><span class="ax-name">Centro de costos</span><span class="ax-sub">Facturación segmentada</span></div>
+          <div class="pipe-aux-card"><span class="ax-ico">⌬</span><span class="ax-name">MDM</span><span class="ax-sub">Equipos a crédito anti-default</span></div>
+        </div>
+      </div>
+    </div>
+
+    <p class="stack-foot">Pipeline modular · Cada paso intercambiable según el cliente.</p>
+  </div>
+</section>
+
+<!-- ============== B2C BENEFITS ============== -->
+<section class="section bene-section" data-aud-content="b2c" data-screen-label="04 Beneficios B2C">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" style="color:var(--cyan)">PARA TODOS · BENEFICIOS</span>
+      <h2 class="h2">Tu plan se siente como <span class="grad-cyan">tener un asistente personal</span>.</h2>
+      <p class="lede">Recargas, soporte y portabilidad sin filas, sin call centers, sin esperas. Todo desde tu WhatsApp o tu app.</p>
+    </div>
+
+    <div class="feature-grid">
+      <div class="feature-card featured reveal">
+        <div class="icon-square"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg></div>
+        <span class="label">Yaub Pal · Agente IA personal</span>
+        <div class="big grad-cyan">24/7</div>
+        <p class="desc">Tu cuate de IA por WhatsApp. Te recuerda recargar antes del corte, contesta dudas y aprende cómo usas tu plan.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="icon-square"><svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></div>
+        <span class="label">App iOS &amp; Android</span>
+        <div class="big grad-cyan">1 tap</div>
+        <p class="desc">Visualiza consumo, recarga, chatea con Yaub Pal y llama a soporte humano. Una app, todo el control.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="icon-square"><svg viewBox="0 0 24 24"><path d="M12 2v20M5 12l7-7 7 7"/></svg></div>
+        <span class="label">Recompensas en GB</span>
+        <div class="big grad-cyan">+500MB</div>
+        <p class="desc">Pagas a tiempo, ganas datos. Programa <b>NOTABLES</b>: cada recarga puntual te suma GB extra al siguiente plan.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="icon-square"><svg viewBox="0 0 24 24"><path d="M3 7l9 6 9-6"/><rect x="3" y="5" width="18" height="14" rx="2"/></svg></div>
+        <span class="label">Recargas por WhatsApp</span>
+        <div class="big grad-cyan">38 s</div>
+        <p class="desc">Le mandas “mi plan” a Yaub Pal y queda. YaubPay con tarjeta, SPEI, OXXO o saldo precargado.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="icon-square"><svg viewBox="0 0 24 24"><path d="M9 17l-3-3 3-3M15 7l3 3-3 3M6 14h12"/></svg></div>
+        <span class="label">Portabilidad sin lío</span>
+        <div class="big grad-cyan">Free</div>
+        <p class="desc">Tráete tu número de cualquier compañía. Yaub Pal te guía paso a paso, en 24 horas tu línea ya es Yaub.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="icon-square"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a14 14 0 0 1 0 20M12 2a14 14 0 0 0 0 20"/></svg></div>
+        <span class="label">Cobertura nacional</span>
+        <div class="big grad-cyan">100%</div>
+        <p class="desc">Sobre Red Altán: la red compartida de México. 4G LTE en pueblos donde nadie más llega.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== B2B BENEFITS ============== -->
+<section class="section bene-section bene-b2b" data-aud-content="b2b" hidden data-screen-label="04 Beneficios B2B">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" style="color:var(--purple)">PARA EMPRESAS · BENEFICIOS</span>
+      <h2 class="h2">Telefonía como <span class="grad-aurora">prestación laboral.</span></h2>
+      <p class="lede">Una plataforma para dar de alta empleados, financiar equipos y descontar por nómina sin fricción.</p>
+    </div>
+
+    <div class="feature-grid">
+      <div class="feature-card featured reveal b2b">
+        <div class="icon-square b2b"><svg viewBox="0 0 24 24"><path d="M3 21V8l9-5 9 5v13"/><path d="M9 21v-6h6v6"/></svg></div>
+        <span class="label">Activación masiva</span>
+        <div class="big grad-aurora">5,000+</div>
+        <p class="desc">Sube tu CSV con RFCs, eliges plan por colaborador y todas las eSIMs activan en bulk en 24h.</p>
+      </div>
+      <div class="feature-card reveal b2b">
+        <div class="icon-square b2b"><svg viewBox="0 0 24 24"><path d="M2 8h20M2 16h20M5 4h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg></div>
+        <span class="label">Descuento por nómina</span>
+        <div class="big grad-aurora">Auto</div>
+        <p class="desc">Integración con tu nominador. El consumo de cada empleado sale automático, tú sólo apruebas.</p>
+      </div>
+      <div class="feature-card reveal b2b">
+        <div class="icon-square b2b"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div>
+        <span class="label">HR Dashboard</span>
+        <div class="big grad-aurora">Live</div>
+        <p class="desc">Consumo por empleado, alta/baja automática, alertas de uso anómalo y reportes por centro de costos.</p>
+      </div>
+      <div class="feature-card reveal b2b">
+        <div class="icon-square b2b"><svg viewBox="0 0 24 24"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M9 18h6"/><circle cx="12" cy="7" r="2"/></svg></div>
+        <span class="label">Equipos a crédito + MDM</span>
+        <div class="big grad-aurora">5×</div>
+        <p class="desc">Financia smartphones a tu equipo. MDM Yaub bloquea en mora; recovery 5× superior vs financiamiento sin MDM.</p>
+      </div>
+      <a href="Yaub SMS Console.html" class="feature-card reveal b2b is-clickable">
+        <div class="icon-square b2b"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <span class="label">Yaub SMS empresarial<span class="card-go">Abrir consola →</span></span>
+        <div class="big grad-aurora">12M</div>
+        <p class="desc">OTPs, recordatorios, cobranza y campañas masivas. White-label sobre Altán con tu remitente.</p>
+      </a>
+      <div class="feature-card reveal b2b">
+        <div class="icon-square b2b"><svg viewBox="0 0 24 24"><path d="M9 17l-3-3 3-3M15 7l3 3-3 3M6 14h12"/></svg></div>
+        <span class="label">Portabilidad masiva</span>
+        <div class="big grad-aurora">B2B</div>
+        <p class="desc">¿Ya tienes flotilla con otra compañía? Migramos todos los números sin perder línea ni servicio.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== AGENT / WHATSAPP (B2C) ============== -->
+<section class="section" id="agent" data-aud-content="b2c" data-screen-label="05 Agent">
+  <div class="container agent-section">
+    <div class="agent-copy">
+      <span class="eyebrow">YAUB MÓVIL AGENT</span>
+      <h2 class="h2" style="margin-top:20px">Un empleado de tiempo completo <span class="grad-cyan">dentro de cada SIM.</span></h2>
+      <p class="lede" style="margin-top:24px">
+        El agente IA conversacional anticipa el vencimiento, premia la puntualidad, activa SIMs, recarga planes y desbloquea equipos en mora. Todo por WhatsApp, en 38 segundos.
+      </p>
+      <div class="agent-features">
+        <div class="agent-feature">
+          <div class="ico-mono">VENTAS</div>
+          <div class="ttl">Activación &amp; Portabilidad</div>
+          <div class="sub">SIM, eSIM, port-in asistido y venta cruzada de equipos.</div>
+        </div>
+        <div class="agent-feature">
+          <div class="ico-mono">CUENTA</div>
+          <div class="ttl">Saldo &amp; Recargas</div>
+          <div class="sub">Consumo en tiempo real y recargas instantáneas vía YaubPay.</div>
+        </div>
+        <div class="agent-feature">
+          <div class="ico-mono">COBRANZA</div>
+          <div class="ttl">Promesa de pago</div>
+          <div class="sub">Desbloqueo inmediato + recompensa de 250MB al confirmar.</div>
+        </div>
+        <div class="agent-feature">
+          <div class="ico-mono">B2B</div>
+          <div class="ttl">Alta empleados</div>
+          <div class="sub">Activación masiva por nómina y dashboard del HR.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="phone reveal" aria-hidden="true">
+      <div class="phone-screen">
+        <div class="phone-notch"></div>
+        <div class="wa-header">
+          <div class="avatar">Y</div>
+          <div class="info">
+            <div class="name">Yaub Móvil</div>
+            <div class="status">en línea · IA</div>
+          </div>
+          <div class="check"></div>
+        </div>
+        <div class="wa-body">
+          <div class="bubble in brand">Hola Carlos 👋 Hablo de <span class="b">Yaub Móvil</span>. Tu plan <span class="b">Yaub Play</span> vence en 24h.<div class="meta">10:14</div></div>
+          <div class="bubble in">Si garantizas tu pago en las próximas 12 hrs, te regalo <span class="b">500MB extra</span> 🎁<div class="meta">10:14</div></div>
+          <div class="bubble out">Sí, pago hoy mismo<div class="meta">10:15 ✓✓</div></div>
+          <div class="bubble in">Listo. Folio <span class="b">YM-48201</span>. Aplico recompensa cuando confirme YaubPay.<div class="meta">10:15</div></div>
+          <div class="bubble out">Págame con tarjeta 4521<div class="meta">10:16 ✓✓</div></div>
+          <div class="typing-bubble"><span></span><span></span><span></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== COBRANZA TIMELINE (B2B) ============== -->
+<section class="section" id="cobranza" data-aud-content="b2b" hidden data-screen-label="06 Cobranza">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">COBRANZA FIDELIZADA · MDM</span>
+      <h2 class="h2">El primer modelo en LATAM que <span class="grad-cyan">convierte cobranza en lealtad.</span></h2>
+      <p class="lede">Encriptación progresiva con liberación inmediata por promesa. Cada interacción genera recompensa o consecuencia.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-row">
+        <div class="timeline-step">
+          <div class="node"></div>
+          <div class="when">DÍA 0</div>
+          <div class="ttl">Recordatorio + 250MB</div>
+          <div class="desc">Mensaje preventivo por WhatsApp con recompensa anticipada por puntualidad.</div>
+        </div>
+        <div class="timeline-step warning">
+          <div class="node"></div>
+          <div class="when">+3 DÍAS</div>
+          <div class="ttl">Reducción de velocidad</div>
+          <div class="desc">Notificación de voz IA. Datos limitados, llamadas y SMS intactos.</div>
+        </div>
+        <div class="timeline-step warning">
+          <div class="node"></div>
+          <div class="when">+7 DÍAS</div>
+          <div class="ttl">Bloqueo de apps no esenciales</div>
+          <div class="desc">Mantiene WhatsApp y llamadas. Apps streaming y juegos suspendidas.</div>
+        </div>
+        <div class="timeline-step orange">
+          <div class="node"></div>
+          <div class="when">+15 DÍAS</div>
+          <div class="ttl">Encriptación parcial</div>
+          <div class="desc">Solo emergencias y Yaub WhatsApp. Acceso al agente para negociar.</div>
+        </div>
+        <div class="timeline-step danger">
+          <div class="node"></div>
+          <div class="when">+30 DÍAS</div>
+          <div class="ttl">Encriptación total</div>
+          <div class="desc">Equipo bloqueado por MDM. Único desbloqueo: pago o promesa formal.</div>
+        </div>
+        <div class="timeline-step">
+          <div class="node"></div>
+          <div class="when">PAGO</div>
+          <div class="ttl">Liberación + 500MB</div>
+          <div class="desc">Reactivación inmediata + bonificación. Reingreso al programa NOTABLES.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== POR QUÉ YAUB · PILLARS ============== -->
+<section class="section tight" data-screen-label="07 Por qué">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">POR QUÉ YAUB MÓVIL</span>
+      <h2 class="h2">Tres ventajas que <span class="grad-cyan">ningún operador tradicional</span> ofrece junto.</h2>
+    </div>
+    <div class="pillars">
+      <div class="pillar reveal">
+        <div class="icon-square"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4l-4.6 1.5 1.4-4.6A8.5 8.5 0 1 1 21 11.5z"/></svg></div>
+        <h3>CONVERSA</h3>
+        <div class="big grad-cyan">24/7</div>
+        <p class="desc">Agente IA conversacional nativo en cada SIM. Resuelve 80% de las consultas sin humano, en 38 segundos.</p>
+      </div>
+      <div class="pillar reveal">
+        <div class="icon-square"><svg viewBox="0 0 24 24"><path d="M3 8h18M3 16h18M5 4h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg></div>
+        <h3>COBRA</h3>
+        <div class="big grad-cyan">+5×</div>
+        <p class="desc">Modelo de Cobranza Fidelizada con MDM y desbloqueo por promesa. Recuperación 5× superior vs financiamiento sin MDM.</p>
+      </div>
+      <div class="pillar reveal">
+        <div class="icon-square"><svg viewBox="0 0 24 24"><path d="M12 2l3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg></div>
+        <h3>FIDELIZA</h3>
+        <div class="big grad-cyan">−57%</div>
+        <p class="desc">Recompensas en GB que premian la puntualidad y crean hábito. Churn 1.8% vs 4.2% promedio MVNO LATAM.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== STATS · B2C PROMISES ============== -->
+<section class="section" data-aud-content="b2c" data-screen-label="08 Promesas B2C">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" style="color:var(--cyan)">LO QUE TE PROMETEMOS</span>
+      <h2 class="h2">Tu plan, sin <span class="grad-cyan">letras chiquitas.</span></h2>
+      <p class="lede">Compromisos medibles con cada usuario Yaub Móvil — auditados mensualmente.</p>
+    </div>
+    <div class="stats-grid">
+      <div class="stat reveal">
+        <div class="num">38 s</div>
+        <div class="lbl">Activación promedio</div>
+        <div class="vs">Por WhatsApp · sin filas</div>
+      </div>
+      <div class="stat reveal">
+        <div class="num">24 / 7</div>
+        <div class="lbl">Yaub Pal disponible</div>
+        <div class="vs">Soporte IA en tu chat</div>
+      </div>
+      <div class="stat reveal">
+        <div class="num">+500MB</div>
+        <div class="lbl">Recompensa por puntualidad</div>
+        <div class="vs">Cada recarga a tiempo</div>
+      </div>
+      <div class="stat reveal">
+        <div class="num">100%</div>
+        <div class="lbl">Cobertura nacional</div>
+        <div class="vs">La red más amplia de México</div>
+      </div>
+      <div class="stat reveal">
+        <div class="num">24 h</div>
+        <div class="lbl">Portabilidad lista</div>
+        <div class="vs">Trae tu número, gratis</div>
+      </div>
+      <div class="stat reveal">
+        <div class="num">$0</div>
+        <div class="lbl">Comisión por cambio</div>
+        <div class="vs">Subes / bajas plan cuando quieras</div>
+      </div>
+      <div class="stat reveal">
+        <div class="num">9.4 / 10</div>
+        <div class="lbl">Satisfacción usuario</div>
+        <div class="vs">Encuesta NPS interna</div>
+      </div>
+      <div class="stat reveal">
+        <div class="num">1 app</div>
+        <div class="lbl">iOS · Android · WhatsApp</div>
+        <div class="vs">Mismo agente en todos lados</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== B2B SMS PLATFORM ============== -->
+<section class="section" id="sms" data-aud-content="b2b" hidden data-screen-label="07 SMS Empresarial">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" style="color:var(--purple)">YAUB SMS · ENVÍO MASIVO EMPRESARIAL</span>
+      <h2 class="h2">Una plataforma de SMS <span class="grad-aurora">cableada a tu nómina,<br/>tu cobranza y tu CRM.</span></h2>
+      <p class="lede">Compón, segmenta, dispara. OTPs, cobranza, recordatorios y campañas masivas — con remitente propio sobre Red Altán y entregabilidad auditada al 98.4%.</p>
+    </div>
+
+    <div class="sms-stage">
+      <!-- mock console preview -->
+      <div class="sms-mock reveal">
+        <div class="sms-mock-bar">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          <span class="sms-mock-title">Yaub SMS Console · campañas</span>
+          <a href="Yaub SMS Console.html" class="sms-mock-open">Abrir consola ↗</a>
+        </div>
+        <div class="sms-mock-body">
+          <div class="sms-mock-col">
+            <div class="sms-mock-eye">COMPOSER</div>
+            <div class="sms-mock-input">
+              <span class="sms-tag">{{nombre}}</span>, recordatorio: tu pago vence el <span class="sms-tag">{{fecha}}</span>. Para ampliar plazo escribe <b>YAUB AYUDA</b>.
+            </div>
+            <div class="sms-mock-meta">
+              <span><b>148</b> chars · 1 SMS</span>
+              <span class="sep">·</span>
+              <span>Remitente: <b>YAUBMVL</b></span>
+            </div>
+            <div class="sms-mock-eye" style="margin-top:18px;">AUDIENCIA</div>
+            <div class="sms-mock-row"><span>Empleados activos</span><b>2,148</b></div>
+            <div class="sms-mock-row"><span>Filtro · pago vence ≤ 3d</span><b>312</b></div>
+            <div class="sms-mock-row sms-mock-total"><span>Total a enviar</span><b>312</b></div>
+          </div>
+          <div class="sms-mock-col sms-mock-col--phone">
+            <div class="sms-mock-eye">VISTA PREVIA</div>
+            <div class="sms-phone">
+              <div class="sms-phone-top">
+                <span class="sms-phone-from">YAUBMVL</span>
+                <span class="sms-phone-time">12:48</span>
+              </div>
+              <div class="sms-phone-bubble">
+                Carla, recordatorio: tu pago vence el 14&nbsp;jun. Para ampliar plazo escribe <b>YAUB&nbsp;AYUDA</b>.
+              </div>
+              <div class="sms-phone-bubble sms-phone-bubble--out">YAUB AYUDA</div>
+              <div class="sms-phone-bubble">
+                Carla, te ofrecemos +7 días sin recargo. ¿Confirmas?&nbsp;Y/N
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- right rail: capabilities -->
+      <div class="sms-feats">
+        <div class="sms-feat reveal">
+          <div class="sms-feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 6h18M3 12h18M3 18h12"/></svg></div>
+          <h4>Campañas masivas</h4>
+          <p>Hasta <b>50,000 SMS / minuto</b> con throttling inteligente y dedupe automático.</p>
+        </div>
+        <div class="sms-feat reveal">
+          <div class="sms-feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18"/></svg></div>
+          <h4>OTPs &amp; 2FA</h4>
+          <p>API REST con TTL, retry policy y entregabilidad <b>98.4%</b>. Latencia mediana &lt;3s.</p>
+        </div>
+        <div class="sms-feat reveal">
+          <div class="sms-feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16v6H4zM4 14h16v6H4z"/><circle cx="8" cy="7" r="1"/><circle cx="8" cy="17" r="1"/></svg></div>
+          <h4>Plantillas + merge tags</h4>
+          <p><code>{{nombre}}</code>, <code>{{saldo}}</code>, <code>{{fecha}}</code> — personalizado por línea, aprobado por compliance.</p>
+        </div>
+        <div class="sms-feat reveal">
+          <div class="sms-feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 19V5l8 7 8-7v14"/></svg></div>
+          <h4>Cobranza fidelizada</h4>
+          <p>Disparadores ligados al MDM: recordatorios, promesas de pago y desbloqueo automático.</p>
+        </div>
+        <div class="sms-feat reveal">
+          <div class="sms-feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <h4>Programación + zonas</h4>
+          <p>Schedule por huso horario, ventana de horas hábiles y A/B test de remitente y copy.</p>
+        </div>
+        <div class="sms-feat reveal">
+          <div class="sms-feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12l4 4 4-4 4 4 4-4 4 4"/></svg></div>
+          <h4>Reportería en vivo</h4>
+          <p>Entregados, fallidos, opt-outs, click-through. Webhook a tu CRM o data warehouse.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sms-volume reveal">
+      <div class="sms-volume-stat"><b class="num grad-aurora">12M</b><span>SMS / mes</span></div>
+      <div class="sms-volume-stat"><b class="num">98.4%</b><span>Entregabilidad</span></div>
+      <div class="sms-volume-stat"><b class="num">&lt;3 s</b><span>Latencia mediana</span></div>
+      <div class="sms-volume-stat"><b class="num">$0.12</b><span>por SMS · volumen</span></div>
+      <a href="Yaub SMS Console.html" class="btn primary sms-volume-cta">Abrir consola SMS ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============== STATS · B2B PROMISES ============== -->
+<section class="section" data-aud-content="b2b" hidden data-screen-label="08 Promesas B2B">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow" style="color:var(--purple)">LO QUE LE PROMETEMOS A TU EMPRESA</span>
+      <h2 class="h2">Telefonía corporativa <span class="grad-aurora">sin sorpresas.</span></h2>
+      <p class="lede">Compromisos medibles con cada cliente B2B — SLA auditable y reportes mensuales.</p>
+    </div>
+    <div class="stats-grid">
+      <div class="stat reveal">
+        <div class="num">24 h</div>
+        <div class="lbl">Activación masiva</div>
+        <div class="vs">Hasta 5,000 líneas en bulk</div>
+      </div>
+      <div class="stat reveal">
+        <div class="num">−40%</div>
+        <div class="lbl">Costo vs operador tradicional</div>
+        <div class="vs">Mismo plan, mejor precio</div>
+      </div>
+      <div class="stat reveal">
+        <div class="num">5×</div>
+        <div class="lbl">Recovery con MDM</div>
+        <div class="vs">vs financiamiento sin MDM</div>
+      </div>
+      <div class="stat reveal">
+        <div class="num">98.4%</div>
+        <div class="lbl">Entregabilidad SMS</div>
+        <div class="vs">SLA auditado mensualmente</div>
+      </div>
+      <div class="stat reveal">
+        <div class="num">Live</div>
+        <div class="lbl">HR Dashboard</div>
+        <div class="vs">Consumo en tiempo real</div>
+      </div>
+      <div class="stat reveal">
+        <div class="num">Auto</div>
+        <div class="lbl">Descuento por nómina</div>
+        <div class="vs">Sin trabajo de tu RH</div>
+      </div>
+      <div class="stat reveal">
+        <div class="num">$0</div>
+        <div class="lbl">Setup &amp; onboarding</div>
+        <div class="vs">Sin fee de implementación</div>
+      </div>
+      <div class="stat reveal">
+        <div class="num">99.95%</div>
+        <div class="lbl">Uptime de red</div>
+        <div class="vs">SLA contractual Altán</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FINAL CTA ============== -->
+<section class="cta-final" id="cta" data-screen-label="08 CTA">
+  <div class="container">
+    <span class="eyebrow">YAUB MÓVIL</span>
+    <h2 class="h2" style="margin-top:24px">No es un MVNO.<br/>Es el primer operador móvil que <span class="grad-cyan">conversa, cobra y fideliza con IA</span>.</h2>
+    <p class="lede">Telefonía con inteligencia desde la SIM hasta la cobranza. Hablemos de cómo encajaría en tu operación.</p>
+    <div class="actions">
+      <a href="mailto:jacobopayan@yaub.ai" class="btn primary lg">Agenda una demo
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="#stack" class="btn lg">Ver el stack técnico</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FOOTER ============== -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <a href="#" class="nav-brand">
+        <img class="mark-img" src="assets/yaubmovil-logo.png" alt="" />
+        <span class="label">
+          <span class="name">Yaub<span class="movil"> Móvil</span></span>
+          <span class="sub">Powered by Like Phone · Red Altán</span>
+        </span>
+      </a>
+      <p class="body" style="margin-top:18px">El primer MVNO mexicano con IA conversacional nativa, modelo de cobranza fidelizada y YaubPay integrado.</p>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <div class="head">Producto</div>
+        <ul>
+          <li><a href="#stack">Plataforma</a></li>
+          <li><a href="#agent">Yaub Móvil Agent</a></li>
+          <li><a href="#cobranza">Cobranza Fidelizada</a></li>
+          <li><a href="#planes">Planes B2C / B2B</a></li>
+          <li><a href="#sms">Yaub SMS</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="head">Empresa</div>
+        <ul>
+          <li><a href="https://yaub.ai">Yaub AI</a></li>
+          <li><a href="#">Alianzatel</a></li>
+          <li><a href="#">Like Phone</a></li>
+          <li><a href="#">Red Altán</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="head">Contacto</div>
+        <ul>
+          <li><a href="mailto:jacobopayan@yaub.ai">jacobopayan@yaub.ai</a></li>
+          <li><a href="#">yaub.ai/movil</a></li>
+          <li><a href="#cta">Book Demo</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="container footer-base">
+    <span>© 2026 Yaub AI · Yaub Móvil. Todos los derechos reservados.</span>
+    <span style="font-family: var(--mono); letter-spacing:0.18em; text-transform:uppercase;">v1.0</span>
+  </div>
+</footer>
+
+<script>
+  // reveal-on-scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // tabs swap real B2C / B2B flows
+  document.querySelectorAll('.tab').forEach(t => {
+    t.addEventListener('click', () => {
+      const target = t.dataset.tab;
+      document.querySelectorAll('.tab').forEach(x => x.classList.toggle('active', x === t));
+      document.querySelectorAll('[data-flow]').forEach(el => {
+        el.hidden = (el.dataset.flow !== target);
+      });
+    });
+  });
+
+  // audience switcher: B2C / B2B for plans + stack flow in sync
+  function setAudience(target, scroll) {
+    document.querySelectorAll('.aud-tab').forEach(x => x.classList.toggle('active', x.dataset.aud === target));
+    document.querySelectorAll('[data-aud-content]').forEach(el => {
+      el.hidden = (el.dataset.audContent !== target);
+    });
+    document.querySelectorAll('.tab').forEach(x => x.classList.toggle('active', x.dataset.tab === target));
+    document.querySelectorAll('[data-flow]').forEach(el => {
+      el.hidden = (el.dataset.flow !== target);
+    });
+    document.body.dataset.audience = target;
+    if (scroll) {
+      const planes = document.getElementById('planes');
+      if (planes) window.scrollTo({ top: planes.offsetTop - 80, behavior: 'smooth' });
+    }
+  }
+  document.querySelectorAll('.aud-tab').forEach(t => {
+    t.addEventListener('click', () => setAudience(t.dataset.aud, false));
+  });
+  // Nav dropdown buttons + items also switch audience
+  document.querySelectorAll('.nav-drop[data-aud-trigger]').forEach(drop => {
+    const aud = drop.dataset.audTrigger;
+    const btn = drop.querySelector('.nav-drop-btn');
+    if (btn) btn.addEventListener('click', (e) => { e.preventDefault(); setAudience(aud, true); });
+    drop.querySelectorAll('.nav-menu-item').forEach(it => {
+      it.addEventListener('click', () => setAudience(aud, false));
+    });
+  });
+
+  // Mobile nav toggle
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  if (navToggle && navLinks) {
+    navToggle.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('is-open');
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    navLinks.addEventListener('click', (e) => {
+      if (e.target.closest('a, .nav-drop-btn, .nav-menu-item')) {
+        navLinks.classList.remove('is-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+</script>
+
+</body>
+</html>

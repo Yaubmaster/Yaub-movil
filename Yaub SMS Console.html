@@ -1,0 +1,778 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Yaub SMS Console — B2B Messaging</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --bg: #07080B;
+    --bg-2: #0B0D12;
+    --panel: #0E1117;
+    --panel-2: #11141B;
+    --line: rgba(255,255,255,0.07);
+    --line-2: rgba(255,255,255,0.12);
+    --text: #F4F6F8;
+    --text-mute: #8A93A6;
+    --text-faint: #4A5266;
+    --purple: #9D6FFB;
+    --cyan: #22D3EE;
+    --green: #4ADE80;
+    --orange: #F59E0B;
+    --red: #EF4444;
+    --grad-aurora: linear-gradient(135deg, #9D6FFB 0%, #6B5BFF 50%, #22D3EE 100%);
+    --mono: 'Geist Mono', ui-monospace, monospace;
+    --sans: 'Geist', system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: var(--sans); font-size: 14px; line-height: 1.5;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ===== TOPBAR ===== */
+  .topbar {
+    height: 60px; padding: 0 24px;
+    display: flex; align-items: center; gap: 16px;
+    border-bottom: 1px solid var(--line);
+    background: rgba(11,13,18,0.92); backdrop-filter: blur(12px);
+    position: sticky; top: 0; z-index: 50;
+  }
+  .brand {
+    display: flex; align-items: center; gap: 10px;
+    font-weight: 600; letter-spacing: -0.01em;
+    color: var(--text); text-decoration: none;
+  }
+  .brand-mark {
+    width: 26px; height: 26px; border-radius: 7px;
+    background: var(--grad-aurora);
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-weight: 700; font-size: 13px;
+    box-shadow: 0 0 18px rgba(157,111,251,0.4);
+  }
+  .brand-name { font-size: 15px; }
+  .brand-name .sub { color: var(--text-mute); font-weight: 400; margin-left: 4px; }
+  .topbar-divider { width: 1px; height: 22px; background: var(--line-2); }
+  .topbar-back {
+    color: var(--text-mute); font-size: 12px; font-family: var(--mono);
+    letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none;
+    display: flex; align-items: center; gap: 6px;
+    padding: 6px 12px; border: 1px solid var(--line); border-radius: 100px;
+    transition: all .15s ease;
+  }
+  .topbar-back:hover { color: var(--text); border-color: var(--line-2); }
+  .topbar-spacer { flex: 1; }
+  .topbar-org {
+    display: flex; align-items: center; gap: 10px;
+    font-family: var(--mono); font-size: 11px;
+    color: var(--text-mute); letter-spacing: 0.08em;
+    padding: 6px 12px; border: 1px solid var(--line); border-radius: 100px;
+  }
+  .topbar-org .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); box-shadow: 0 0 8px var(--green); }
+  .topbar-user {
+    width: 30px; height: 30px; border-radius: 50%;
+    background: linear-gradient(135deg, #9D6FFB, #22D3EE);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 600; color: white;
+  }
+
+  /* ===== LAYOUT ===== */
+  .shell { display: grid; grid-template-columns: 240px 1fr; min-height: calc(100vh - 60px); }
+  .sidebar {
+    border-right: 1px solid var(--line);
+    padding: 20px 14px;
+    background: var(--bg-2);
+  }
+  .sidebar-section { margin-bottom: 22px; }
+  .sidebar-head {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.22em;
+    color: var(--text-faint); text-transform: uppercase;
+    padding: 0 10px 8px;
+  }
+  .sidebar-link {
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 10px; border-radius: 8px;
+    color: var(--text-mute); text-decoration: none;
+    font-size: 13.5px;
+    transition: all .12s ease;
+  }
+  .sidebar-link:hover { color: var(--text); background: rgba(255,255,255,0.025); }
+  .sidebar-link.active {
+    color: var(--text); background: rgba(157,111,251,0.10);
+    border: 1px solid rgba(157,111,251,0.18);
+    padding: 7px 9px;
+  }
+  .sidebar-link .ico {
+    width: 18px; height: 18px; opacity: 0.85;
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+  .sidebar-link .ico svg { width: 16px; height: 16px; stroke: currentColor; stroke-width: 1.6; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .sidebar-link .badge {
+    margin-left: auto;
+    font-family: var(--mono); font-size: 10px;
+    background: rgba(157,111,251,0.16); color: var(--purple);
+    padding: 2px 6px; border-radius: 100px;
+  }
+  .sidebar-bal {
+    margin: 0 8px; padding: 14px;
+    border: 1px solid rgba(157,111,251,0.22);
+    border-radius: 12px;
+    background: linear-gradient(180deg, rgba(157,111,251,0.10), rgba(157,111,251,0.02));
+  }
+  .sidebar-bal .lbl { font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; color: var(--text-mute); text-transform: uppercase; }
+  .sidebar-bal .num { font-size: 26px; font-weight: 600; letter-spacing: -0.02em; margin: 4px 0 2px; }
+  .sidebar-bal .sub { font-size: 11.5px; color: var(--text-mute); }
+  .sidebar-bal .bar { margin-top: 10px; height: 4px; border-radius: 100px; background: rgba(255,255,255,0.06); overflow: hidden; }
+  .sidebar-bal .bar i { display: block; height: 100%; width: 64%; background: var(--grad-aurora); border-radius: 100px; }
+
+  /* ===== MAIN ===== */
+  .main { padding: 28px 32px 60px; max-width: 1280px; }
+  .page-head { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 24px; gap: 24px; }
+  .page-title { font-size: 28px; font-weight: 600; letter-spacing: -0.02em; margin: 0 0 4px; }
+  .page-sub { color: var(--text-mute); font-size: 14px; }
+  .page-actions { display: flex; gap: 10px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 16px; border-radius: 10px;
+    font-family: var(--sans); font-size: 13px; font-weight: 500;
+    border: 1px solid var(--line-2); background: var(--panel-2);
+    color: var(--text); cursor: pointer; text-decoration: none;
+    transition: all .15s ease;
+  }
+  .btn:hover { border-color: rgba(255,255,255,0.22); }
+  .btn.primary {
+    border: none;
+    background: var(--grad-aurora);
+    box-shadow: 0 0 30px rgba(157,111,251,0.35), inset 0 1px 0 rgba(255,255,255,0.2);
+    color: white; font-weight: 600;
+  }
+  .btn.primary:hover { box-shadow: 0 0 40px rgba(157,111,251,0.55), inset 0 1px 0 rgba(255,255,255,0.3); }
+  .btn.ghost { background: transparent; }
+
+  /* ===== STATS ===== */
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 28px; }
+  .stat-card {
+    padding: 18px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--panel);
+    position: relative; overflow: hidden;
+  }
+  .stat-card .lbl { font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; color: var(--text-mute); text-transform: uppercase; }
+  .stat-card .num { font-size: 32px; font-weight: 600; letter-spacing: -0.02em; margin: 6px 0 4px; }
+  .stat-card .delta {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-family: var(--mono); font-size: 11px; color: var(--green);
+  }
+  .stat-card .delta.down { color: var(--orange); }
+  .stat-card .spark {
+    position: absolute; right: 14px; top: 14px;
+    width: 60px; height: 26px;
+  }
+  .stat-card .spark svg { width: 100%; height: 100%; }
+
+  /* ===== GRID LAYOUT ===== */
+  .work { display: grid; grid-template-columns: 1.4fr 1fr; gap: 20px; }
+  @media (max-width: 1180px) { .work { grid-template-columns: 1fr; } }
+
+  .panel {
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--panel);
+    overflow: hidden;
+  }
+  .panel-head {
+    padding: 16px 20px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid var(--line);
+  }
+  .panel-title { font-size: 15px; font-weight: 600; margin: 0; letter-spacing: -0.01em; }
+  .panel-sub { font-size: 12px; color: var(--text-mute); margin-top: 2px; }
+  .panel-body { padding: 20px; }
+
+  /* ===== COMPOSER ===== */
+  .composer-tabs { display: flex; gap: 4px; padding: 6px; background: var(--bg-2); border-radius: 10px; margin-bottom: 18px; }
+  .composer-tab {
+    flex: 1; text-align: center; padding: 9px 12px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em;
+    color: var(--text-mute); text-transform: uppercase;
+    border-radius: 7px; cursor: pointer;
+    transition: all .15s ease;
+  }
+  .composer-tab.active { background: var(--panel); color: var(--text); box-shadow: 0 1px 0 var(--line-2); }
+  .composer-tab .pill { margin-left: 6px; padding: 1px 6px; border-radius: 100px; background: rgba(157,111,251,0.16); color: var(--purple); font-size: 9px; }
+
+  .field { margin-bottom: 16px; }
+  .field-label {
+    display: flex; align-items: center; justify-content: space-between;
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em;
+    color: var(--text-mute); text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .field-help { color: var(--text-faint); text-transform: none; letter-spacing: 0; font-size: 11px; font-family: var(--sans); }
+  .input, .select, .textarea {
+    width: 100%; padding: 12px 14px;
+    border: 1px solid var(--line-2); border-radius: 10px;
+    background: var(--bg-2); color: var(--text);
+    font-family: var(--sans); font-size: 13.5px; line-height: 1.55;
+    outline: none; transition: border .15s ease, box-shadow .15s ease;
+  }
+  .input:focus, .select:focus, .textarea:focus {
+    border-color: var(--purple);
+    box-shadow: 0 0 0 3px rgba(157,111,251,0.18);
+  }
+  .textarea { resize: vertical; min-height: 130px; font-family: var(--mono); font-size: 13px; letter-spacing: 0.01em; }
+
+  .audience-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .audience-card {
+    padding: 14px;
+    border: 1px solid var(--line-2); border-radius: 10px;
+    background: var(--bg-2);
+    cursor: pointer; transition: all .15s ease;
+    display: flex; align-items: flex-start; gap: 12px;
+  }
+  .audience-card.active { border-color: var(--purple); background: rgba(157,111,251,0.06); }
+  .audience-card input { margin-top: 3px; accent-color: var(--purple); }
+  .audience-card .ttl { font-size: 13.5px; font-weight: 600; }
+  .audience-card .desc { font-size: 11.5px; color: var(--text-mute); margin-top: 2px; }
+  .audience-card .count { font-family: var(--mono); font-size: 11px; color: var(--cyan); margin-top: 6px; }
+
+  .merge-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .merge-tag {
+    font-family: var(--mono); font-size: 10.5px;
+    padding: 4px 9px; border-radius: 100px;
+    border: 1px dashed rgba(157,111,251,0.35);
+    background: rgba(157,111,251,0.06);
+    color: var(--purple);
+    cursor: pointer; transition: all .12s ease;
+  }
+  .merge-tag:hover { background: rgba(157,111,251,0.14); }
+
+  .footnote {
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--mono); font-size: 11px; color: var(--text-mute);
+    margin-top: 6px;
+  }
+  .footnote .count { color: var(--text); }
+  .footnote .count b { color: var(--cyan); font-weight: 600; }
+
+  .send-row {
+    margin-top: 8px; padding-top: 18px; border-top: 1px dashed var(--line);
+    display: flex; justify-content: space-between; align-items: center; gap: 14px;
+    flex-wrap: wrap;
+  }
+  .send-info { font-size: 12px; color: var(--text-mute); }
+  .send-info b { color: var(--text); font-family: var(--mono); }
+
+  /* ===== PREVIEW PHONE ===== */
+  .phone-preview {
+    width: 100%; max-width: 280px; margin: 0 auto;
+    aspect-ratio: 9/16.5;
+    background: linear-gradient(180deg, #1a1d24, #11141a);
+    border-radius: 38px;
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 30px 60px -20px rgba(0,0,0,0.6), inset 0 0 0 6px rgba(255,255,255,0.02);
+    padding: 14px 10px;
+    display: flex; flex-direction: column;
+    position: relative;
+  }
+  .phone-preview::before {
+    content: ""; position: absolute; top: 14px; left: 50%; transform: translateX(-50%);
+    width: 80px; height: 22px; border-radius: 100px; background: #000;
+  }
+  .phone-screen {
+    flex: 1;
+    background: #0a0a0c;
+    border-radius: 28px;
+    padding: 50px 14px 14px;
+    display: flex; flex-direction: column;
+    overflow: hidden;
+  }
+  .sms-head {
+    text-align: center; padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .sms-head .from {
+    font-size: 13px; color: var(--text); font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .sms-head .from-id {
+    font-family: var(--mono); font-size: 9.5px; color: var(--text-mute); letter-spacing: 0.1em;
+  }
+  .sms-thread { flex: 1; padding-top: 14px; display: flex; flex-direction: column; gap: 8px; }
+  .sms-bubble {
+    max-width: 88%;
+    padding: 9px 12px;
+    border-radius: 16px;
+    font-size: 12.5px; line-height: 1.4;
+    background: #2a2a2e; color: #f4f6f8;
+    border-bottom-left-radius: 6px;
+    align-self: flex-start;
+    position: relative;
+  }
+  .sms-bubble.brand {
+    background: linear-gradient(135deg, rgba(157,111,251,0.18), rgba(34,211,238,0.10));
+    border: 1px solid rgba(157,111,251,0.3);
+  }
+  .sms-time {
+    text-align: center;
+    font-family: var(--mono); font-size: 9.5px; color: var(--text-faint);
+    letter-spacing: 0.08em; padding: 4px 0;
+    text-transform: uppercase;
+  }
+
+  /* ===== ACTIVITY ===== */
+  .activity-row {
+    display: grid; grid-template-columns: 90px 1fr auto auto;
+    gap: 12px; align-items: center;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 13px;
+  }
+  .activity-row:last-child { border-bottom: none; }
+  .activity-row .when { font-family: var(--mono); font-size: 11px; color: var(--text-mute); }
+  .activity-row .what b { font-weight: 600; }
+  .activity-row .what .sub { color: var(--text-mute); font-size: 11.5px; margin-top: 1px; }
+  .activity-row .vol { font-family: var(--mono); font-size: 12px; color: var(--text); }
+  .activity-row .status {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 3px 9px; border-radius: 100px;
+  }
+  .status.delivered { background: rgba(74,222,128,0.10); color: var(--green); }
+  .status.queued { background: rgba(245,158,11,0.10); color: var(--orange); }
+  .status.failed { background: rgba(239,68,68,0.10); color: var(--red); }
+
+  /* ===== TEMPLATES ===== */
+  .templates { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .tpl {
+    padding: 12px 14px;
+    border: 1px solid var(--line); border-radius: 10px;
+    background: var(--panel);
+    cursor: pointer; transition: all .15s ease;
+  }
+  .tpl:hover { border-color: rgba(157,111,251,0.4); background: rgba(157,111,251,0.04); }
+  .tpl .tpl-tag { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.18em; color: var(--purple); text-transform: uppercase; }
+  .tpl .tpl-body { font-size: 12.5px; color: var(--text-mute); margin-top: 6px; line-height: 1.45; }
+
+  /* ===== MODAL (send confirm) ===== */
+  .modal-bg {
+    position: fixed; inset: 0; background: rgba(7,8,11,0.78);
+    backdrop-filter: blur(6px); z-index: 100;
+    display: none; align-items: center; justify-content: center;
+  }
+  .modal-bg.show { display: flex; }
+  .modal {
+    width: 460px; max-width: 92vw;
+    background: var(--panel); border: 1px solid var(--line-2); border-radius: 16px;
+    padding: 26px 28px;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+  }
+  .modal h3 { margin: 0 0 4px; font-size: 18px; font-weight: 600; letter-spacing: -0.01em; }
+  .modal p { color: var(--text-mute); margin: 0 0 18px; font-size: 13.5px; }
+  .modal-row { display: flex; justify-content: space-between; padding: 9px 0; border-bottom: 1px dashed var(--line); font-size: 13px; }
+  .modal-row b { font-family: var(--mono); }
+  .modal-row.tot { font-size: 15px; padding-top: 14px; border-bottom: none; }
+  .modal-row.tot b { color: var(--cyan); }
+  .modal-actions { display: flex; gap: 10px; margin-top: 22px; justify-content: flex-end; }
+
+  /* tiny utility */
+  .grow { flex: 1; }
+
+  @media (max-width: 900px) {
+    .shell { grid-template-columns: 1fr; }
+    .sidebar { border-right: none; border-bottom: 1px solid var(--line); }
+    .stats { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <a href="Yaub Movil Landing.html" class="brand">
+    <span class="brand-mark">Y</span>
+    <span class="brand-name">Yaub<span class="sub"> SMS Console</span></span>
+  </a>
+  <span class="topbar-divider"></span>
+  <a href="Yaub Movil Landing.html" class="topbar-back">← Volver al sitio</a>
+  <span class="topbar-spacer"></span>
+  <span class="topbar-org"><span class="dot"></span> Acme Corp · 2,148 líneas</span>
+  <div class="topbar-user">JP</div>
+</header>
+
+<div class="shell">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-head">Mensajería</div>
+      <a href="#" class="sidebar-link active"><span class="ico"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span> Enviar SMS</a>
+      <a href="#" class="sidebar-link"><span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/></svg></span> Plantillas <span class="badge">12</span></a>
+      <a href="#" class="sidebar-link"><span class="ico"><svg viewBox="0 0 24 24"><circle cx="9" cy="7" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20a6 6 0 0 1 12 0M14 17a4 4 0 0 1 7 0"/></svg></span> Audiencias <span class="badge">8</span></a>
+      <a href="#" class="sidebar-link"><span class="ico"><svg viewBox="0 0 24 24"><path d="M3 12l5-5 4 4 9-9"/><path d="M14 2h7v7"/></svg></span> Campañas</a>
+      <a href="#" class="sidebar-link"><span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span> Programadas</a>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-head">Datos</div>
+      <a href="#" class="sidebar-link"><span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></span> Reportes</a>
+      <a href="#" class="sidebar-link"><span class="ico"><svg viewBox="0 0 24 24"><path d="M2 12h4l3-9 6 18 3-9h4"/></svg></span> Entregabilidad</a>
+      <a href="#" class="sidebar-link"><span class="ico"><svg viewBox="0 0 24 24"><path d="M16 11l-4 4-2-2"/><circle cx="12" cy="12" r="10"/></svg></span> OTPs</a>
+    </div>
+    <div class="sidebar-bal">
+      <div class="lbl">Saldo del mes</div>
+      <div class="num">8,412,360</div>
+      <div class="sub">de 12M SMS · Renueva el 1 jun</div>
+      <div class="bar"><i></i></div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+    <div class="page-head">
+      <div>
+        <h1 class="page-title">Enviar SMS</h1>
+        <p class="page-sub">Compón, audiencia, vista previa y dispara. Las plantillas con merge-tags personalizan por línea.</p>
+      </div>
+      <div class="page-actions">
+        <button class="btn ghost"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Programar</button>
+        <button class="btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg> Nueva plantilla</button>
+      </div>
+    </div>
+
+    <!-- STATS -->
+    <div class="stats">
+      <div class="stat-card">
+        <div class="lbl">Enviados (30d)</div>
+        <div class="num">3,587,200</div>
+        <span class="delta">▲ 24% vs mes ant.</span>
+        <div class="spark"><svg viewBox="0 0 60 26" preserveAspectRatio="none"><polyline points="0,20 8,18 14,16 22,17 30,12 38,9 46,11 54,5 60,7" fill="none" stroke="#22D3EE" stroke-width="1.6"/></svg></div>
+      </div>
+      <div class="stat-card">
+        <div class="lbl">Entregabilidad</div>
+        <div class="num">98.4%</div>
+        <span class="delta">▲ 0.6 pts</span>
+        <div class="spark"><svg viewBox="0 0 60 26" preserveAspectRatio="none"><polyline points="0,12 10,11 20,10 30,8 40,9 50,7 60,5" fill="none" stroke="#4ADE80" stroke-width="1.6"/></svg></div>
+      </div>
+      <div class="stat-card">
+        <div class="lbl">OTPs (24h)</div>
+        <div class="num">14,802</div>
+        <span class="delta">▲ 11%</span>
+        <div class="spark"><svg viewBox="0 0 60 26" preserveAspectRatio="none"><polyline points="0,18 10,14 20,16 30,8 40,12 50,6 60,9" fill="none" stroke="#9D6FFB" stroke-width="1.6"/></svg></div>
+      </div>
+      <div class="stat-card">
+        <div class="lbl">Costo prom.</div>
+        <div class="num">$0.18</div>
+        <span class="delta down">▼ menor que último mes</span>
+        <div class="spark"><svg viewBox="0 0 60 26" preserveAspectRatio="none"><polyline points="0,8 10,10 20,12 30,11 40,14 50,16 60,18" fill="none" stroke="#F59E0B" stroke-width="1.6"/></svg></div>
+      </div>
+    </div>
+
+    <!-- WORK -->
+    <div class="work">
+
+      <!-- COMPOSER -->
+      <section class="panel">
+        <div class="panel-head">
+          <div>
+            <h3 class="panel-title">Composer</h3>
+            <p class="panel-sub">Mensaje, audiencia y reglas de envío.</p>
+          </div>
+          <button class="btn ghost" style="font-size:11px; padding:7px 12px;">Limpiar</button>
+        </div>
+        <div class="panel-body">
+
+          <!-- TYPE -->
+          <div class="composer-tabs">
+            <div class="composer-tab active">Marketing</div>
+            <div class="composer-tab">Transaccional</div>
+            <div class="composer-tab">OTP <span class="pill">2FA</span></div>
+            <div class="composer-tab">Alerta</div>
+          </div>
+
+          <!-- SENDER -->
+          <div class="field">
+            <label class="field-label">Remitente <span class="field-help">Sender ID hasta 11 caracteres</span></label>
+            <input class="input" value="ACMECORP" />
+          </div>
+
+          <!-- AUDIENCE -->
+          <div class="field">
+            <label class="field-label">Audiencia</label>
+            <div class="audience-row">
+              <label class="audience-card active">
+                <input type="radio" name="aud" checked>
+                <div>
+                  <div class="ttl">Empleados activos</div>
+                  <div class="desc">Todas las líneas Yaub Móvil con plan vigente</div>
+                  <div class="count">2,148 líneas</div>
+                </div>
+              </label>
+              <label class="audience-card">
+                <input type="radio" name="aud">
+                <div>
+                  <div class="ttl">Centro de costos · CDMX</div>
+                  <div class="desc">Operación en oficinas centrales</div>
+                  <div class="count">684 líneas</div>
+                </div>
+              </label>
+              <label class="audience-card">
+                <input type="radio" name="aud">
+                <div>
+                  <div class="ttl">Por morosidad &gt; 7 días</div>
+                  <div class="desc">Plan vencido, candidatos a recuperación</div>
+                  <div class="count">147 líneas</div>
+                </div>
+              </label>
+              <label class="audience-card">
+                <input type="radio" name="aud">
+                <div>
+                  <div class="ttl">CSV manual</div>
+                  <div class="desc">Sube archivo con números y campos</div>
+                  <div class="count">— pendiente —</div>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- MESSAGE -->
+          <div class="field">
+            <label class="field-label">Mensaje <span class="field-help">160 caracteres = 1 SMS · soporta Unicode</span></label>
+            <textarea class="textarea" id="msg">Hola {{nombre}}, soy Yaub Pal de Acme Corp. Tu nuevo plan {{plan}} ya está activo. Recarga, consulta saldo o chatea conmigo: yaub.ai/m</textarea>
+            <div class="merge-tags">
+              <span class="merge-tag">{{nombre}}</span>
+              <span class="merge-tag">{{apellido}}</span>
+              <span class="merge-tag">{{plan}}</span>
+              <span class="merge-tag">{{saldo_gb}}</span>
+              <span class="merge-tag">{{vence}}</span>
+              <span class="merge-tag">{{folio}}</span>
+              <span class="merge-tag">{{centro_costos}}</span>
+            </div>
+            <div class="footnote">
+              <span class="count" id="cs"><b>0</b> caracteres · <b>0</b> SMS</span>
+              <span>Codificación: GSM-7</span>
+            </div>
+          </div>
+
+          <!-- SEND -->
+          <div class="send-row">
+            <div class="send-info">
+              Costo estimado: <b>$386.64 MXN</b> · 2,148 mensajes · Entrega &lt; 5 s
+            </div>
+            <div style="display:flex; gap:10px;">
+              <button class="btn ghost">Vista previa</button>
+              <button class="btn primary" id="sendBtn">
+                Enviar 2,148 SMS
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RIGHT COLUMN -->
+      <div style="display:flex; flex-direction:column; gap:20px;">
+        <!-- PREVIEW -->
+        <section class="panel">
+          <div class="panel-head">
+            <div>
+              <h3 class="panel-title">Vista previa</h3>
+              <p class="panel-sub">Cómo lo ve un empleado en su teléfono.</p>
+            </div>
+            <span style="font-family:var(--mono); font-size:10px; letter-spacing:0.18em; color:var(--text-mute); text-transform:uppercase;">iOS · Live</span>
+          </div>
+          <div class="panel-body" style="padding-top:14px;">
+            <div class="phone-preview">
+              <div class="phone-screen">
+                <div class="sms-head">
+                  <div class="from">ACMECORP</div>
+                  <div class="from-id">SMS · Yaub Móvil</div>
+                </div>
+                <div class="sms-thread">
+                  <div class="sms-time">HOY 10:32</div>
+                  <div class="sms-bubble brand" id="prev">Hola Carlos, soy Yaub Pal de Acme Corp. Tu nuevo plan Yaub Pro ya está activo. Recarga, consulta saldo o chatea conmigo: yaub.ai/m</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- TEMPLATES -->
+        <section class="panel">
+          <div class="panel-head">
+            <div>
+              <h3 class="panel-title">Plantillas rápidas</h3>
+              <p class="panel-sub">Click para cargar en el composer.</p>
+            </div>
+          </div>
+          <div class="panel-body">
+            <div class="templates">
+              <div class="tpl" data-tpl="Hola {{nombre}}, tu plan {{plan}} vence en 24h. Recarga vía Yaub Pal o ignora este mensaje si ya lo hiciste.">
+                <div class="tpl-tag">RECORDATORIO</div>
+                <div class="tpl-body">Vencimiento + recarga 24h antes</div>
+              </div>
+              <div class="tpl" data-tpl="Tu código de acceso es {{folio}}. No lo compartas. Vence en 5 min. — Acme Corp">
+                <div class="tpl-tag">OTP</div>
+                <div class="tpl-body">Código 2FA con caducidad</div>
+              </div>
+              <div class="tpl" data-tpl="{{nombre}}, gracias por confiar en nosotros. Tu pago de ${{folio}} fue confirmado. Saldo restante: {{saldo_gb}} GB.">
+                <div class="tpl-tag">CONFIRMACIÓN</div>
+                <div class="tpl-body">Pago recibido + saldo</div>
+              </div>
+              <div class="tpl" data-tpl="¡Bienvenida {{nombre}}! Tu eSIM Yaub Móvil ya está activa. Escanea el QR en tu correo y disfruta de tu plan {{plan}}.">
+                <div class="tpl-tag">ONBOARDING</div>
+                <div class="tpl-body">Activación de empleado nuevo</div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- ACTIVITY -->
+    <section class="panel" style="margin-top:20px;">
+      <div class="panel-head">
+        <div>
+          <h3 class="panel-title">Actividad reciente</h3>
+          <p class="panel-sub">Últimos envíos de tu organización.</p>
+        </div>
+        <a href="#" class="btn ghost" style="font-size:11px; padding:7px 12px;">Ver todo →</a>
+      </div>
+      <div class="panel-body" style="padding:6px 20px 18px;">
+        <div class="activity-row">
+          <span class="when">10:31 ·hoy</span>
+          <span class="what"><b>Bienvenida onboarding · Q2</b><div class="sub">ACMECORP → Empleados activos</div></span>
+          <span class="vol">2,148 SMS</span>
+          <span class="status delivered">Entregados</span>
+        </div>
+        <div class="activity-row">
+          <span class="when">09:14 ·hoy</span>
+          <span class="what"><b>OTP login dashboard</b><div class="sub">YAUBOTP → Sesión Pedro Ruiz</div></span>
+          <span class="vol">1 SMS</span>
+          <span class="status delivered">Entregado</span>
+        </div>
+        <div class="activity-row">
+          <span class="when">ayer 18:02</span>
+          <span class="what"><b>Recordatorio recarga 24h</b><div class="sub">ACMECORP → Por morosidad &gt; 7d</div></span>
+          <span class="vol">147 SMS</span>
+          <span class="status delivered">Entregados</span>
+        </div>
+        <div class="activity-row">
+          <span class="when">ayer 16:40</span>
+          <span class="what"><b>Campaña fin de mes</b><div class="sub">ACMECORP → CC CDMX</div></span>
+          <span class="vol">684 SMS</span>
+          <span class="status queued">En cola</span>
+        </div>
+        <div class="activity-row">
+          <span class="when">ayer 11:18</span>
+          <span class="what"><b>Alerta MDM bloqueo</b><div class="sub">YAUBSEC → 3 dispositivos</div></span>
+          <span class="vol">3 SMS</span>
+          <span class="status failed">Fallidos</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- MODAL -->
+<div class="modal-bg" id="modal">
+  <div class="modal">
+    <h3>¿Disparar campaña?</h3>
+    <p>Esta acción es inmediata. Las líneas recibirán el mensaje en menos de 5 segundos.</p>
+    <div class="modal-row"><span>Audiencia</span><b>Empleados activos · 2,148</b></div>
+    <div class="modal-row"><span>Tipo</span><b>Marketing</b></div>
+    <div class="modal-row"><span>Codificación</span><b>GSM-7</b></div>
+    <div class="modal-row"><span>SMS por línea</span><b>1</b></div>
+    <div class="modal-row tot"><span>Costo total</span><b>$386.64 MXN</b></div>
+    <div class="modal-actions">
+      <button class="btn ghost" id="cancelBtn">Cancelar</button>
+      <button class="btn primary" id="confirmBtn">Confirmar y enviar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // char counter + preview render
+  const msg = document.getElementById('msg');
+  const cs  = document.getElementById('cs');
+  const prev= document.getElementById('prev');
+  const fillSample = (s) => s
+    .replaceAll('{{nombre}}','Carlos')
+    .replaceAll('{{apellido}}','Ruiz')
+    .replaceAll('{{plan}}','Yaub Pro')
+    .replaceAll('{{saldo_gb}}','4.2')
+    .replaceAll('{{vence}}','24 may')
+    .replaceAll('{{folio}}','YM-48201')
+    .replaceAll('{{centro_costos}}','CDMX-OPS');
+  const update = () => {
+    const txt = msg.value;
+    const n = txt.length;
+    const sms = Math.max(1, Math.ceil(n/160));
+    cs.innerHTML = `<b>${n}</b> caracteres · <b>${sms}</b> SMS`;
+    prev.textContent = fillSample(txt);
+  };
+  msg.addEventListener('input', update);
+  update();
+
+  // merge tags click
+  document.querySelectorAll('.merge-tag').forEach(t => {
+    t.addEventListener('click', () => {
+      const before = msg.value.slice(0, msg.selectionStart);
+      const after  = msg.value.slice(msg.selectionEnd);
+      msg.value = before + t.textContent + after;
+      msg.focus();
+      update();
+    });
+  });
+
+  // template click
+  document.querySelectorAll('.tpl').forEach(t => {
+    t.addEventListener('click', () => {
+      msg.value = t.dataset.tpl;
+      update();
+    });
+  });
+
+  // composer tabs
+  document.querySelectorAll('.composer-tab').forEach(t => {
+    t.addEventListener('click', () => {
+      document.querySelectorAll('.composer-tab').forEach(x => x.classList.remove('active'));
+      t.classList.add('active');
+    });
+  });
+
+  // audience cards
+  document.querySelectorAll('.audience-card').forEach(c => {
+    c.addEventListener('click', () => {
+      document.querySelectorAll('.audience-card').forEach(x => x.classList.remove('active'));
+      c.classList.add('active');
+      const r = c.querySelector('input'); if (r) r.checked = true;
+    });
+  });
+
+  // modal
+  const modal = document.getElementById('modal');
+  document.getElementById('sendBtn').addEventListener('click', () => modal.classList.add('show'));
+  document.getElementById('cancelBtn').addEventListener('click', () => modal.classList.remove('show'));
+  document.getElementById('confirmBtn').addEventListener('click', () => {
+    const btn = document.getElementById('confirmBtn');
+    btn.textContent = 'Enviando…';
+    setTimeout(() => {
+      btn.textContent = '✓ Enviado';
+      setTimeout(() => {
+        modal.classList.remove('show');
+        btn.textContent = 'Confirmar y enviar';
+      }, 900);
+    }, 1200);
+  });
+  modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('show'); });
+</script>
+
+</body>
+</html>

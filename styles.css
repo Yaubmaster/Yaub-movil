@@ -1,0 +1,304 @@
+/* =====================================================
+   Yaub Móvil — Aurora design system
+   ===================================================== */
+
+:root {
+  --bg-0:        #0B0B12;
+  --bg-1:        #12121C;
+  --bg-2:        #1A1A26;
+  --line:        rgba(255,255,255,0.08);
+  --line-strong: rgba(255,255,255,0.14);
+
+  --green:       #34D399;
+  --green-soft:  rgba(52,211,153,0.14);
+  --green-line:  rgba(52,211,153,0.28);
+  --cyan:        #22D3EE;
+  --cyan-soft:   rgba(34,211,238,0.14);
+  --purple:      #9D6FFB;
+  --purple-soft: rgba(157,111,251,0.14);
+  --warning:     #FBBF24;
+  --danger:      #F87171;
+  --orange:      #FB923C;
+
+  --text:        #E5E7EB;
+  --text-dim:    #9CA3AF;
+  --text-faint:  #6B7280;
+
+  --grad-gc:     linear-gradient(95deg, #34D399 0%, #22D3EE 100%);
+  --grad-cp:     linear-gradient(120deg, #22D3EE 0%, #9D6FFB 100%);
+  --grad-aurora: linear-gradient(120deg, #34D399 0%, #22D3EE 50%, #9D6FFB 100%);
+
+  --shadow-card: 0 24px 80px rgba(0,0,0,0.45), 0 1px 0 rgba(255,255,255,0.04) inset;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  background: var(--bg-0);
+  color: var(--text);
+  font-family: "Geist", "SF Pro Display", "Inter", system-ui, sans-serif;
+  font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+deck-stage > section {
+  width: 1920px;
+  height: 1080px;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-0);
+  color: var(--text);
+  padding: 80px 96px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Decorative aurora glow used on most slides */
+.aurora-bg {
+  position: absolute; inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+.aurora-bg::before,
+.aurora-bg::after {
+  content: "";
+  position: absolute;
+  width: 1100px; height: 1100px;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.35;
+}
+.aurora-bg::before {
+  top: -400px; left: -200px;
+  background: radial-gradient(circle at center, #34D39955 0%, transparent 60%);
+}
+.aurora-bg::after {
+  bottom: -500px; right: -200px;
+  background: radial-gradient(circle at center, #9D6FFB55 0%, transparent 60%);
+}
+
+.grid-bg {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  z-index: 0;
+}
+
+/* Slide content sits above bg */
+.slide-body {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* -------- typography -------- */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+.eyebrow .dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 12px var(--green);
+}
+.eyebrow.cyan .dot    { background: var(--cyan);    box-shadow: 0 0 12px var(--cyan); }
+.eyebrow.purple .dot  { background: var(--purple);  box-shadow: 0 0 12px var(--purple); }
+.eyebrow.warning .dot { background: var(--warning); box-shadow: 0 0 12px var(--warning); }
+
+.h-title {
+  font-size: 72px;
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin: 24px 0 0 0;
+  text-wrap: balance;
+}
+.h-title.sm { font-size: 56px; }
+.h-title.xs { font-size: 44px; }
+
+.h-sub {
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--text-dim);
+  margin: 20px 0 0 0;
+  max-width: 1100px;
+  text-wrap: pretty;
+}
+
+.grad-text {
+  background: var(--grad-gc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.grad-text.aurora {
+  background: var(--grad-aurora);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* -------- footer -------- */
+.slide-footer {
+  position: absolute;
+  bottom: 36px;
+  left: 96px;
+  right: 96px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: var(--text-faint);
+  letter-spacing: 0.04em;
+  z-index: 2;
+}
+.slide-footer .brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+  color: var(--text-dim);
+}
+.slide-footer .brand .mark {
+  width: 140px; height: 44px;
+  background: url('assets/yaub-movil-logo.png') left center/contain no-repeat;
+  filter: hue-rotate(-130deg) saturate(1.2) brightness(1.3);
+  font-size: 0;
+  color: transparent;
+}
+.slide-footer .num {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+
+/* section accent bar in header */
+.section-accent {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+.section-accent .bar {
+  width: 4px; height: 24px;
+  border-radius: 2px;
+  background: var(--green);
+}
+.section-accent.cyan .bar    { background: var(--cyan); }
+.section-accent.purple .bar  { background: var(--purple); }
+.section-accent.warning .bar { background: var(--warning); }
+
+/* -------- card / glass -------- */
+.glass {
+  background: linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.015) 100%);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: var(--shadow-card);
+}
+.glass.tight { border-radius: 14px; }
+
+.card {
+  background: var(--bg-1);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+}
+
+/* small chip / badge */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid var(--line-strong);
+  background: rgba(255,255,255,0.03);
+  color: var(--text-dim);
+  letter-spacing: 0.02em;
+}
+.chip.green   { color: var(--green);   border-color: var(--green-line);  background: var(--green-soft); }
+.chip.cyan    { color: var(--cyan);    border-color: rgba(34,211,238,0.28);  background: var(--cyan-soft); }
+.chip.purple  { color: var(--purple);  border-color: rgba(157,111,251,0.30); background: var(--purple-soft); }
+.chip.warning { color: var(--warning); border-color: rgba(251,191,36,0.30);  background: rgba(251,191,36,0.12); }
+
+/* dot-list */
+.dot-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+.dot-list li {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--text);
+}
+.dot-list li::before {
+  content: "";
+  flex: 0 0 auto;
+  margin-top: 9px;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 10px var(--green);
+}
+.dot-list.cyan li::before   { background: var(--cyan);   box-shadow: 0 0 10px var(--cyan); }
+.dot-list.purple li::before { background: var(--purple); box-shadow: 0 0 10px var(--purple); }
+.dot-list.muted li::before  { background: var(--text-faint); box-shadow: none; }
+
+/* table */
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 17px;
+}
+.table th, .table td {
+  padding: 18px 22px;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+}
+.table th {
+  font-weight: 500;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-dim);
+}
+.table tr:last-child td { border-bottom: none; }
+.table .num-col { font-variant-numeric: tabular-nums; }
+
+/* utility */
+.row { display: flex; }
+.col { display: flex; flex-direction: column; }
+.gap-8  { gap: 8px; }
+.gap-12 { gap: 12px; }
+.gap-16 { gap: 16px; }
+.gap-20 { gap: 20px; }
+.gap-24 { gap: 24px; }
+.gap-32 { gap: 32px; }
+.gap-40 { gap: 40px; }
+.gap-48 { gap: 48px; }
+.flex-1 { flex: 1; }
+.center { display: flex; align-items: center; justify-content: center; }
+
+/* deck-stage shows tiny thumbnails — make them readable */
+deck-stage::part(thumbnail) { background: var(--bg-1); }

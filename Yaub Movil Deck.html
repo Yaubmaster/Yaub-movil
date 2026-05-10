@@ -1,0 +1,2852 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<title>Yaub Móvil — Pitch Deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+/* ---- per-slide tweaks ---- */
+
+/* Slide 1 — cover */
+.s-cover {
+  padding: 0 !important;
+  background:
+    radial-gradient(ellipse 1100px 700px at 75% 30%, rgba(157,111,251,0.22) 0%, transparent 60%),
+    radial-gradient(ellipse 900px 600px at 20% 80%, rgba(34,211,238,0.18) 0%, transparent 65%),
+    var(--bg-0) !important;
+}
+.s-cover .cover-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 120px 120px;
+  mask-image: radial-gradient(ellipse at 50% 60%, black 30%, transparent 80%);
+}
+.s-cover .tower {
+  position: absolute;
+  right: -2%;
+  bottom: 0;
+  height: 78%;
+  opacity: 0.55;
+  filter: drop-shadow(0 0 80px rgba(34,211,238,0.25));
+  -webkit-mask-image: linear-gradient(180deg, black 0%, black 70%, transparent 96%);
+          mask-image: linear-gradient(180deg, black 0%, black 70%, transparent 96%);
+  pointer-events: none;
+}
+.s-cover .cover-content {
+  position: absolute;
+  left: 96px; right: 96px; top: 96px; bottom: 96px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  z-index: 2;
+}
+.s-cover .cover-top { display: flex; justify-content: space-between; align-items: flex-start; }
+.s-cover .brand-mark {
+  display: flex; align-items: center; gap: 16px;
+}
+.s-cover .brand-mark .logo-img { display: none; }
+.s-cover .brand-mark .wordmark {
+  font-size: 22px; font-weight: 600;
+  letter-spacing: -0.005em;
+  color: var(--text);
+}
+.s-cover .brand-mark .wordmark span { color: var(--text-dim); font-weight: 400; }
+.s-cover .meta {
+  text-align: right;
+  font-size: 14px;
+  letter-spacing: 0.16em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+.s-cover h1 {
+  width: 1100px;
+  height: 360px;
+  background: url('assets/yaub-movil-logo.png') left center/contain no-repeat;
+  filter: hue-rotate(-130deg) saturate(1.15) drop-shadow(0 0 80px rgba(34,211,238,0.35)) drop-shadow(0 0 40px rgba(52,211,153,0.25));
+  font-size: 0;
+  color: transparent;
+  margin: 0 0 0 -20px;
+}
+.s-cover h1 .grad { display: none; }
+.s-cover .tagline {
+  font-size: 28px;
+  line-height: 1.3;
+  color: var(--text);
+  font-weight: 400;
+  max-width: 1100px;
+  margin-top: 32px;
+}
+.s-cover .tagline em { color: var(--cyan); font-style: normal; }
+.s-cover .cover-bottom {
+  display: flex; justify-content: space-between; align-items: flex-end;
+}
+.s-cover .powered { display: flex; flex-direction: column; gap: 10px; font-size: 16px; color: var(--text-dim); }
+.s-cover .powered b { color: var(--text); font-weight: 500; }
+.s-cover .footer-meta {
+  font-size: 14px;
+  letter-spacing: 0.16em;
+  position: relative;
+  z-index: 3;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(11,11,18,0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--text-faint);
+  text-transform: uppercase;
+}
+
+/* Slide 2 — thesis */
+.s-thesis .thesis-title {
+  font-size: 108px;
+  line-height: 1.0;
+  letter-spacing: -0.035em;
+  font-weight: 600;
+  text-align: center;
+  margin: 0 auto;
+  max-width: 1500px;
+}
+.s-thesis .thesis-title .v { font-style: italic; font-weight: 500; }
+.s-thesis .pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 80px;
+}
+.s-thesis .pillar {
+  padding: 36px;
+  display: flex; flex-direction: column; gap: 18px;
+}
+.s-thesis .pillar .ico {
+  width: 56px; height: 56px;
+  border-radius: 14px;
+  display: grid; place-items: center;
+  background: rgba(52,211,153,0.10);
+  border: 1px solid var(--green-line);
+  color: var(--green);
+}
+.s-thesis .pillar.cyan .ico   { background: rgba(34,211,238,0.10);  border-color: rgba(34,211,238,0.32);   color: var(--cyan); }
+.s-thesis .pillar.purple .ico { background: rgba(157,111,251,0.10); border-color: rgba(157,111,251,0.32); color: var(--purple); }
+.s-thesis .pillar h3 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.s-thesis .pillar p { margin: 0; font-size: 18px; color: var(--text-dim); line-height: 1.5; }
+
+/* Slide 3 — stack */
+.s-stack .stack-wrap {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 48px;
+  margin-top: 28px;
+  flex: 1;
+  align-items: stretch;
+  min-height: 0;
+}
+.s-stack .layers {
+  display: flex; flex-direction: column; gap: 14px;
+  position: relative;
+}
+.s-stack .layer {
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  gap: 22px;
+  align-items: center;
+  padding: 22px 28px;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: linear-gradient(90deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+}
+.s-stack .layer .num { font-size: 24px; font-weight: 600; color: var(--text-faint); font-variant-numeric: tabular-nums; }
+.s-stack .layer h4 { margin: 0; font-size: 22px; font-weight: 600; letter-spacing: -0.01em; }
+.s-stack .layer p  { margin: 4px 0 0 0; color: var(--text-dim); font-size: 16px; }
+.s-stack .layer .pill {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--text-faint);
+}
+.s-stack .layer.green  { border-color: rgba(52,211,153,0.30);  background: linear-gradient(90deg, rgba(52,211,153,0.08), rgba(52,211,153,0.02)); }
+.s-stack .layer.cyan   { border-color: rgba(34,211,238,0.30);  background: linear-gradient(90deg, rgba(34,211,238,0.08), rgba(34,211,238,0.02)); }
+.s-stack .layer.purple { border-color: rgba(157,111,251,0.30); background: linear-gradient(90deg, rgba(157,111,251,0.08), rgba(157,111,251,0.02)); }
+.s-stack .layer.warning{ border-color: rgba(251,191,36,0.30);  background: linear-gradient(90deg, rgba(251,191,36,0.08), rgba(251,191,36,0.02)); }
+
+.s-stack .spine {
+  border-radius: 22px;
+  border: 1px solid rgba(34,211,238,0.30);
+  padding: 36px 32px;
+  background:
+    radial-gradient(ellipse at top right, rgba(157,111,251,0.18), transparent 70%),
+    linear-gradient(180deg, rgba(34,211,238,0.10), rgba(34,211,238,0.02));
+  display: flex; flex-direction: column; gap: 22px;
+  position: relative;
+  justify-content: space-between;
+}
+.s-stack .spine .label {
+  font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--cyan);
+}
+.s-stack .spine h3 {
+  margin: 0;
+  font-size: 34px;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  font-weight: 600;
+}
+.s-stack .spine .body {
+  color: var(--text-dim);
+  font-size: 16px;
+  line-height: 1.55;
+}
+.s-stack .spine .ai-orb {
+  position: relative;
+  margin: 12px auto 18px auto;
+  width: 170px; height: 170px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 35%, rgba(255,255,255,0.45), transparent 40%),
+    radial-gradient(circle at 60% 70%, var(--purple), var(--cyan));
+  box-shadow:
+    0 0 80px rgba(157,111,251,0.55),
+    0 0 0 1px rgba(255,255,255,0.10) inset;
+}
+.s-stack .spine .ai-orb::after {
+  content: "";
+  position: absolute; inset: -20px;
+  border-radius: 50%;
+  border: 1px solid rgba(34,211,238,0.30);
+  box-shadow: 0 0 30px rgba(34,211,238,0.20) inset;
+}
+
+/* Slide 4 — B2C plans */
+.plans-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 28px;
+  flex: 1;
+  align-content: start;
+}
+.plan-card {
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+  padding: 24px 26px;
+  display: flex; flex-direction: column; gap: 14px;
+  position: relative;
+}
+.plan-card .gb-badge {
+  position: absolute;
+  top: 18px; right: 18px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 13px; font-weight: 600;
+  color: var(--green);
+  background: var(--green-soft);
+  border: 1px solid var(--green-line);
+  letter-spacing: 0.02em;
+}
+.plan-card .name {
+  font-size: 22px; font-weight: 600; letter-spacing: -0.01em;
+  display: flex; align-items: baseline; gap: 6px;
+  padding-right: 88px;
+  min-height: 28px;
+  line-height: 1.2;
+}
+.plan-card .name .yaub-prefix { color: var(--text-dim); font-weight: 400; }
+.plan-card .price {
+  font-size: 44px; font-weight: 600;
+  letter-spacing: -0.02em;
+  display: flex; align-items: baseline; gap: 8px;
+  margin-top: 4px;
+}
+.plan-card .price .currency { font-size: 18px; color: var(--text-dim); font-weight: 400; }
+.plan-card .price .period { font-size: 14px; color: var(--text-faint); font-weight: 400; letter-spacing: 0; }
+.plan-card .specs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+  font-variant-numeric: tabular-nums;
+}
+.plan-card .specs .spec {
+  display: flex; flex-direction: column; gap: 2px;
+}
+.plan-card .specs .label {
+  font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--text-faint);
+}
+.plan-card .specs .val {
+  font-size: 15px; font-weight: 500;
+  color: var(--text);
+}
+.plan-card.featured {
+  border-color: rgba(34,211,238,0.40);
+  background: linear-gradient(180deg, rgba(34,211,238,0.10), rgba(157,111,251,0.05));
+  box-shadow: 0 0 60px rgba(34,211,238,0.10);
+}
+
+/* Slide 5 — B2B */
+.s-b2b .b2b-wrap {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 40px;
+  margin-top: 30px;
+  flex: 1;
+}
+.s-b2b .side {
+  padding: 32px;
+}
+.s-b2b .side h4 {
+  margin: 0 0 18px 0;
+  font-size: 14px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cyan);
+}
+
+/* Slide 6 — comparison table */
+.compare-table { width: 100%; border-collapse: separate; border-spacing: 0; margin-top: 30px; font-size: 18px; }
+.compare-table th, .compare-table td {
+  padding: 18px 18px;
+  border-bottom: 1px solid var(--line);
+  text-align: center;
+}
+.compare-table th:first-child, .compare-table td:first-child { text-align: left; }
+.compare-table thead th {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-dim);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.compare-table thead th.yaub {
+  color: var(--green);
+  background: var(--green-soft);
+  border-radius: 12px 12px 0 0;
+}
+.compare-table tbody td.yaub {
+  background: var(--green-soft);
+  color: var(--green);
+  font-weight: 600;
+  font-size: 22px;
+}
+.compare-table tbody tr:last-child td.yaub {
+  border-radius: 0 0 12px 12px;
+}
+.compare-table .x { color: var(--text-faint); font-size: 22px; }
+.compare-table .partial { color: var(--warning); font-size: 14px; font-weight: 500; }
+.compare-table .check { color: var(--green); font-size: 22px; }
+
+/* Slide 7 — equipos */
+.s-equipos .split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; margin-top: 24px; flex: 1; }
+.s-equipos .phone-stage {
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+}
+.phone-frame {
+  width: 360px; height: 720px;
+  border-radius: 56px;
+  background: linear-gradient(180deg, #1F1F2E, #0F0F18);
+  border: 1px solid var(--line-strong);
+  position: relative;
+  box-shadow:
+    0 60px 120px rgba(0,0,0,0.6),
+    0 0 0 1px rgba(255,255,255,0.05) inset,
+    0 0 80px rgba(157,111,251,0.20);
+  padding: 14px;
+}
+.phone-frame .notch {
+  position: absolute;
+  top: 18px; left: 50%;
+  transform: translateX(-50%);
+  width: 110px; height: 28px;
+  border-radius: 14px;
+  background: #000;
+}
+.phone-screen {
+  width: 100%; height: 100%;
+  border-radius: 44px;
+  background: radial-gradient(ellipse at center, rgba(157,111,251,0.20), rgba(11,11,18,0.95));
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 24px;
+  padding: 40px;
+  text-align: center;
+  position: relative;
+}
+.phone-screen .lock-icon {
+  width: 88px; height: 88px;
+  border-radius: 22px;
+  background: rgba(248,113,113,0.12);
+  border: 1px solid rgba(248,113,113,0.40);
+  color: var(--danger);
+  display: grid; place-items: center;
+}
+.phone-screen .msg-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--danger);
+  letter-spacing: 0.02em;
+}
+.phone-screen .msg-body {
+  font-size: 15px;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+.phone-screen .stage-pill {
+  margin-top: 10px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--danger);
+  border: 1px solid rgba(248,113,113,0.4);
+  background: rgba(248,113,113,0.08);
+}
+
+/* Slide 8 — MDM timeline */
+.mdm-timeline {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 18px;
+  margin-top: 30px;
+  flex: 1;
+  align-content: center;
+}
+.mdm-stage {
+  border-radius: 18px;
+  padding: 24px 22px;
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+  display: flex; flex-direction: column; gap: 14px;
+  position: relative;
+}
+.mdm-stage .ico-row { display: flex; align-items: center; justify-content: space-between; }
+.mdm-stage .ico {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  display: grid; place-items: center;
+}
+.mdm-stage .day-label {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  font-variant-numeric: tabular-nums;
+}
+.mdm-stage h5 { margin: 0; font-size: 17px; font-weight: 600; letter-spacing: -0.005em; line-height: 1.2; }
+.mdm-stage p { margin: 0; font-size: 14px; color: var(--text-dim); line-height: 1.4; }
+.mdm-stage.green   { border-color: rgba(52,211,153,0.40); background: linear-gradient(180deg, rgba(52,211,153,0.10), rgba(52,211,153,0.02)); }
+.mdm-stage.green .ico   { background: var(--green-soft); color: var(--green); }
+.mdm-stage.green h5     { color: var(--green); }
+.mdm-stage.warning { border-color: rgba(251,191,36,0.40); background: linear-gradient(180deg, rgba(251,191,36,0.08), rgba(251,191,36,0.02)); }
+.mdm-stage.warning .ico { background: rgba(251,191,36,0.14); color: var(--warning); }
+.mdm-stage.warning h5   { color: var(--warning); }
+.mdm-stage.orange  { border-color: rgba(251,146,60,0.45);  background: linear-gradient(180deg, rgba(251,146,60,0.10), rgba(251,146,60,0.02)); }
+.mdm-stage.orange .ico  { background: rgba(251,146,60,0.16); color: var(--orange); }
+.mdm-stage.orange h5    { color: var(--orange); }
+.mdm-stage.danger  { border-color: rgba(248,113,113,0.45);  background: linear-gradient(180deg, rgba(248,113,113,0.10), rgba(248,113,113,0.02)); }
+.mdm-stage.danger .ico  { background: rgba(248,113,113,0.14); color: var(--danger); }
+.mdm-stage.danger h5    { color: var(--danger); }
+.mdm-stage.recover { border-color: rgba(52,211,153,0.50); background: linear-gradient(180deg, rgba(52,211,153,0.18), rgba(34,211,238,0.05)); }
+.mdm-stage.recover .ico { background: var(--green-soft); color: var(--green); }
+.mdm-stage.recover h5   { color: var(--green); }
+
+.mdm-timeline-line {
+  height: 2px;
+  background: linear-gradient(90deg, var(--green) 0%, var(--warning) 30%, var(--orange) 55%, var(--danger) 78%, var(--green) 100%);
+  border-radius: 2px;
+  margin: 0;
+  opacity: 0.7;
+}
+
+/* Slide 9 — cobranza fidelizada star */
+.s-cobranza .star-stage {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-top: 24px;
+  position: relative;
+  align-items: center;
+  justify-items: center;
+}
+.star-wrap {
+  position: relative;
+  width: 900px; height: 720px;
+}
+.star-wrap .center-orb {
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  width: 220px; height: 220px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 30%, rgba(255,255,255,0.5), transparent 50%),
+    var(--grad-aurora);
+  display: grid; place-items: center;
+  color: #07070C;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  box-shadow: 0 0 100px rgba(157,111,251,0.45), 0 0 0 1px rgba(255,255,255,0.10) inset;
+  text-align: center;
+  line-height: 1.1;
+  z-index: 2;
+}
+.star-wrap .center-orb small { display: block; font-size: 12px; opacity: 0.75; font-weight: 500; letter-spacing: 0.18em; margin-bottom: 4px; }
+.star-wrap .point {
+  position: absolute;
+  width: 240px;
+  padding: 18px 22px;
+  border-radius: 16px;
+  border: 1px solid var(--line-strong);
+  background: var(--bg-1);
+  display: flex; flex-direction: column; gap: 8px;
+  z-index: 2;
+}
+.star-wrap .point .ico {
+  width: 38px; height: 38px;
+  border-radius: 10px;
+  display: grid; place-items: center;
+  background: var(--green-soft);
+  color: var(--green);
+}
+.star-wrap .point h5 { margin: 0; font-size: 16px; font-weight: 600; }
+.star-wrap .point p  { margin: 0; font-size: 13px; color: var(--text-dim); line-height: 1.45; }
+.star-wrap .point.p1 { top: 0;       left: 50%; transform: translateX(-50%); }
+.star-wrap .point.p2 { top: 80px;    right: 0; }
+.star-wrap .point.p3 { bottom: 80px; right: 0; }
+.star-wrap .point.p4 { bottom: 0;    left: 50%; transform: translateX(-50%); }
+.star-wrap .point.p5 { bottom: 80px; left: 0; }
+.star-wrap .point.p6 { top: 80px;    left: 0; }
+
+.star-wrap svg.lines {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  z-index: 1; pointer-events: none;
+}
+.star-wrap .ext-label {
+  position: absolute;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  font-weight: 500;
+}
+
+/* Slide 10 — agent in SIM */
+.s-agent .agent-wrap {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 80px;
+  margin-top: 30px;
+  align-items: center;
+}
+.s-agent .bubble-stack {
+  display: flex; flex-direction: column; gap: 16px;
+  max-width: 720px;
+}
+.wa-bubble {
+  padding: 20px 24px;
+  border-radius: 20px;
+  border: 1px solid var(--line);
+  background: var(--bg-1);
+  font-size: 19px;
+  line-height: 1.45;
+  align-self: flex-start;
+  max-width: 90%;
+  position: relative;
+}
+.wa-bubble.in {
+  border-bottom-left-radius: 4px;
+}
+.wa-bubble.out {
+  align-self: flex-end;
+  background: var(--green-soft);
+  border-color: var(--green-line);
+  color: var(--text);
+  border-bottom-right-radius: 4px;
+}
+.wa-bubble.cyan { background: var(--cyan-soft); border-color: rgba(34,211,238,0.30); }
+.wa-bubble .meta-time {
+  display: block;
+  font-size: 11px;
+  color: var(--text-faint);
+  margin-top: 6px;
+  letter-spacing: 0.06em;
+}
+
+/* Slide 11 — capabilities */
+.cap-grid {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: 200px repeat(4, 1fr);
+  gap: 14px;
+  flex: 1;
+}
+.cap-row-label {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 18px 22px;
+  border-radius: 14px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+  border-left: 3px solid var(--green);
+}
+.cap-row-label.cyan   { border-left-color: var(--cyan); }
+.cap-row-label.purple { border-left-color: var(--purple); }
+.cap-row-label .tag { font-size: 12px; letter-spacing: 0.16em; color: var(--text-faint); text-transform: uppercase; }
+.cap-row-label .name { font-size: 22px; font-weight: 600; letter-spacing: -0.01em; }
+.cap-cell {
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  padding: 18px 20px;
+  display: flex; flex-direction: column; gap: 10px;
+  background: rgba(255,255,255,0.02);
+}
+.cap-cell .ico {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  display: grid; place-items: center;
+  color: var(--text);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--line);
+}
+.cap-cell h5 { margin: 0; font-size: 17px; font-weight: 600; line-height: 1.25; }
+.cap-cell p  { margin: 0; font-size: 13px; color: var(--text-dim); line-height: 1.4; }
+
+/* Slide 12 — tools */
+.tools-grid {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px 28px;
+  flex: 1;
+  margin-bottom: 24px;
+}
+.tool-row {
+  display: grid;
+  grid-template-columns: 26px 1fr auto;
+  gap: 12px;
+  align-items: center;
+  padding: 9px 16px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--line);
+  font-size: 14px;
+  min-height: 0;
+}
+.tool-row .num { font-variant-numeric: tabular-nums; color: var(--text-faint); font-size: 12px; letter-spacing: 0.06em; }
+.tool-row .name {
+  font-family: "Geist Mono", "JetBrains Mono", monospace;
+  color: var(--cyan);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tool-row .desc { color: var(--text-dim); font-size: 13px; text-align: right; white-space: nowrap; }
+.tool-row.internal .name { color: var(--warning); }
+
+/* Slide 13 — cadence swimlanes */
+.cadence-grid {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  flex: 1;
+}
+.cadence-col {
+  border-radius: 18px;
+  padding: 24px;
+  display: flex; flex-direction: column; gap: 14px;
+  border: 1px solid var(--line);
+  background: var(--bg-1);
+}
+.cadence-col.c1 { border-color: rgba(52,211,153,0.50);  background: linear-gradient(180deg, rgba(52,211,153,0.10),  rgba(52,211,153,0.02)); }
+.cadence-col.c2 { border-color: rgba(110,231,183,0.45); background: linear-gradient(180deg, rgba(110,231,183,0.08), rgba(110,231,183,0.02)); }
+.cadence-col.c3 { border-color: rgba(251,191,36,0.45);  background: linear-gradient(180deg, rgba(251,191,36,0.08),  rgba(251,191,36,0.02)); }
+.cadence-col.c4 { border-color: rgba(251,146,60,0.45);  background: linear-gradient(180deg, rgba(251,146,60,0.08),  rgba(251,146,60,0.02)); }
+.cadence-col.c5 { border-color: rgba(248,113,113,0.45); background: linear-gradient(180deg, rgba(248,113,113,0.08), rgba(248,113,113,0.02)); }
+.cadence-col .num-tag {
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.cadence-col h5 { margin: 0; font-size: 22px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.15; }
+.cadence-col .freq {
+  font-size: 13px;
+  color: var(--text-dim);
+  padding: 8px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  font-variant-numeric: tabular-nums;
+}
+.cadence-col .freq b { color: var(--text); font-weight: 500; }
+.cadence-col .msg { font-size: 14px; color: var(--text-dim); line-height: 1.5; }
+.cadence-col .msg b { color: var(--text); font-weight: 500; }
+.cadence-col .cta {
+  margin-top: auto;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: rgba(0,0,0,0.30);
+  border: 1px solid var(--line);
+  font-size: 13px;
+  line-height: 1.45;
+}
+.cadence-col .cta .label {
+  display: block;
+  font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 4px;
+}
+
+.cadence-col.c1 .num-tag, .cadence-col.c1 h5 { color: var(--green); }
+.cadence-col.c2 .num-tag, .cadence-col.c2 h5 { color: #6EE7B7; }
+.cadence-col.c3 .num-tag, .cadence-col.c3 h5 { color: var(--warning); }
+.cadence-col.c4 .num-tag, .cadence-col.c4 h5 { color: var(--orange); }
+.cadence-col.c5 .num-tag, .cadence-col.c5 h5 { color: var(--danger); }
+
+/* Slide 14 — WhatsApp mock */
+.s-wa .wa-wrap {
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 60px;
+  flex: 1; margin-top: 20px;
+  align-items: center;
+}
+.iphone {
+  width: 420px; height: 840px;
+  border-radius: 64px;
+  background: #0a0a12;
+  border: 1px solid var(--line-strong);
+  position: relative;
+  box-shadow: 0 40px 120px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05) inset;
+  padding: 14px;
+  margin: auto;
+}
+.iphone .notch {
+  position: absolute; top: 18px; left: 50%; transform: translateX(-50%);
+  width: 130px; height: 32px; border-radius: 16px; background: #000;
+  z-index: 5;
+}
+.iphone .screen {
+  width: 100%; height: 100%;
+  border-radius: 50px;
+  overflow: hidden;
+  background: #0E0E16;
+  display: flex; flex-direction: column;
+}
+.wa-header {
+  display: flex; align-items: center; gap: 12px;
+  padding: 56px 18px 14px 18px;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg-1);
+}
+.wa-header .avatar {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: var(--grad-aurora);
+}
+.wa-header .who { font-size: 14px; font-weight: 600; }
+.wa-header .stat { font-size: 11px; color: var(--green); }
+.wa-stream {
+  flex: 1; padding: 16px 14px; display: flex; flex-direction: column; gap: 8px;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(157,111,251,0.06), transparent 40%),
+    radial-gradient(circle at 80% 90%, rgba(34,211,238,0.05), transparent 40%),
+    #0B0B12;
+  overflow: hidden;
+}
+.wa-msg {
+  max-width: 80%;
+  padding: 9px 12px;
+  border-radius: 12px;
+  font-size: 12.5px;
+  line-height: 1.4;
+}
+.wa-msg.in {
+  background: var(--bg-1);
+  border: 1px solid var(--line);
+  align-self: flex-start;
+  border-bottom-left-radius: 3px;
+}
+.wa-msg.out {
+  background: #0F3F2C;
+  border: 1px solid rgba(52,211,153,0.40);
+  align-self: flex-end;
+  border-bottom-right-radius: 3px;
+  color: var(--text);
+}
+.wa-msg .stamp { font-size: 9px; color: var(--text-faint); display: block; margin-top: 4px; text-align: right; letter-spacing: 0.04em; }
+.wa-msg .b { font-weight: 600; color: var(--green); }
+.wa-msg .folio { font-family: "Geist Mono", monospace; font-size: 10px; color: var(--cyan); display: block; margin-top: 2px; }
+
+.s-wa .convo-meta {
+  display: flex; flex-direction: column; gap: 24px;
+  align-self: center;
+}
+.s-wa .stack-list { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
+.tech-pill {
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px 18px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--line);
+  font-family: "Geist Mono", monospace;
+  font-size: 14px;
+}
+.tech-pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 10px var(--cyan); }
+.tech-pill .label { color: var(--text-dim); margin-left: auto; font-family: "Geist", sans-serif; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; }
+
+/* Slide 15 — stats */
+.stats-grid {
+  margin-top: 36px;
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; flex: 1;
+}
+.stat-card {
+  padding: 36px 40px;
+  border-radius: 22px;
+  border: 1px solid var(--line);
+  background: linear-gradient(160deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 16px;
+}
+.stat-card .left { display: flex; flex-direction: column; gap: 8px; }
+.stat-card .label { font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-faint); }
+.stat-card .compare { font-size: 16px; color: var(--text-dim); line-height: 1.4; }
+.stat-card .compare s { color: var(--text-faint); text-decoration-color: var(--text-faint); }
+.stat-card .value {
+  font-size: 88px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  background: var(--grad-gc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-variant-numeric: tabular-nums;
+}
+.stat-card .value .unit { font-size: 28px; font-weight: 500; -webkit-text-fill-color: var(--text-dim); }
+
+/* Slide 16 — Yaub SMS dashboard */
+.s-sms .sms-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  margin-top: 24px;
+  flex: 1;
+}
+.dash-mock {
+  border-radius: 22px;
+  background: var(--bg-1);
+  border: 1px solid var(--line-strong);
+  padding: 22px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 16px;
+  align-self: center;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.55);
+}
+.dash-mock .dash-header {
+  grid-column: 1 / -1;
+  display: flex; justify-content: space-between; align-items: center;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+.dash-mock .dash-header .title { font-weight: 600; font-size: 16px; }
+.dash-mock .dash-header .crumbs { font-size: 12px; color: var(--text-faint); }
+.dash-mock .dash-header .traffic-lights { display: flex; gap: 6px; }
+.dash-mock .dash-header .traffic-lights span { width: 10px; height: 10px; border-radius: 50%; background: var(--text-faint); opacity: 0.4; }
+.dash-card {
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,0.02);
+  padding: 18px;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.dash-card h6 {
+  margin: 0;
+  font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-faint);
+}
+.dash-card .field {
+  height: 32px; border-radius: 8px;
+  background: rgba(0,0,0,0.4);
+  border: 1px solid var(--line);
+  display: flex; align-items: center; padding: 0 10px;
+  font-size: 11px; color: var(--text-dim);
+  font-family: "Geist Mono", monospace;
+}
+.dash-card .send-btn {
+  background: var(--grad-gc);
+  color: #07070C;
+  height: 32px; border-radius: 8px;
+  display: grid; place-items: center;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.donut-wrap { display: flex; align-items: center; gap: 18px; flex: 1; }
+.donut {
+  --p: 78;
+  width: 96px; height: 96px;
+  border-radius: 50%;
+  background:
+    conic-gradient(var(--green) 0% calc(var(--p) * 1%), rgba(255,255,255,0.06) 0%);
+  display: grid; place-items: center;
+  position: relative;
+}
+.donut::after {
+  content: "";
+  position: absolute; inset: 14px;
+  border-radius: 50%;
+  background: var(--bg-1);
+}
+.donut .pct {
+  position: relative; z-index: 1;
+  font-size: 18px; font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.donut-meta { display: flex; flex-direction: column; gap: 6px; font-size: 12px; color: var(--text-dim); }
+.donut-meta .big { font-size: 24px; font-weight: 600; color: var(--text); font-variant-numeric: tabular-nums; }
+.csv-list { display: flex; flex-direction: column; gap: 4px; max-height: 110px; overflow: hidden; }
+.csv-row {
+  display: grid; grid-template-columns: 1fr auto; gap: 8px;
+  font-family: "Geist Mono", monospace; font-size: 11px;
+  padding: 4px 8px; border-radius: 6px;
+  background: rgba(0,0,0,0.3);
+}
+.csv-row.valid    { color: var(--green); }
+.csv-row.invalid  { color: var(--danger); }
+
+/* Slide 17 — 3 SMS products */
+.sms-products {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 24px; flex: 1;
+}
+.sms-prod {
+  border-radius: 20px;
+  border: 1px solid var(--line);
+  padding: 32px;
+  display: flex; flex-direction: column; gap: 20px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+}
+.sms-prod .ico {
+  width: 56px; height: 56px;
+  border-radius: 14px;
+  background: var(--green-soft);
+  border: 1px solid var(--green-line);
+  display: grid; place-items: center;
+  color: var(--green);
+}
+.sms-prod h4 { margin: 0; font-size: 28px; font-weight: 600; letter-spacing: -0.01em; }
+.sms-prod .for { font-size: 14px; color: var(--text-dim); padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+.sms-prod .for b { color: var(--text); font-weight: 500; }
+.sms-prod.cyan .ico   { background: var(--cyan-soft);   border-color: rgba(34,211,238,0.32);  color: var(--cyan); }
+.sms-prod.purple .ico { background: var(--purple-soft); border-color: rgba(157,111,251,0.32); color: var(--purple); }
+
+/* Slide 18 — pricing */
+.pricing-table {
+  margin-top: 28px;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 18px;
+}
+.pricing-table th, .pricing-table td {
+  padding: 22px 26px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+}
+.pricing-table th {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+.pricing-table thead th:nth-child(2) { color: var(--green); }
+.pricing-table thead th:nth-child(3) { color: var(--cyan); }
+.pricing-table tbody td:nth-child(2),
+.pricing-table tbody td:nth-child(3) {
+  font-variant-numeric: tabular-nums;
+  font-size: 22px;
+  font-weight: 500;
+}
+.pricing-table tbody td:nth-child(2) { color: var(--green); }
+.pricing-table tbody td:nth-child(3) { color: var(--cyan); }
+.pricing-table tbody tr:nth-child(odd) td { background: rgba(255,255,255,0.02); }
+
+/* Slide 19 — industries */
+.industry-grid {
+  margin-top: 24px; flex: 1;
+  display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: 1fr 1fr; gap: 16px;
+}
+.industry-card {
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  padding: 20px;
+  display: flex; flex-direction: column; gap: 14px;
+  background: rgba(255,255,255,0.02);
+}
+.industry-card .head {
+  display: flex; align-items: center; gap: 10px;
+}
+.industry-card .ico {
+  width: 32px; height: 32px;
+  border-radius: 9px;
+  display: grid; place-items: center;
+  background: var(--cyan-soft);
+  color: var(--cyan);
+}
+.industry-card h5 { margin: 0; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text); }
+.industry-card .uses { font-size: 13px; color: var(--text-dim); line-height: 1.5; }
+.industry-card .sms-mock {
+  margin-top: auto;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(0,0,0,0.4);
+  border: 1px solid var(--line);
+  font-size: 11.5px;
+  color: var(--text-dim);
+  line-height: 1.45;
+  font-family: "Geist Mono", monospace;
+}
+.industry-card .sms-mock .from { display: block; font-size: 9.5px; color: var(--cyan); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 4px; font-family: "Geist", sans-serif; }
+
+/* Slide 20 — YaubPay triangle */
+.s-yaubpay .pay-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; flex: 1; margin-top: 24px; align-items: center; }
+.triangle-stage {
+  position: relative;
+  width: 540px; height: 540px;
+  margin: auto;
+}
+.triangle-stage svg.tri-lines {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+}
+.tri-node {
+  position: absolute;
+  width: 180px;
+  padding: 18px 22px;
+  border-radius: 16px;
+  background: var(--bg-1);
+  border: 1px solid var(--line-strong);
+  text-align: center;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  z-index: 2;
+}
+.tri-node .ico { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; }
+.tri-node h5 { margin: 0; font-size: 16px; font-weight: 600; }
+.tri-node p  { margin: 0; font-size: 12px; color: var(--text-dim); letter-spacing: 0.06em; }
+.tri-node.green  { border-color: var(--green-line); }
+.tri-node.green .ico  { background: var(--green-soft);  color: var(--green); }
+.tri-node.cyan   { border-color: rgba(34,211,238,0.32); }
+.tri-node.cyan .ico   { background: var(--cyan-soft);   color: var(--cyan); }
+.tri-node.purple { border-color: rgba(157,111,251,0.32); }
+.tri-node.purple .ico { background: var(--purple-soft); color: var(--purple); }
+.tri-center {
+  position: absolute; left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  width: 130px; height: 130px;
+  border-radius: 50%;
+  background: var(--grad-aurora);
+  display: grid; place-items: center;
+  font-weight: 700; font-size: 16px;
+  color: #07070C;
+  letter-spacing: 0.04em;
+  box-shadow: 0 0 80px rgba(157,111,251,0.45);
+  z-index: 1;
+  text-align: center;
+  line-height: 1.1;
+}
+
+/* Slide 21 — payment swimlane */
+.swim-wrap {
+  margin-top: 30px;
+  flex: 1;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 24px;
+}
+.swim-actors { display: flex; flex-direction: column; gap: 8px; }
+.swim-actor {
+  flex: 1;
+  border-radius: 14px;
+  padding: 18px 16px;
+  display: flex; flex-direction: column; gap: 6px;
+  border: 1px solid var(--line);
+  background: rgba(255,255,255,0.02);
+}
+.swim-actor .label { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-faint); }
+.swim-actor .who { font-size: 18px; font-weight: 600; }
+.swim-actor.cyan { border-color: rgba(34,211,238,0.30); background: var(--cyan-soft); }
+.swim-actor.cyan .who { color: var(--cyan); }
+.swim-actor.green { border-color: var(--green-line); background: var(--green-soft); }
+.swim-actor.green .who { color: var(--green); }
+.swim-actor.purple { border-color: rgba(157,111,251,0.30); background: var(--purple-soft); }
+.swim-actor.purple .who { color: var(--purple); }
+
+.swim-flow {
+  display: flex; flex-direction: column; gap: 8px;
+  position: relative;
+}
+.swim-step {
+  display: grid;
+  grid-template-columns: 36px 1fr auto;
+  gap: 16px;
+  align-items: center;
+  padding: 14px 18px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--line);
+  font-size: 16px;
+}
+.swim-step .num {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--bg-2);
+  font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums;
+  color: var(--text-dim);
+}
+.swim-step .actor-tag {
+  font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--text-faint);
+}
+.swim-step.green .num { background: var(--green-soft); color: var(--green); }
+.swim-step.green .actor-tag { color: var(--green); }
+.swim-step.cyan .num { background: var(--cyan-soft); color: var(--cyan); }
+.swim-step.cyan .actor-tag { color: var(--cyan); }
+.swim-step.purple .num { background: var(--purple-soft); color: var(--purple); }
+.swim-step.purple .actor-tag { color: var(--purple); }
+
+.timer-strip {
+  margin-top: 14px;
+  padding: 14px 22px;
+  border-radius: 14px;
+  background: var(--green-soft);
+  border: 1px solid var(--green-line);
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 16px;
+  color: var(--green);
+}
+.timer-strip .t-label { letter-spacing: 0.14em; text-transform: uppercase; font-size: 12px; }
+.timer-strip .t-val { font-size: 28px; font-weight: 600; font-variant-numeric: tabular-nums; }
+
+/* Slide 22 — methods + ROI */
+.s-methods .methods-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; flex: 1; margin-top: 24px; }
+.methods-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.method {
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  padding: 16px 18px;
+  display: flex; align-items: center; gap: 12px;
+  background: rgba(255,255,255,0.02);
+  font-size: 15px;
+}
+.method .ico { width: 32px; height: 32px; border-radius: 8px; display: grid; place-items: center; background: var(--cyan-soft); color: var(--cyan); }
+.roi-card {
+  border-radius: 22px;
+  padding: 36px;
+  background: linear-gradient(180deg, rgba(52,211,153,0.10), rgba(34,211,238,0.04));
+  border: 1px solid var(--green-line);
+  display: flex; flex-direction: column; gap: 20px;
+  position: relative;
+}
+.roi-card .label { font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--green); }
+.roi-card .delta {
+  display: flex; align-items: baseline; gap: 12px;
+  font-variant-numeric: tabular-nums;
+}
+.roi-card .delta .big {
+  font-size: 84px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  background: var(--grad-gc);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.roi-card .delta .vs { font-size: 16px; color: var(--text-dim); }
+.roi-card .copy { font-size: 16px; color: var(--text); line-height: 1.55; }
+.roi-card .copy b { color: var(--green); font-weight: 500; }
+.roi-card .footnote {
+  margin-top: auto;
+  padding-top: 18px; border-top: 1px solid var(--green-line);
+  font-size: 14px; color: var(--text-dim);
+}
+
+/* Slide 23 — tier model */
+.tiers {
+  margin-top: 30px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+}
+.tier {
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  padding: 22px 28px;
+  background: rgba(255,255,255,0.02);
+  display: grid;
+  grid-template-columns: 90px 220px 1fr 220px;
+  align-items: center;
+  gap: 30px;
+}
+.tier .num {
+  font-size: 42px; font-weight: 600; letter-spacing: -0.02em;
+  color: var(--text-dim);
+  font-variant-numeric: tabular-nums;
+}
+.tier .name {
+  font-size: 22px; font-weight: 600; letter-spacing: -0.01em;
+}
+.tier .desc { font-size: 16px; color: var(--text-dim); line-height: 1.45; }
+.tier .stage-tag {
+  text-align: right;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.tier.t1 { border-color: var(--green-line); background: linear-gradient(90deg, rgba(52,211,153,0.10), transparent 60%); }
+.tier.t1 .num, .tier.t1 .stage-tag { color: var(--green); }
+.tier.t2 { border-color: rgba(34,211,238,0.30); background: linear-gradient(90deg, rgba(34,211,238,0.08), transparent 60%); }
+.tier.t2 .num, .tier.t2 .stage-tag { color: var(--cyan); }
+.tier.t3 { border-color: rgba(157,111,251,0.30); background: linear-gradient(90deg, rgba(157,111,251,0.08), transparent 60%); }
+.tier.t3 .num, .tier.t3 .stage-tag { color: var(--purple); }
+.tier.t4 { border-color: rgba(251,191,36,0.30); background: linear-gradient(90deg, rgba(251,191,36,0.06), transparent 60%); }
+.tier.t4 .num, .tier.t4 .stage-tag { color: var(--warning); }
+
+/* Slide 24 — gantt */
+.gantt {
+  margin-top: 30px; flex: 1;
+  display: grid;
+  grid-template-columns: 240px repeat(4, 1fr);
+  gap: 0;
+  align-content: start;
+}
+.gantt .q-header {
+  font-size: 14px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--text-faint);
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--line);
+  text-align: center;
+}
+.gantt .q-header.now { color: var(--green); }
+.gantt .row-label {
+  padding: 22px 20px; font-size: 15px; color: var(--text);
+  border-bottom: 1px solid var(--line);
+  display: flex; align-items: center;
+  font-weight: 500;
+}
+.gantt .row-cell {
+  border-bottom: 1px solid var(--line);
+  padding: 14px 8px;
+  position: relative;
+  display: flex; align-items: center;
+}
+.gantt .bar {
+  height: 36px; border-radius: 10px;
+  display: flex; align-items: center; padding: 0 14px;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  width: 100%;
+  position: relative;
+  font-weight: 500;
+}
+.gantt .bar.span-1 { width: calc(100% - 12px); }
+.gantt .bar.green   { background: var(--green-soft);  color: var(--green);   border: 1px solid var(--green-line); }
+.gantt .bar.cyan    { background: var(--cyan-soft);   color: var(--cyan);    border: 1px solid rgba(34,211,238,0.30); }
+.gantt .bar.purple  { background: var(--purple-soft); color: var(--purple);  border: 1px solid rgba(157,111,251,0.30); }
+.gantt .bar.warning { background: rgba(251,191,36,0.12); color: var(--warning); border: 1px solid rgba(251,191,36,0.30); }
+.gantt .bar.empty   { background: rgba(255,255,255,0.02); border: 1px dashed var(--line); color: var(--text-faint); }
+
+/* Slide 25 — KPIs */
+.kpi-grid {
+  margin-top: 36px; flex: 1;
+  display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: 1fr 1fr; gap: 20px;
+}
+.kpi {
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  padding: 26px;
+  display: flex; flex-direction: column; gap: 8px;
+  background: rgba(255,255,255,0.02);
+}
+.kpi .val {
+  font-size: 64px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  background: var(--grad-gc);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.kpi .val .u { font-size: 22px; -webkit-text-fill-color: var(--text-dim); font-weight: 500; }
+.kpi .label { font-size: 14px; color: var(--text-dim); line-height: 1.4; margin-top: auto; }
+.kpi .tag {
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-faint);
+}
+.kpi.cyan .val { background: linear-gradient(95deg, var(--cyan), var(--purple)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+/* Slide 26 — economics */
+.econ-wrap { margin-top: 24px; display: grid; grid-template-columns: 1fr 360px; gap: 40px; flex: 1; }
+.econ-table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 18px; }
+.econ-table td { padding: 18px 18px; border-bottom: 1px solid var(--line); }
+.econ-table tr:last-child td { border-bottom: none; }
+.econ-table td.metric { color: var(--text); }
+.econ-table td.value {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+  font-size: 22px;
+}
+.econ-table td.value.green { color: var(--green); }
+.econ-table td.value.cyan  { color: var(--cyan); }
+.econ-table td.value.purple{ color: var(--purple); }
+.econ-table td.value.warning{ color: var(--warning); }
+
+.combined-card {
+  border-radius: 22px;
+  padding: 36px;
+  background: linear-gradient(180deg, rgba(52,211,153,0.12), rgba(34,211,238,0.04));
+  border: 1px solid var(--green-line);
+  display: flex; flex-direction: column; justify-content: center; gap: 18px;
+  align-self: stretch;
+}
+.combined-card .label { font-size: 14px; color: var(--green); letter-spacing: 0.16em; text-transform: uppercase; }
+.combined-card .big {
+  font-size: 96px; font-weight: 600; letter-spacing: -0.03em;
+  background: var(--grad-gc); -webkit-background-clip: text; background-clip: text; color: transparent;
+  line-height: 1; font-variant-numeric: tabular-nums;
+}
+.combined-card .sub { font-size: 18px; color: var(--text); line-height: 1.4; }
+.combined-card .footnote { font-size: 14px; color: var(--text-dim); border-top: 1px solid var(--green-line); padding-top: 14px; margin-top: auto; }
+
+/* Slide 27 — why now / why us */
+.why-grid { margin-top: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; flex: 1; }
+.why-col { padding: 36px; }
+.why-col h3 {
+  margin: 0 0 18px 0;
+  font-size: 14px; letter-spacing: 0.18em; text-transform: uppercase;
+}
+.why-col.now h3 { color: var(--cyan); }
+.why-col.us  h3 { color: var(--green); }
+.why-col h4 {
+  margin: 0 0 24px 0;
+  font-size: 36px; font-weight: 600; line-height: 1.1; letter-spacing: -0.02em;
+}
+.why-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 18px; }
+.why-list li {
+  display: flex; gap: 16px;
+  padding-left: 0;
+  font-size: 17px; line-height: 1.5;
+}
+.why-list li .key {
+  font-family: "Geist Mono", monospace;
+  font-size: 12px;
+  color: var(--text-faint);
+  letter-spacing: 0.1em;
+  font-variant-numeric: tabular-nums;
+  margin-top: 4px;
+  flex: 0 0 38px;
+}
+.why-list li .body b { color: var(--text); font-weight: 500; }
+.why-list li .body { color: var(--text-dim); }
+
+/* Slide 28 — closing */
+.s-close {
+  padding: 0 !important;
+  background:
+    radial-gradient(ellipse 1200px 800px at 30% 30%, rgba(52,211,153,0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 1200px 800px at 75% 75%, rgba(157,111,251,0.20) 0%, transparent 65%),
+    var(--bg-0) !important;
+}
+.s-close .close-content {
+  position: absolute;
+  inset: 96px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.s-close .head-eyebrow {
+  font-size: 14px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--text-dim);
+  margin-bottom: 28px;
+}
+.s-close h1 {
+  font-size: 124px;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  font-weight: 600;
+  margin: 0;
+  max-width: 1700px;
+}
+.s-close h1 .grad {
+  background: var(--grad-aurora); -webkit-background-clip: text; background-clip: text; color: transparent;
+  font-style: italic; font-weight: 500;
+}
+.s-close .close-sub {
+  margin-top: 36px;
+  font-size: 28px;
+  color: var(--text-dim);
+  line-height: 1.3;
+  max-width: 1500px;
+}
+.s-close .close-foot {
+  position: absolute;
+  bottom: 96px; left: 96px; right: 96px;
+  display: flex; justify-content: space-between; align-items: flex-end;
+}
+.s-close .who { display: flex; flex-direction: column; gap: 8px; }
+.s-close .who .name { font-size: 22px; font-weight: 600; }
+.s-close .who .role { font-size: 16px; color: var(--text-dim); }
+.s-close .contact {
+  display: flex; flex-direction: column; gap: 6px; align-items: flex-end;
+  font-family: "Geist Mono", monospace; font-size: 16px; color: var(--text-dim);
+}
+.s-close .contact a { color: var(--cyan); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<deck-stage>
+
+<!-- ======================================================
+     SLIDE 1 — PORTADA
+     ====================================================== -->
+<section class="s-cover" data-screen-label="01 Portada">
+  <div class="cover-grid"></div>
+
+  <!-- Tower line-art (right side, full height) -->
+  <svg class="tower" viewBox="0 0 600 1000" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <linearGradient id="towerGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#22D3EE" stop-opacity="0.85"/>
+        <stop offset="60%" stop-color="#9D6FFB" stop-opacity="0.55"/>
+        <stop offset="100%" stop-color="#9D6FFB" stop-opacity="0"/>
+      </linearGradient>
+      <radialGradient id="ping" cx="0.5" cy="0.5" r="0.5">
+        <stop offset="0%" stop-color="#22D3EE" stop-opacity="0.5"/>
+        <stop offset="100%" stop-color="#22D3EE" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <!-- Concentric signal arcs from top -->
+    <g stroke="url(#towerGrad)" stroke-width="1.2" fill="none">
+      <path d="M 80 220 Q 300 80 520 220" opacity="0.65"/>
+      <path d="M 30 270 Q 300 40 570 270" opacity="0.45"/>
+      <path d="M -20 320 Q 300 0 620 320" opacity="0.30"/>
+      <path d="M -70 370 Q 300 -40 670 370" opacity="0.18"/>
+    </g>
+    <!-- Tower silhouette -->
+    <g stroke="#22D3EE" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.85">
+      <!-- Top antenna -->
+      <line x1="300" y1="120" x2="300" y2="185"/>
+      <circle cx="300" cy="115" r="4" fill="#22D3EE"/>
+      <!-- Crossbeams -->
+      <rect x="270" y="185" width="60" height="8" rx="2"/>
+      <rect x="260" y="240" width="80" height="8" rx="2"/>
+      <rect x="250" y="295" width="100" height="8" rx="2"/>
+      <rect x="235" y="370" width="130" height="10" rx="2"/>
+      <rect x="215" y="465" width="170" height="10" rx="2"/>
+      <rect x="190" y="580" width="220" height="12" rx="2"/>
+      <rect x="160" y="710" width="280" height="12" rx="2"/>
+      <!-- Outer legs -->
+      <path d="M 300 185 L 240 380 L 220 470 L 195 590 L 165 720 L 130 1000"/>
+      <path d="M 300 185 L 360 380 L 380 470 L 405 590 L 435 720 L 470 1000"/>
+      <!-- Inner legs -->
+      <path d="M 300 185 L 280 380 L 270 470 L 255 590 L 230 720 L 200 1000" opacity="0.6"/>
+      <path d="M 300 185 L 320 380 L 330 470 L 345 590 L 370 720 L 400 1000" opacity="0.6"/>
+      <!-- Cross-X bracing -->
+      <path d="M 240 380 L 360 470 M 360 380 L 240 470" opacity="0.5"/>
+      <path d="M 220 470 L 380 590 M 380 470 L 220 590" opacity="0.45"/>
+      <path d="M 195 590 L 405 720 M 405 590 L 195 720" opacity="0.40"/>
+      <path d="M 165 720 L 435 1000 M 435 720 L 165 1000" opacity="0.30"/>
+    </g>
+    <!-- Equipment boxes -->
+    <g fill="none" stroke="#9D6FFB" stroke-width="1.2" opacity="0.7">
+      <rect x="240" y="200" width="22" height="32" rx="3"/>
+      <rect x="338" y="200" width="22" height="32" rx="3"/>
+      <rect x="280" y="320" width="40" height="24" rx="3"/>
+    </g>
+    <!-- Signal pings -->
+    <circle cx="300" cy="115" r="60" fill="url(#ping)"/>
+  </svg>
+
+  <div class="cover-content">
+    <div class="cover-top">
+      <div class="brand-mark">
+        <div class="logo-img"></div>
+        <div class="wordmark">Yaub <span>Móvil</span></div>
+      </div>
+      <div class="meta">
+        Junta estratégica · Mayo 2026<br/>
+        <span style="color: var(--text-faint)">Confidencial · Yaub AI</span>
+      </div>
+    </div>
+
+    <div>
+      <h1>
+        Yaub <span class="grad">Móvil</span>
+      </h1>
+      <p class="tagline">
+        El primer MVNO mexicano con <em>IA conversacional nativa</em><br/>
+        y <em>modelo de cobranza fidelizada</em>.
+      </p>
+    </div>
+
+    <div class="cover-bottom">
+      <div class="powered">
+        <span>Powered by <b>Like Phone</b></span>
+        <span>Sobre red mayorista de <b>Altán Redes</b></span>
+      </div>
+      <div class="footer-meta">
+        Jacobo Payán · CEO · Yaub AI
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     SLIDE 2 — TESIS
+     ====================================================== -->
+<section data-screen-label="02 Tesis">
+  <div class="aurora-bg"></div>
+  <div class="grid-bg"></div>
+  <div class="slide-body">
+
+    <div style="text-align: center;">
+      <span class="eyebrow"><span class="dot"></span>La tesis en una línea</span>
+    </div>
+
+    <div style="flex: 1; display: flex; align-items: center; justify-content: center;">
+      <h1 class="thesis-title" style="font-size:108px;line-height:1.0;letter-spacing:-0.035em;font-weight:600;margin:0;text-align:center;max-width:1500px;">
+        Telefonía móvil que no solo conecta.<br/>
+        <span class="grad-text aurora" style="font-style:italic;font-weight:500;">Conversa, cobra y fideliza.</span>
+      </h1>
+    </div>
+
+    <div class="s-thesis">
+      <div class="pillars">
+        <div class="pillar glass">
+          <div class="ico">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+            </svg>
+          </div>
+          <h3>Conversa</h3>
+          <p>Agente IA conversacional 24/7 nativo en cada SIM. Resuelve, vende y cobra desde WhatsApp.</p>
+        </div>
+        <div class="pillar cyan glass">
+          <div class="ico">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="6" width="18" height="13" rx="2"/>
+              <path d="M7 10h10M7 14h6"/>
+              <path d="M3 6l9 6 9-6"/>
+            </svg>
+          </div>
+          <h3>Cobra</h3>
+          <p>Modelo de Cobranza Fidelizada que premia al cliente puntual con GB en lugar de castigarlo con suspensiones.</p>
+        </div>
+        <div class="pillar purple glass">
+          <div class="ico">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2l2.4 7.4H22l-6.2 4.5L18.2 21 12 16.5 5.8 21l2.4-7.1L2 9.4h7.6z"/>
+            </svg>
+          </div>
+          <h3>Fideliza</h3>
+          <p>Recompensas en GB que crean hábito. Cada pago puntual desbloquea más datos — el cliente regresa solo.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div class="slide-footer">
+    <div class="brand"><span class="mark">Y</span></div>
+    <div class="num">02 / 27</div>
+  </div>
+</section>
+
+<!-- ======================================================
+     SLIDE 3 — STACK
+     ====================================================== -->
+<section class="s-stack" data-screen-label="03 Stack">
+  <div class="aurora-bg" style="opacity:0.55"></div>
+  <div class="slide-body">
+    <div class="section-accent"><span class="bar"></span><span class="eyebrow"><span class="dot"></span>Stack del producto</span></div>
+    <h2 class="h-title sm">El stack completo de <span class="grad-text">Yaub Móvil</span></h2>
+    <p class="h-sub">Cinco capas comerciales atravesadas por una capa horizontal de IA. Todo el producto está vivo hoy.</p>
+
+    <div class="stack-wrap">
+      <div class="layers">
+        <div class="layer green">
+          <span class="num">01</span>
+          <div>
+            <h4>Capa Consumidor — MVNO B2C</h4>
+            <p>20+ planes con marca Yaub. Activación SIM/eSIM, recarga conversacional, recompensas en GB.</p>
+          </div>
+          <span class="pill">B2C</span>
+        </div>
+        <div class="layer cyan">
+          <span class="num">02</span>
+          <div>
+            <h4>Capa Empresarial — MVNO B2B</h4>
+            <p>Planes con descuento de nómina automático. Activación masiva, dashboard HR, facturación por centro de costos.</p>
+          </div>
+          <span class="pill">B2B</span>
+        </div>
+        <div class="layer purple">
+          <span class="num">03</span>
+          <div>
+            <h4>Capa Equipos — Devices a crédito</h4>
+            <p>Smartphones financiados con MDM y encriptación nativa. Recuperación de cartera 5× superior.</p>
+          </div>
+          <span class="pill">Hardware</span>
+        </div>
+        <div class="layer warning">
+          <span class="num">04</span>
+          <div>
+            <h4>Capa SMS — Gestor de Campañas</h4>
+            <p>White-label de Altán Redes con UX Yaub. Envío rápido, masivo y API de notificaciones.</p>
+          </div>
+          <span class="pill">B2B+API</span>
+        </div>
+        <div class="layer">
+          <span class="num">05</span>
+          <div>
+            <h4>Capa Pagos — YaubPay</h4>
+            <p>Recargas, cobros, descuento de nómina y splits automáticos a Like Phone, Altán y Yaub.</p>
+          </div>
+          <span class="pill">Pagos</span>
+        </div>
+      </div>
+
+      <div class="spine">
+        <span class="label">Espina dorsal · Horizontal</span>
+        <h3>Yaub Móvil <span class="grad-text">Agent</span></h3>
+        <div class="ai-orb"></div>
+        <div class="body">
+          IA conversacional que atraviesa las 5 capas. Vende, recarga, activa, cobra y desbloquea desde WhatsApp — con 26+ tools especializadas listas desde el día 1.
+        </div>
+        <div class="row gap-8" style="flex-wrap: wrap;">
+          <span class="chip cyan">26+ tools</span>
+          <span class="chip purple">WA nativo</span>
+          <span class="chip">24/7</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer">
+    <div class="brand"><span class="mark">Y</span></div>
+    <div class="num">03 / 27</div>
+  </div>
+</section>
+
+<!-- ======================================================
+     SLIDE 4 — PLANES B2C
+     ====================================================== -->
+<section data-screen-label="04 Planes B2C">
+  <div class="aurora-bg" style="opacity:0.4"></div>
+  <div class="slide-body">
+    <div class="section-accent"><span class="bar"></span><span class="eyebrow"><span class="dot"></span>Sección 2 · Catálogo comercial</span></div>
+    <div class="row" style="justify-content: space-between; align-items: flex-end; gap: 40px;">
+      <div>
+        <h2 class="h-title sm">Planes B2C — <span class="grad-text">catálogo consumidor</span></h2>
+        <p class="h-sub">9 planes con marca Yaub, semanales, quincenales y mensuales. Todos sobre red Altán.</p>
+      </div>
+      <div class="row gap-8" style="flex-wrap: wrap; max-width: 480px; justify-content: flex-end;">
+        <span class="chip cyan">Vigencias 7 / 15 / 30</span>
+        <span class="chip green">Recompensas en GB</span>
+        <span class="chip">Activación inmediata WA</span>
+      </div>
+    </div>
+
+    <div class="plans-grid">
+      <!-- Row 1 -->
+      <div class="plan-card">
+        <span class="gb-badge">2 GB</span>
+        <div class="name"><span class="yaub-prefix">Yaub</span> Flash</div>
+        <div class="price"><span class="currency">$</span>77<span class="period"> / 7 días</span></div>
+        <div class="specs"><div class="spec"><span class="label">Datos</span><span class="val">2 GB</span></div><div class="spec"><span class="label">Minutos</span><span class="val">10,830</span></div><div class="spec"><span class="label">SMS</span><span class="val">875</span></div></div>
+      </div>
+      <div class="plan-card">
+        <span class="gb-badge">6 GB</span>
+        <div class="name"><span class="yaub-prefix">Yaub</span> Go</div>
+        <div class="price"><span class="currency">$</span>99<span class="period"> / 7 días</span></div>
+        <div class="specs"><div class="spec"><span class="label">Datos</span><span class="val">6 GB</span></div><div class="spec"><span class="label">Minutos</span><span class="val">10,830</span></div><div class="spec"><span class="label">SMS</span><span class="val">—</span></div></div>
+      </div>
+      <div class="plan-card">
+        <span class="gb-badge">5 GB</span>
+        <div class="name"><span class="yaub-prefix">Yaub</span> Chill</div>
+        <div class="price"><span class="currency">$</span>135<span class="period"> / 15 días</span></div>
+        <div class="specs"><div class="spec"><span class="label">Datos</span><span class="val">5 GB</span></div><div class="spec"><span class="label">Minutos</span><span class="val">23,100</span></div><div class="spec"><span class="label">SMS</span><span class="val">—</span></div></div>
+      </div>
+      <!-- Row 2 -->
+      <div class="plan-card">
+        <span class="gb-badge">2 GB</span>
+        <div class="name"><span class="yaub-prefix">Yaub</span> More</div>
+        <div class="price"><span class="currency">$</span>169<span class="period"> / 30 días</span></div>
+        <div class="specs"><div class="spec"><span class="label">Datos</span><span class="val">2 GB</span></div><div class="spec"><span class="label">Minutos</span><span class="val">45,450</span></div><div class="spec"><span class="label">SMS</span><span class="val">—</span></div></div>
+      </div>
+      <div class="plan-card">
+        <span class="gb-badge">3 GB</span>
+        <div class="name"><span class="yaub-prefix">Yaub</span> Yeah</div>
+        <div class="price"><span class="currency">$</span>193<span class="period"> / 30 días</span></div>
+        <div class="specs"><div class="spec"><span class="label">Datos</span><span class="val">3 GB</span></div><div class="spec"><span class="label">Minutos</span><span class="val">45,450</span></div><div class="spec"><span class="label">SMS</span><span class="val">3,500</span></div></div>
+      </div>
+      <div class="plan-card">
+        <span class="gb-badge">4 GB</span>
+        <div class="name"><span class="yaub-prefix">Yaub</span> ON</div>
+        <div class="price"><span class="currency">$</span>230<span class="period"> / 30 días</span></div>
+        <div class="specs"><div class="spec"><span class="label">Datos</span><span class="val">4 GB</span></div><div class="spec"><span class="label">Minutos</span><span class="val">45,450</span></div><div class="spec"><span class="label">SMS</span><span class="val">—</span></div></div>
+      </div>
+      <!-- Row 3 -->
+      <div class="plan-card featured">
+        <span class="gb-badge">12 GB</span>
+        <div class="name"><span class="yaub-prefix">Yaub</span> Play</div>
+        <div class="price"><span class="currency">$</span>280<span class="period"> / 30 días</span></div>
+        <div class="specs"><div class="spec"><span class="label">Datos</span><span class="val">12 GB</span></div><div class="spec"><span class="label">Minutos</span><span class="val">45,450</span></div><div class="spec"><span class="label">SMS</span><span class="val">3,500</span></div></div>
+      </div>
+      <div class="plan-card featured">
+        <span class="gb-badge">24 GB</span>
+        <div class="name"><span class="yaub-prefix">Yaub</span> UP</div>
+        <div class="price"><span class="currency">$</span>340<span class="period"> / 30 días</span></div>
+        <div class="specs"><div class="spec"><span class="label">Datos</span><span class="val">24 GB</span></div><div class="spec"><span class="label">Minutos</span><span class="val">45,450</span></div><div class="spec"><span class="label">SMS</span><span class="val">3,500</span></div></div>
+      </div>
+      <div class="plan-card featured">
+        <span class="gb-badge">35 GB</span>
+        <div class="name"><span class="yaub-prefix">Yaub</span> WOW</div>
+        <div class="price"><span class="currency">$</span>400<span class="period"> / 30 días</span></div>
+        <div class="specs"><div class="spec"><span class="label">Datos</span><span class="val">35 GB</span></div><div class="spec"><span class="label">Minutos</span><span class="val">45,450</span></div><div class="spec"><span class="label">SMS</span><span class="val">3,500</span></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer"><div class="brand"><span class="mark">Y</span></div><div class="num">04 / 27</div></div>
+</section>
+
+<!-- ======================================================
+     SLIDE 5 — PLANES B2B
+     ====================================================== -->
+<section class="s-b2b" data-screen-label="05 Planes B2B">
+  <div class="aurora-bg" style="opacity:0.4"></div>
+  <div class="slide-body">
+    <div class="section-accent cyan"><span class="bar"></span><span class="eyebrow cyan"><span class="dot"></span>Catálogo empresarial</span></div>
+    <h2 class="h-title sm">Telefonía como <span class="grad-text">prestación laboral</span></h2>
+    <p class="h-sub">Descuento por nómina automático, sin renovación manual, con recompensas en GB por puntualidad de pago.</p>
+
+    <div class="b2b-wrap">
+      <div class="plans-grid" style="grid-template-columns: repeat(4, 1fr); margin-top: 0;">
+        <div class="plan-card"><span class="gb-badge">2 GB</span><div class="name"><span class="yaub-prefix">Yaub</span> Check</div><div class="price"><span class="currency">$</span>62<span class="period"> / 7d</span></div><div class="specs"><div class="spec"><span class="label">Datos</span><span class="val">2 GB</span></div><div class="spec"><span class="label">Vigencia</span><span class="val">7 días</span></div></div></div>
+        <div class="plan-card"><span class="gb-badge">6 GB</span><div class="name"><span class="yaub-prefix">Yaub</span> Market</div><div class="price"><span class="currency">$</span>80<span class="period"> / 7d</span></div><div class="specs"><div class="spec"><span class="label">Datos</span><span class="val">6 GB</span></div><div class="spec"><span class="label">Vigencia</span><span class="val">7 días</span></div></div></div>
+        <div class="plan-card"><span class="gb-badge">5 GB</span><div class="name"><span class="yaub-prefix">Yaub</span> Smart</div><div class="price"><span class="currency">$</span>108<span class="period"> / 15d</span></div><div class="specs"><div class="spec"><span class="label">Datos</span><span class="val">5 GB</span></div><div class="spec"><span class="label">Vigencia</span><span class="val">15 días</span></div></div></div>
+        <div class="plan-card"><span class="gb-badge">2 GB</span><div class="name"><span class="yaub-prefix">Yaub</span> Team</div><div class="price"><span class="currency">$</span>135<span class="period"> / 30d</span></div><div class="specs"><div class="spec"><span class="label">Datos</span><span class="val">2 GB</span></div><div class="spec"><span class="label">Minutos</span><span class="val">45,450</span></div></div></div>
+        <div class="plan-card"><span class="gb-badge">4 GB</span><div class="name"><span class="yaub-prefix">Yaub</span> Pro</div><div class="price"><span class="currency">$</span>184<span class="period"> / 30d</span></div><div class="specs"><div class="spec"><span class="label">Datos</span><span class="val">4 GB</span></div><div class="spec"><span class="label">Vigencia</span><span class="val">30 días</span></div></div></div>
+        <div class="plan-card featured"><span class="gb-badge">12 GB</span><div class="name"><span class="yaub-prefix">Yaub</span> Dynamic</div><div class="price"><span class="currency">$</span>230<span class="period"> / 30d</span></div><div class="specs"><div class="spec"><span class="label">Datos</span><span class="val">12 GB</span></div><div class="spec"><span class="label">Vigencia</span><span class="val">30 días</span></div></div></div>
+        <div class="plan-card featured"><span class="gb-badge">24 GB</span><div class="name"><span class="yaub-prefix">Yaub</span> Elite</div><div class="price"><span class="currency">$</span>290<span class="period"> / 30d</span></div><div class="specs"><div class="spec"><span class="label">Datos</span><span class="val">24 GB</span></div><div class="spec"><span class="label">Vigencia</span><span class="val">30 días</span></div></div></div>
+        <div class="plan-card featured"><span class="gb-badge">35 GB</span><div class="name"><span class="yaub-prefix">Yaub</span> Corpo</div><div class="price"><span class="currency">$</span>330<span class="period"> / 30d</span></div><div class="specs"><div class="spec"><span class="label">Datos</span><span class="val">35 GB</span></div><div class="spec"><span class="label">Vigencia</span><span class="val">30 días</span></div></div></div>
+      </div>
+
+      <div class="side glass">
+        <h4>Diferenciadores B2B</h4>
+        <ul class="dot-list cyan">
+          <li>Activación masiva por empresa con CSV de empleados</li>
+          <li>Facturación por centro de costos y país</li>
+          <li>Dashboard del HR para alta, baja y reasignación</li>
+          <li>Recompensas en GB por puntualidad vía nómina</li>
+          <li>Yaub Móvil Agent reasigna planes desde WhatsApp</li>
+        </ul>
+        <div style="margin-top: 24px; padding: 16px; border-radius: 12px; background: rgba(34,211,238,0.08); border: 1px solid rgba(34,211,238,0.30); font-size: 14px; color: var(--text-dim); line-height: 1.5;">
+          <span style="color: var(--cyan); letter-spacing: 0.1em; text-transform: uppercase; font-size: 11px; font-weight: 600;">Caso ancla</span>
+          <p style="margin: 6px 0 0 0;">Alianzatel — 5,000+ agentes activables en una semana sobre su propia infraestructura BPO.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer"><div class="brand"><span class="mark">Y</span></div><div class="num">05 / 27</div></div>
+</section>
+
+<!-- ======================================================
+     SLIDE 6 — DIFERENCIADORES vs COMPETIDORES
+     ====================================================== -->
+<section data-screen-label="06 Diferenciadores">
+  <div class="aurora-bg" style="opacity:0.35"></div>
+  <div class="slide-body">
+    <div class="section-accent"><span class="bar"></span><span class="eyebrow"><span class="dot"></span>Posicionamiento competitivo</span></div>
+    <h2 class="h-title sm">Lo que <span class="grad-text">solo Yaub Móvil</span> hace</h2>
+    <p class="h-sub">Comparativa contra los 4 operadores principales del mercado mexicano.</p>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Telcel</th>
+          <th>AT&amp;T</th>
+          <th>Movistar</th>
+          <th>Bait</th>
+          <th class="yaub">Yaub Móvil</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>IA conversacional 24/7 nativa en SIM</td><td><span class="x">✗</span></td><td><span class="x">✗</span></td><td><span class="x">✗</span></td><td><span class="x">✗</span></td><td class="yaub">✓</td></tr>
+        <tr><td>Modelo de Cobranza Fidelizada</td><td><span class="x">✗</span></td><td><span class="x">✗</span></td><td><span class="x">✗</span></td><td><span class="x">✗</span></td><td class="yaub">✓</td></tr>
+        <tr><td>Recompensas en GB por puntualidad</td><td><span class="x">✗</span></td><td><span class="x">✗</span></td><td><span class="x">✗</span></td><td><span class="x">✗</span></td><td class="yaub">✓</td></tr>
+        <tr><td>Equipos a crédito con MDM nativo</td><td><span class="partial">parcial</span></td><td><span class="partial">parcial</span></td><td><span class="x">✗</span></td><td><span class="x">✗</span></td><td class="yaub">✓</td></tr>
+        <tr><td>SMS B2B integrado al stack</td><td><span class="partial">aparte</span></td><td><span class="partial">aparte</span></td><td><span class="x">✗</span></td><td><span class="x">✗</span></td><td class="yaub">✓</td></tr>
+        <tr><td>Capa de pagos propia (YaubPay)</td><td><span class="x">✗</span></td><td><span class="x">✗</span></td><td><span class="x">✗</span></td><td><span class="x">✗</span></td><td class="yaub">✓</td></tr>
+        <tr><td>Backoffice IA + humano (Alianzatel)</td><td><span class="x">✗</span></td><td><span class="x">✗</span></td><td><span class="x">✗</span></td><td><span class="x">✗</span></td><td class="yaub">✓</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="slide-footer"><div class="brand"><span class="mark">Y</span></div><div class="num">06 / 27</div></div>
+</section>
+
+<!-- ======================================================
+     SLIDE 7 — EQUIPOS A CRÉDITO
+     ====================================================== -->
+<section class="s-equipos" data-screen-label="07 Equipos crédito">
+  <div class="aurora-bg" style="opacity:0.4"></div>
+  <div class="slide-body">
+    <div class="section-accent purple"><span class="bar"></span><span class="eyebrow purple"><span class="dot"></span>Sección 3 · Hardware financiado</span></div>
+    <h2 class="h-title sm">Equipos a crédito: <span class="grad-text">el moat</span></h2>
+    <p class="h-sub">El primer MVNO mexicano que financia smartphones con encriptación nativa anti-default.</p>
+
+    <div class="split">
+      <div class="phone-stage">
+        <div class="phone-frame">
+          <div class="notch"></div>
+          <div class="phone-screen">
+            <div class="lock-icon">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4" y="11" width="16" height="11" rx="2"/>
+                <path d="M8 11V7a4 4 0 0 1 8 0v4"/>
+                <circle cx="12" cy="16" r="1.2" fill="currentColor"/>
+              </svg>
+            </div>
+            <div class="msg-title">Equipo bloqueado</div>
+            <div class="msg-body">Tu equipo se encuentra encriptado por mora.<br/>Contacta a Yaub Móvil para liberar y reactivar.</div>
+            <div class="stage-pill">MDM · Día +30</div>
+            <div style="margin-top: 18px; padding: 12px 16px; border-radius: 10px; background: rgba(52,211,153,0.10); border: 1px solid var(--green-line); font-size: 13px; color: var(--green); display: flex; align-items: center; gap: 8px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+              Negociar por WhatsApp
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 28px; justify-content: center;">
+        <ul class="dot-list purple">
+          <li><b style="color: var(--text); font-weight: 500;">Equipo otorgado</b> en pagos quincenales o mensuales con plan obligatorio incluido durante el crédito.</li>
+          <li><b style="color: var(--text); font-weight: 500;">MDM (Mobile Device Management)</b> instalado de fábrica — no removible por el cliente.</li>
+          <li><b style="color: var(--text); font-weight: 500;">Si entra en mora:</b> encriptación remota progresiva en 6 etapas (ver siguiente slide).</li>
+          <li><b style="color: var(--text); font-weight: 500;">Único modo de desbloqueo:</b> negociar con Yaub Móvil — el equipo está acoplado al servicio.</li>
+        </ul>
+        <div style="padding: 24px 28px; border-radius: 16px; background: linear-gradient(120deg, rgba(157,111,251,0.12), rgba(34,211,238,0.04)); border: 1px solid rgba(157,111,251,0.32); display: grid; grid-template-columns: auto 1fr; gap: 24px; align-items: center;">
+          <div style="font-size: 64px; font-weight: 600; letter-spacing: -0.03em; background: var(--grad-aurora); -webkit-background-clip: text; background-clip: text; color: transparent; font-variant-numeric: tabular-nums;">5×</div>
+          <div style="font-size: 16px; color: var(--text); line-height: 1.45;">Recuperación de cartera <b style="color: var(--purple); font-weight: 500;">5× superior</b> vs. financiamiento sin MDM. La encriptación elimina la fuga típica del 40-60% en mercados sub-prime.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer"><div class="brand"><span class="mark">Y</span></div><div class="num">07 / 27</div></div>
+</section>
+
+<!-- ======================================================
+     SLIDE 8 — MDM TIMELINE
+     ====================================================== -->
+<section data-screen-label="08 MDM Timeline">
+  <div class="aurora-bg" style="opacity:0.3"></div>
+  <div class="slide-body">
+    <div class="section-accent purple"><span class="bar"></span><span class="eyebrow purple"><span class="dot"></span>Encriptación progresiva</span></div>
+    <h2 class="h-title sm">Flujo MDM — del recordatorio amable al desbloqueo</h2>
+    <p class="h-sub">6 estados, todos orquestados por el agente IA y reversibles con un pago.</p>
+
+    <div class="mdm-timeline">
+      <div class="mdm-stage green">
+        <div class="ico-row">
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+          <span class="day-label">Día 0</span>
+        </div>
+        <h5>Recordatorio amable</h5>
+        <p>WhatsApp + recompensa de 250 MB extra por pago puntual.</p>
+      </div>
+      <div class="mdm-stage warning">
+        <div class="ico-row">
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 22 20H2L12 2z"/><path d="M12 9v4"/><circle cx="12" cy="17" r=".7" fill="currentColor"/></svg></div>
+          <span class="day-label">Día +3</span>
+        </div>
+        <h5>Notificación voz IA</h5>
+        <p>Llamada del agente + reducción de velocidad de datos.</p>
+      </div>
+      <div class="mdm-stage warning">
+        <div class="ico-row">
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 9h6v6H9z"/></svg></div>
+          <span class="day-label">Día +7</span>
+        </div>
+        <h5>Bloqueo de apps</h5>
+        <p>Apps no esenciales bloqueadas. Mantiene WhatsApp y llamadas.</p>
+      </div>
+      <div class="mdm-stage orange">
+        <div class="ico-row">
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="11" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+          <span class="day-label">Día +15</span>
+        </div>
+        <h5>Encriptación parcial</h5>
+        <p>Solo emergencias (911) y Yaub WhatsApp para negociar.</p>
+      </div>
+      <div class="mdm-stage danger">
+        <div class="ico-row">
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M4.93 4.93l14.14 14.14"/></svg></div>
+          <span class="day-label">Día +30</span>
+        </div>
+        <h5>Encriptación total</h5>
+        <p>Equipo bloqueado. Solo desbloquea con pago + promesa registrada.</p>
+      </div>
+      <div class="mdm-stage recover">
+        <div class="ico-row">
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+          <span class="day-label">Pago OK</span>
+        </div>
+        <h5>Liberación inmediata</h5>
+        <p>Bonificación de 500 MB + reingreso al programa de recompensas.</p>
+      </div>
+    </div>
+
+    <div class="mdm-timeline-line" style="margin-top: 14px;"></div>
+    <div style="display: grid; grid-template-columns: repeat(6, 1fr); margin-top: 14px; font-size: 11px; color: var(--text-faint); letter-spacing: 0.14em; text-transform: uppercase; gap: 18px;">
+      <span style="text-align: center;">Recompensa</span>
+      <span style="text-align: center;">Aviso</span>
+      <span style="text-align: center;">Restricción</span>
+      <span style="text-align: center;">Restricción</span>
+      <span style="text-align: center;">Bloqueo total</span>
+      <span style="text-align: center; color: var(--green);">Recuperación</span>
+    </div>
+  </div>
+  <div class="slide-footer"><div class="brand"><span class="mark">Y</span></div><div class="num">08 / 27</div></div>
+</section>
+
+<!-- ======================================================
+     SLIDE 9 — COBRANZA FIDELIZADA STAR
+     ====================================================== -->
+<section class="s-cobranza" data-screen-label="09 Cobranza Fidelizada">
+  <div class="aurora-bg"></div>
+  <div class="slide-body">
+    <div class="section-accent"><span class="bar"></span><span class="eyebrow"><span class="dot"></span>Modelo propietario</span></div>
+    <h2 class="h-title sm">Modelo de <span class="grad-text">Cobranza Fidelizada</span></h2>
+    <p class="h-sub">El primer modelo en LATAM que convierte cobranza en programa de lealtad.</p>
+
+    <div class="star-stage">
+      <div class="star-wrap">
+        <svg class="lines" viewBox="0 0 900 720" fill="none">
+          <defs>
+            <linearGradient id="starGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#34D399" stop-opacity="0.55"/>
+              <stop offset="100%" stop-color="#9D6FFB" stop-opacity="0.55"/>
+            </linearGradient>
+          </defs>
+          <!-- Star connectors from center to each point -->
+          <g stroke="url(#starGrad)" stroke-width="1.2" stroke-dasharray="4 5" fill="none" opacity="0.75">
+            <line x1="450" y1="360" x2="450" y2="50"/>
+            <line x1="450" y1="360" x2="780" y2="135"/>
+            <line x1="450" y1="360" x2="780" y2="585"/>
+            <line x1="450" y1="360" x2="450" y2="670"/>
+            <line x1="450" y1="360" x2="120" y2="585"/>
+            <line x1="450" y1="360" x2="120" y2="135"/>
+          </g>
+          <!-- Outer hexagon connecting points -->
+          <g stroke="rgba(34,211,238,0.35)" stroke-width="1" fill="none">
+            <path d="M 450 50 L 780 135 L 780 585 L 450 670 L 120 585 L 120 135 Z" stroke-dasharray="2 4"/>
+          </g>
+        </svg>
+
+        <div class="center-orb">
+          <small>OMV</small>
+          Yaub<br/>Móvil
+        </div>
+
+        <div class="point p1">
+          <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg></div>
+          <h5>Adaptabilidad de pago</h5>
+          <p>Parcial, total, prórroga — el sistema se adapta al cliente.</p>
+        </div>
+        <div class="point p2">
+          <div class="ico" style="background: var(--cyan-soft); color: var(--cyan);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+          <h5>Prelación de pago</h5>
+          <p>WhatsApp prioriza al cliente para que pague antes que la luz.</p>
+        </div>
+        <div class="point p3">
+          <div class="ico" style="background: var(--purple-soft); color: var(--purple);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.94.36 1.86.7 2.74a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.34-1.34a2 2 0 0 1 2.11-.45c.88.34 1.8.57 2.74.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <h5>Premia la puntualidad</h5>
+          <p>Llamada de felicitación + bonificación inmediata en GB.</p>
+        </div>
+        <div class="point p4">
+          <div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+          <h5>Hábito de pago</h5>
+          <p>3-6 pagos consecutivos = ingreso al programa NOTABLES.</p>
+        </div>
+        <div class="point p5">
+          <div class="ico" style="background: var(--cyan-soft); color: var(--cyan);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/></svg></div>
+          <h5>Recompensa en GB</h5>
+          <p>250 MB → 500 MB → 3 GB acumulados. Crea hábito.</p>
+        </div>
+        <div class="point p6">
+          <div class="ico" style="background: var(--purple-soft); color: var(--purple);"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M2 14l4-3M22 14l-4-3"/></svg></div>
+          <h5>Desbloqueo por promesa</h5>
+          <p>Reactivación temporal con compromiso registrado de pago.</p>
+        </div>
+
+        <span class="ext-label" style="top: 32px; left: 12%;">Eficiencia</span>
+        <span class="ext-label" style="top: 32px; right: 12%;">Promesa</span>
+        <span class="ext-label" style="top: 50%; right: -28px; transform: translateY(-50%); writing-mode: vertical-rl;">Interacción</span>
+        <span class="ext-label" style="bottom: 32px; right: 12%;">Fidelización</span>
+        <span class="ext-label" style="bottom: 32px; left: 12%;">Interés</span>
+        <span class="ext-label" style="top: 50%; left: -28px; transform: translateY(-50%); writing-mode: vertical-rl; transform: translateY(-50%) rotate(180deg);">Recompensa</span>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 12px; font-size: 16px; color: var(--text-dim); letter-spacing: 0.04em;">
+      "El primer modelo en LATAM que convierte cobranza en programa de lealtad."
+    </div>
+  </div>
+  <div class="slide-footer"><div class="brand"><span class="mark">Y</span></div><div class="num">09 / 27</div></div>
+</section>
+
+<!-- ======================================================
+     SLIDE 10 — AGENT IN SIM
+     ====================================================== -->
+<section class="s-agent" data-screen-label="10 Agent en SIM">
+  <div class="aurora-bg" style="opacity:0.4"></div>
+  <div class="slide-body">
+    <div class="section-accent cyan"><span class="bar"></span><span class="eyebrow cyan"><span class="dot"></span>Sección 4 · Yaub Móvil Agent</span></div>
+    <h2 class="h-title sm">Cada SIM Yaub viene con un <span class="grad-text">empleado de tiempo completo</span> adentro.</h2>
+
+    <div class="agent-wrap">
+      <div class="phone-stage">
+        <div class="phone-frame">
+          <div class="notch"></div>
+          <div class="phone-screen" style="justify-content: flex-start; padding-top: 70px; gap: 14px;">
+            <div style="width: 80px; height: 80px; border-radius: 50%; background: var(--grad-aurora); display: grid; place-items: center; box-shadow: 0 0 40px rgba(157,111,251,0.4);">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#07070C" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            </div>
+            <div style="font-size: 20px; font-weight: 600; color: var(--text);">Yaub Móvil Agent</div>
+            <div style="font-size: 12px; color: var(--green); display: flex; align-items: center; gap: 6px;"><span style="width: 6px; height: 6px; border-radius: 50%; background: var(--green); box-shadow: 0 0 8px var(--green);"></span>en línea · WhatsApp</div>
+
+            <div style="margin-top: 18px; width: 100%; display: flex; flex-direction: column; gap: 8px;">
+              <div style="background: var(--bg-1); border: 1px solid var(--line); padding: 10px 12px; border-radius: 12px; border-bottom-left-radius: 3px; font-size: 12px; line-height: 1.4; align-self: flex-start; max-width: 90%;">"Te quedan 200MB y tienes 2 promos disponibles."</div>
+              <div style="background: rgba(52,211,153,0.18); border: 1px solid var(--green-line); padding: 10px 12px; border-radius: 12px; border-bottom-right-radius: 3px; font-size: 12px; line-height: 1.4; align-self: flex-end; max-width: 90%;">¿Cuáles son?</div>
+              <div style="background: var(--bg-1); border: 1px solid var(--line); padding: 10px 12px; border-radius: 12px; border-bottom-left-radius: 3px; font-size: 12px; line-height: 1.4; align-self: flex-start; max-width: 90%;">+3 GB por $30 (vence hoy 23:59) o pasar a Yaub Play. ¿Cuál prefieres?</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bubble-stack">
+        <div class="wa-bubble in">"Tu plan vence en 24h, ¿lo renuevo automático?"<span class="meta-time">Yaub Agent · pre-vencimiento</span></div>
+        <div class="wa-bubble in cyan">"Te quedan 200MB, tienes 2 promos disponibles que multiplican tus datos."<span class="meta-time">Yaub Agent · upsell</span></div>
+        <div class="wa-bubble out">"Felicidades por tu pago puntual: +250 MB gratis aplicados ahora mismo."<span class="meta-time">Yaub Agent · recompensa</span></div>
+        <div class="wa-bubble in">"Tu empresa te asignó plan Yaub Pro. Configuro tu SIM con 4 GB y 45,450 min."<span class="meta-time">Yaub Agent · alta B2B</span></div>
+        <div class="wa-bubble in">"Vi que llamaste a soporte 3 veces. ¿Te llamo yo ahora y lo resolvemos?"<span class="meta-time">Yaub Agent · proactivo</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer"><div class="brand"><span class="mark">Y</span></div><div class="num">10 / 27</div></div>
+</section>
+
+<!-- ======================================================
+     SLIDE 11 — CAPABILITIES GRID
+     ====================================================== -->
+<section data-screen-label="11 Capacidades Agent">
+  <div class="aurora-bg" style="opacity:0.3"></div>
+  <div class="slide-body">
+    <div class="section-accent cyan"><span class="bar"></span><span class="eyebrow cyan"><span class="dot"></span>Capacidades del Agent</span></div>
+    <h2 class="h-title sm">Tres dominios. <span class="grad-text">Doce capacidades nativas.</span></h2>
+
+    <div class="cap-grid">
+      <div class="cap-row-label">
+        <span class="tag">Fila 01</span>
+        <span class="name">Ventas</span>
+      </div>
+      <div class="cap-cell"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 1v22M5 8h11a4 4 0 0 1 0 8H7a4 4 0 0 0 0 8h13"/></svg></div><h5>Cotización de planes</h5><p>Recomendación basada en consumo histórico.</p></div>
+      <div class="cap-cell"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M9 6h6"/></svg></div><h5>Activación SIM / eSIM</h5><p>Provisión instantánea + QR de eSIM por WhatsApp.</p></div>
+      <div class="cap-cell"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 12a9 9 0 0 1 9-9 9.74 9.74 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/></svg></div><h5>Portabilidad asistida</h5><p>Recolección de datos + NIP + alta automática.</p></div>
+      <div class="cap-cell"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg></div><h5>Venta cruzada</h5><p>Equipos a crédito y planes mayores.</p></div>
+
+      <div class="cap-row-label cyan">
+        <span class="tag">Fila 02</span>
+        <span class="name">Cuenta</span>
+      </div>
+      <div class="cap-cell"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><h5>Saldo y consumo</h5><p>Tiempo real: datos, voz, SMS, recompensas.</p></div>
+      <div class="cap-cell"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg></div><h5>Recargas instantáneas</h5><p>Vía YaubPay — 38 segundos de extremo a extremo.</p></div>
+      <div class="cap-cell"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h13l-2 4 2 4H3z"/><path d="M3 14v6h13"/></svg></div><h5>Cambio de plan</h5><p>Upgrade/downgrade pro-rata con prorrateo automático.</p></div>
+      <div class="cap-cell"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg></div><h5>Estado de cuenta</h5><p>Factura CFDI 4.0 + historial descargable PDF.</p></div>
+
+      <div class="cap-row-label purple">
+        <span class="tag">Fila 03</span>
+        <span class="name">Cobranza</span>
+      </div>
+      <div class="cap-cell"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><h5>Recordatorios + recompensa</h5><p>72-24h antes con bonificación de GB por puntualidad.</p></div>
+      <div class="cap-cell"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div><h5>Desbloqueo por promesa</h5><p>Reactivación temporal con compromiso registrado.</p></div>
+      <div class="cap-cell"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M7 12h10M11 18h2"/></svg></div><h5>Pagos parciales</h5><p>Negociación con árbol de decisiones del agente.</p></div>
+      <div class="cap-cell"><div class="ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-9-9c2.5 0 4.78.93 6.5 2.5"/><path d="M21 4v5h-5"/></svg></div><h5>Reactivación post-pago</h5><p>Inmediata + reingreso al programa de recompensas.</p></div>
+    </div>
+  </div>
+  <div class="slide-footer"><div class="brand"><span class="mark">Y</span></div><div class="num">11 / 27</div></div>
+</section>
+
+<!-- ======================================================
+     SLIDE 12 — TOOLS
+     ====================================================== -->
+<section data-screen-label="12 Tools">
+  <div class="aurora-bg" style="opacity:0.3"></div>
+  <div class="slide-body">
+    <div class="section-accent cyan"><span class="bar"></span><span class="eyebrow cyan"><span class="dot"></span>Tooling técnico</span></div>
+    <h2 class="h-title sm">26+ tools especializadas <span class="grad-text">listas desde el día 1</span></h2>
+    <p class="h-sub">Cada tool es un endpoint REST con autenticación JWT, observabilidad nativa y trace en LangSmith.</p>
+
+    <div class="tools-grid">
+      <div class="tool-row"><span class="num">01</span><span class="name">consultar_saldo</span><span class="desc">Saldo y datos disponibles</span></div>
+      <div class="tool-row"><span class="num">14</span><span class="name">ejecutar_encriptacion_mdm</span><span class="desc" style="color: var(--warning);">Interno · ops + risk</span></div>
+      <div class="tool-row"><span class="num">02</span><span class="name">consultar_consumo_datos_voz_sms</span><span class="desc">Consumo en tiempo real</span></div>
+      <div class="tool-row"><span class="num">15</span><span class="name">liberar_encriptacion_mdm</span><span class="desc">Tras pago confirmado</span></div>
+      <div class="tool-row"><span class="num">03</span><span class="name">recargar_plan</span><span class="desc">Renovación pro-rata</span></div>
+      <div class="tool-row"><span class="num">16</span><span class="name">crear_campana_sms</span><span class="desc">Wizard de campañas</span></div>
+      <div class="tool-row"><span class="num">04</span><span class="name">portar_numero</span><span class="desc">NIP + alta NMP</span></div>
+      <div class="tool-row"><span class="num">17</span><span class="name">enviar_sms_masivo</span><span class="desc">Hasta 1M de números</span></div>
+      <div class="tool-row"><span class="num">05</span><span class="name">activar_sim</span><span class="desc">SIM física por OCR</span></div>
+      <div class="tool-row"><span class="num">18</span><span class="name">consultar_reporte_sms</span><span class="desc">Entregabilidad + lecturas</span></div>
+      <div class="tool-row"><span class="num">06</span><span class="name">activar_esim</span><span class="desc">QR vía WhatsApp</span></div>
+      <div class="tool-row"><span class="num">19</span><span class="name">procesar_pago_yaubpay</span><span class="desc">Stripe / SPEI / OXXO</span></div>
+      <div class="tool-row"><span class="num">07</span><span class="name">cambiar_plan</span><span class="desc">Upgrade/downgrade</span></div>
+      <div class="tool-row"><span class="num">20</span><span class="name">generar_link_recarga</span><span class="desc">Pago por enlace</span></div>
+      <div class="tool-row"><span class="num">08</span><span class="name">consultar_recompensas_gb</span><span class="desc">Programa NOTABLES</span></div>
+      <div class="tool-row"><span class="num">21</span><span class="name">alta_empleado_b2b</span><span class="desc">Plan + descuento nómina</span></div>
+      <div class="tool-row"><span class="num">09</span><span class="name">registrar_promesa_pago</span><span class="desc">Compromiso 24-72h</span></div>
+      <div class="tool-row"><span class="num">22</span><span class="name">baja_empleado_b2b</span><span class="desc">Cierre + portabilidad</span></div>
+      <div class="tool-row"><span class="num">10</span><span class="name">desbloquear_servicio_por_promesa</span><span class="desc">Reactivación temporal</span></div>
+      <div class="tool-row"><span class="num">23</span><span class="name">descuento_nomina_aplicar</span><span class="desc">Layout STP / SPEI</span></div>
+      <div class="tool-row"><span class="num">11</span><span class="name">aplicar_recompensa_puntualidad</span><span class="desc">Bonificación en GB</span></div>
+      <div class="tool-row"><span class="num">24</span><span class="name">consultar_factura_b2b</span><span class="desc">CFDI 4.0 + complementos</span></div>
+      <div class="tool-row"><span class="num">12</span><span class="name">iniciar_credito_equipo</span><span class="desc">KYC + score + MDM</span></div>
+      <div class="tool-row"><span class="num">25</span><span class="name">escalar_humano_alianzatel</span><span class="desc">Backoffice 5,000 agentes</span></div>
+      <div class="tool-row"><span class="num">13</span><span class="name">consultar_estado_credito_equipo</span><span class="desc">Saldo + próx. corte</span></div>
+      <div class="tool-row"><span class="num">26</span><span class="name">registrar_queja_profeco</span><span class="desc">Compliance automático</span></div>
+    </div>
+  </div>
+  <div class="slide-footer"><div class="brand"><span class="mark">Y</span></div><div class="num">12 / 27</div></div>
+</section>
+
+<!-- ======================================================
+     SLIDE 13 — CADENCE SWIMLANES
+     ====================================================== -->
+<section data-screen-label="13 Cadencia Cobranza">
+  <div class="aurora-bg" style="opacity:0.3"></div>
+  <div class="slide-body">
+    <div class="section-accent"><span class="bar"></span><span class="eyebrow"><span class="dot"></span>Cadencia operativa</span></div>
+    <h2 class="h-title sm">Los <span class="grad-text">5 escenarios</span> de Cobranza Fidelizada</h2>
+    <p class="h-sub">Del recordatorio amable a la recuperación post-incumplimiento — cada uno con su propio guion y recompensa.</p>
+
+    <div class="cadence-grid">
+      <div class="cadence-col c1">
+        <span class="num-tag">Escenario 01</span>
+        <h5>Preventiva — Recompensa</h5>
+        <div class="freq"><b>72h–24h antes</b> del corte</div>
+        <div class="msg"><b>Mensaje:</b> "Recompensa de <b style="color: var(--green);">250 MB GRATIS</b> por pago puntual."</div>
+        <div class="cta"><span class="label">CTA</span>"¿Garantizas tu pago? Duplico tu recompensa a 500 MB."</div>
+      </div>
+      <div class="cadence-col c2">
+        <span class="num-tag">Escenario 02</span>
+        <h5>Preventiva — NOTABLES</h5>
+        <div class="freq"><b>7-21-35-49-63-77</b> días (q) o <b>15-45-75</b> (m)</div>
+        <div class="msg"><b>Programa NOTABLES</b> — clientes confiables.</div>
+        <div class="cta"><span class="label">CTA</span>"3,000 MB GRATIS si acumulas 3-6 pagos consecutivos."</div>
+      </div>
+      <div class="cadence-col c3">
+        <span class="num-tag">Escenario 03</span>
+        <h5>Vencida — Suspensión temprana</h5>
+        <div class="freq">Atraso <b>24-72h</b></div>
+        <div class="msg"><b>Mensaje:</b> "Reactivamos tu servicio + recuperas <b>500 MB</b> de recompensa."</div>
+        <div class="cta"><span class="label">CTA</span>"Promesa de pago en 72h = reactivación inmediata."</div>
+      </div>
+      <div class="cadence-col c4">
+        <span class="num-tag">Escenario 04</span>
+        <h5>Vencida — Suspensión tardía</h5>
+        <div class="freq">Atraso <b>96-168h</b></div>
+        <div class="msg"><b>Mensaje:</b> "Reactivamos tu servicio + recuperas <b>250 MB</b>."</div>
+        <div class="cta"><span class="label">Plan B</span>"Pago parcial + reactivación temporal — negociamos contigo."</div>
+      </div>
+      <div class="cadence-col c5">
+        <span class="num-tag">Escenario 05</span>
+        <h5>Incumplimiento de Promesa</h5>
+        <div class="freq"><b>24h post-incumplimiento</b></div>
+        <div class="msg"><b>Mensaje:</b> "¿Qué pasó? Reactivamos servicio con nueva promesa."</div>
+        <div class="cta"><span class="label">CTA</span>"Nueva fecha 72h = reactivación + reingreso a recompensas."</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer"><div class="brand"><span class="mark">Y</span></div><div class="num">13 / 27</div></div>
+</section>
+
+<!-- ======================================================
+     SLIDE 14 — WHATSAPP MOCK
+     ====================================================== -->
+<section class="s-wa" data-screen-label="14 Conversación real">
+  <div class="aurora-bg" style="opacity:0.4"></div>
+  <div class="slide-body">
+    <div class="section-accent"><span class="bar"></span><span class="eyebrow"><span class="dot"></span>Ejemplo de conversación</span></div>
+    <h2 class="h-title sm">Escenario 01 — <span class="grad-text">en producción</span></h2>
+
+    <div class="wa-wrap">
+      <div class="iphone">
+        <div class="notch"></div>
+        <div class="screen">
+          <div class="wa-header">
+            <div class="avatar"></div>
+            <div style="flex: 1;">
+              <div class="who">Yaub Móvil</div>
+              <div class="stat">en línea · escribiendo…</div>
+            </div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--text-dim)" stroke-width="1.5" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 13 13 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 13 13 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div class="wa-stream">
+            <div class="wa-msg in">Hola Marisol 👋, te habla <b class="b">Yaub Móvil</b>.<span class="stamp">10:42</span></div>
+            <div class="wa-msg in">Tienes una <b class="b">recompensa de 250 MB GRATIS</b> esperándote por tu próximo pago puntual.<span class="stamp">10:42</span></div>
+            <div class="wa-msg in">Convenio: <b style="color: var(--cyan);">Yaub Play · $280 · 30 días</b><br/>Fecha de corte: <b>14 mayo</b><span class="stamp">10:42</span></div>
+            <div class="wa-msg in">¿Garantizas tu pago en fecha? Si lo confirmas ahora <b class="b">duplico tu recompensa a 500 MB</b>.<span class="stamp">10:42</span></div>
+            <div class="wa-msg out">Sí, pagaré puntualmente ✅<span class="stamp">10:43 ✓✓</span></div>
+            <div class="wa-msg in">¡Listo! Tu compromiso quedó registrado.<br/>Recibirás recordatorio amable 24h antes.<span class="folio">FOLIO YM-2026-04812</span><span class="stamp">10:43</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="convo-meta">
+        <div>
+          <span class="chip green" style="font-size: 12px;">Escenario 01 · Preventiva-Recompensa</span>
+          <h4 style="margin: 18px 0 0 0; font-size: 32px; font-weight: 600; line-height: 1.2; letter-spacing: -0.01em;">Conversación real, agente IA, sin humano.</h4>
+          <p style="margin: 16px 0 0 0; font-size: 17px; color: var(--text-dim); line-height: 1.5;">Tiempo total: <b style="color: var(--green);">42 segundos</b>. Compromiso registrado, folio entregado, cliente fidelizado — sin tocar al backoffice humano de Alianzatel.</p>
+        </div>
+        <div>
+          <div style="font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 12px;">Stack tecnológico</div>
+          <div class="stack-list">
+            <div class="tech-pill"><span class="dot"></span><span>whatsapp-handler v18</span><span class="label">Yaub Platform</span></div>
+            <div class="tech-pill"><span class="dot" style="background: var(--purple); box-shadow: 0 0 10px var(--purple);"></span><span>yaub-llm-router</span><span class="label">Foundry</span></div>
+            <div class="tech-pill"><span class="dot" style="background: var(--green); box-shadow: 0 0 10px var(--green);"></span><span>cadence-engine</span><span class="label">Yaub</span></div>
+            <div class="tech-pill"><span class="dot" style="background: var(--warning); box-shadow: 0 0 10px var(--warning);"></span><span>YaubPay tool</span><span class="label">Pagos</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer"><div class="brand"><span class="mark">Y</span></div><div class="num">14 / 27</div></div>
+</section>
+
+<!-- ======================================================
+     SLIDE 15 — STATS
+     ====================================================== -->
+<section data-screen-label="15 Por qué IA">
+  <div class="aurora-bg"></div>
+  <div class="slide-body">
+    <div class="section-accent cyan"><span class="bar"></span><span class="eyebrow cyan"><span class="dot"></span>El caso económico</span></div>
+    <h2 class="h-title sm">Por qué un MVNO <span class="grad-text">necesita</span> IA conversacional nativa</h2>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="left">
+          <span class="label">Volumen de soporte</span>
+          <span class="compare">Telcel: <s>5M llamadas/mes</s>  →  Yaub Móvil resuelve <b style="color: var(--green);">80% sin humano</b></span>
+        </div>
+        <div class="value">80<span class="unit">%</span></div>
+      </div>
+      <div class="stat-card">
+        <div class="left">
+          <span class="label">Costo por interacción</span>
+          <span class="compare">MVNO típico: <s>$45 MXN</s>  →  Yaub Móvil: <b style="color: var(--green);">$0.31 USD</b></span>
+        </div>
+        <div class="value">95<span class="unit">% ↓</span></div>
+      </div>
+      <div class="stat-card">
+        <div class="left">
+          <span class="label">Tiempo a resolución</span>
+          <span class="compare">Industria: <s>12 minutos</s>  →  Yaub Móvil: <b style="color: var(--green);">38 segundos</b></span>
+        </div>
+        <div class="value">38<span class="unit">s</span></div>
+      </div>
+      <div class="stat-card">
+        <div class="left">
+          <span class="label">Churn rate mensual</span>
+          <span class="compare">MVNO LATAM: <s>4.2%/mes</s>  →  Yaub Móvil objetivo: <b style="color: var(--green);">1.8%/mes</b></span>
+        </div>
+        <div class="value">1.8<span class="unit">%</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer"><div class="brand"><span class="mark">Y</span></div><div class="num">15 / 27</div></div>
+</section>
+<!-- ======================================================
+     SLIDE 16 — YAUB SMS DASHBOARD
+     ====================================================== -->
+<section class="s-sms" data-screen-label="16 Yaub SMS">
+  <div class="aurora-bg" style="opacity:0.4"></div>
+  <div class="slide-body">
+    <div class="section-accent warning"><span class="bar"></span><span class="eyebrow warning"><span class="dot"></span>Sección 5 · Yaub SMS</span></div>
+    <h2 class="h-title sm">Yaub SMS — el motor de <span class="grad-text">mensajería empresarial</span></h2>
+    <p class="h-sub">White-label de Altán Redes con UX Yaub y YaubPay nativo. La capa de SMS más simple del mercado mexicano.</p>
+
+    <div class="sms-wrap">
+      <div style="display: flex; flex-direction: column; gap: 20px; justify-content: center;">
+        <ul class="dot-list">
+          <li><b style="color: var(--text); font-weight: 500;">Cobertura nacional</b> sobre red de Altán Redes — onnet y offnet a todos los operadores.</li>
+          <li><b style="color: var(--text); font-weight: 500;">Saldo precargado o post-pago</b> con YaubPay, sin contratos largos para PyMEs.</li>
+          <li><b style="color: var(--text); font-weight: 500;">Validación previa</b> de la lista — limpieza automática de números inválidos.</li>
+          <li><b style="color: var(--text); font-weight: 500;">Reportes en tiempo real</b> de entregabilidad, lecturas e interacciones.</li>
+          <li><b style="color: var(--text); font-weight: 500;">API REST + SDK</b> con documentación tipo Stripe — integración en una tarde.</li>
+        </ul>
+      </div>
+
+      <div class="dash-mock">
+        <div class="dash-header">
+          <div class="traffic-lights"><span></span><span></span><span></span></div>
+          <div class="title">Yaub SMS — Console</div>
+          <div class="crumbs">/ campaigns / new</div>
+        </div>
+        <div class="dash-card">
+          <h6>Send Quick SMS</h6>
+          <div class="field">+52 55 8721 0048</div>
+          <div class="field" style="height: 56px; align-items: flex-start; padding: 8px 10px; line-height: 1.4;">Tu cita está confirmada para mañana 10:30. Confirma con SI.</div>
+          <div class="send-btn">Enviar · $0.15</div>
+        </div>
+        <div class="dash-card">
+          <h6>Campaign validation</h6>
+          <div class="csv-list">
+            <div class="csv-row valid"><span>+52 81 4421 7790</span><span>✓ válido</span></div>
+            <div class="csv-row valid"><span>+52 33 1928 4451</span><span>✓ válido</span></div>
+            <div class="csv-row invalid"><span>+52 55 0000 0000</span><span>✗ inválido</span></div>
+            <div class="csv-row valid"><span>+52 55 9971 1242</span><span>✓ válido</span></div>
+            <div class="csv-row valid"><span>+52 222 410 8821</span><span>✓ válido</span></div>
+          </div>
+        </div>
+        <div class="dash-card" style="grid-column: 1 / -1;">
+          <h6>Today · entregabilidad</h6>
+          <div class="donut-wrap">
+            <div class="donut" style="--p: 78"><div class="pct">78%</div></div>
+            <div class="donut-meta">
+              <span>SMS enviados</span>
+              <span class="big">37,408</span>
+              <span style="color: var(--green);">+12% vs ayer</span>
+            </div>
+            <div class="donut-meta" style="margin-left: auto;">
+              <span>Entregados</span>
+              <span class="big" style="color: var(--green);">29,178</span>
+              <span>· en cola: 824</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer"><div class="brand"><span class="mark">Y</span></div><div class="num">16 / 27</div></div>
+</section>
+
+<!-- ======================================================
+     SLIDE 17 — 3 SMS PRODUCTS
+     ====================================================== -->
+<section data-screen-label="17 SMS Productos">
+  <div class="aurora-bg" style="opacity:0.3"></div>
+  <div class="slide-body">
+    <div class="section-accent warning"><span class="bar"></span><span class="eyebrow warning"><span class="dot"></span>Productos SMS</span></div>
+    <h2 class="h-title sm">Tres productos. <span class="grad-text">Un mismo motor.</span></h2>
+
+    <div class="sms-products">
+      <div class="sms-prod">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22 11 13 2 9z"/></svg></div>
+        <h4>Envío rápido</h4>
+        <div class="for"><b>Para:</b> empresas pequeñas que mandan ocasionales.</div>
+        <ul class="dot-list" style="font-size: 14px;">
+          <li>Form simple en plataforma — 30 segundos</li>
+          <li>Pago por mensaje individual</li>
+          <li>YaubPay con saldo precargado</li>
+          <li>Sin compromiso mensual</li>
+        </ul>
+        <div style="margin-top: auto; padding-top: 18px; border-top: 1px solid var(--line); font-size: 14px; color: var(--text-dim);">Ideal para: clínicas, talleres, despachos.</div>
+      </div>
+      <div class="sms-prod cyan">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 12a9 9 0 0 1 9-9c5 0 9 4 9 9s-4 9-9 9-9-4-9-9zM3 12h18"/><path d="M12 3a13 13 0 0 1 0 18M12 3a13 13 0 0 0 0 18"/></svg></div>
+        <h4>Envío masivo</h4>
+        <div class="for"><b>Para:</b> enterprise con campañas grandes.</div>
+        <ul class="dot-list cyan" style="font-size: 14px;">
+          <li>Hasta 1M de números por campaña</li>
+          <li>CSV upload con validación previa</li>
+          <li>Programación de campañas</li>
+          <li>Throughput dedicado garantizado</li>
+        </ul>
+        <div style="margin-top: auto; padding-top: 18px; border-top: 1px solid var(--line); font-size: 14px; color: var(--text-dim);">Ideal para: bancos, retail, gobierno.</div>
+      </div>
+      <div class="sms-prod purple">
+        <div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4M6 8l-4 4 4 4M14.5 4l-5 16"/></svg></div>
+        <h4>API de notificaciones</h4>
+        <div class="for"><b>Para:</b> developers con integración nativa.</div>
+        <ul class="dot-list purple" style="font-size: 14px;">
+          <li>OTPs de autenticación</li>
+          <li>Recordatorios de pago + cobranza</li>
+          <li>Confirmaciones transaccionales</li>
+          <li>REST + Webhooks bidireccionales</li>
+        </ul>
+        <div style="margin-top: auto; padding-top: 18px; border-top: 1px solid var(--line); font-size: 14px; color: var(--text-dim);">Ideal para: fintechs, SaaS, e-commerce.</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer"><div class="brand"><span class="mark">Y</span></div><div class="num">17 / 27</div></div>
+</section>
+
+<!-- ======================================================
+     SLIDE 18 — SMS PRICING
+     ====================================================== -->
+<section data-screen-label="18 SMS Tarifas">
+  <div class="aurora-bg" style="opacity:0.3"></div>
+  <div class="slide-body">
+    <div class="section-accent warning"><span class="bar"></span><span class="eyebrow warning"><span class="dot"></span>Tarifas y condiciones</span></div>
+    <h2 class="h-title sm">Tarifas <span class="grad-text">comerciales</span></h2>
+    <p class="h-sub">Onnet (Altán) y offnet (otros operadores) — sin sorpresas, sin costos ocultos.</p>
+
+    <table class="pricing-table">
+      <thead>
+        <tr>
+          <th>Concepto</th>
+          <th>Yaub SMS Onnet (Altán)</th>
+          <th>Yaub SMS Offnet (otros)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Costo por SMS</td><td>$0.15 MXN</td><td>$0.21 MXN</td></tr>
+        <tr><td>Licencia adicional</td><td>$5,000 MXN / mes</td><td>$5,000 MXN / mes</td></tr>
+        <tr><td>Renta de máscara alfanumérica</td><td>$5,000 MXN / mes</td><td>$5,000 MXN / mes</td></tr>
+        <tr><td>Código corto (todos los operadores)</td><td colspan="2" style="text-align: center; color: var(--purple); font-size: 22px;">$45,000 activación + $37,000 / mes</td></tr>
+        <tr><td>Código corto (solo Altán)</td><td colspan="2" style="text-align: center; color: var(--green); font-size: 22px;">$10,000 / mes</td></tr>
+      </tbody>
+    </table>
+
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 32px;">
+      <div style="padding: 18px 20px; border-radius: 12px; border: 1px solid var(--line); background: rgba(255,255,255,0.02); display: flex; flex-direction: column; gap: 6px;">
+        <span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-faint);">Volumen</span>
+        <span style="font-size: 16px;">+1M SMS/mes incluye <b style="color: var(--green);">3 licencias</b></span>
+      </div>
+      <div style="padding: 18px 20px; border-radius: 12px; border: 1px solid var(--line); background: rgba(255,255,255,0.02); display: flex; flex-direction: column; gap: 6px;">
+        <span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-faint);">Vigencia</span>
+        <span style="font-size: 16px;">Mínimo <b style="color: var(--green);">6 meses</b> de contrato</span>
+      </div>
+      <div style="padding: 18px 20px; border-radius: 12px; border: 1px solid var(--line); background: rgba(255,255,255,0.02); display: flex; flex-direction: column; gap: 6px;">
+        <span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-faint);">Soporte</span>
+        <span style="font-size: 16px;"><b style="color: var(--green);">24/7</b> incluido por Alianzatel</span>
+      </div>
+      <div style="padding: 18px 20px; border-radius: 12px; border: 1px solid var(--line); background: rgba(255,255,255,0.02); display: flex; flex-direction: column; gap: 6px;">
+        <span style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-faint);">Fiscal</span>
+        <span style="font-size: 16px;">Tarifas no incluyen <b>IVA</b></span>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer"><div class="brand"><span class="mark">Y</span></div><div class="num">18 / 27</div></div>
+</section>
+
+<!-- ======================================================
+     SLIDE 20 — YAUBPAY TRIANGLE
+     ====================================================== -->
+<section class="s-yaubpay" data-screen-label="19 YaubPay">
+  <div class="aurora-bg" style="opacity:0.4"></div>
+  <div class="slide-body">
+    <div class="section-accent purple"><span class="bar"></span><span class="eyebrow purple"><span class="dot"></span>Sección 6 · YaubPay</span></div>
+    <h2 class="h-title sm">YaubPay — la <span class="grad-text">capa de monetización</span> transversal</h2>
+    <p class="h-sub">Pagos, recargas y cobros — todo dentro de Yaub Móvil. Un solo capa transaccional alimenta los 3 productos.</p>
+
+    <div class="pay-wrap">
+      <div class="triangle-stage">
+        <svg class="tri-lines" viewBox="0 0 540 540">
+          <defs>
+            <linearGradient id="triGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#34D399" stop-opacity="0.6"/>
+              <stop offset="50%" stop-color="#22D3EE" stop-opacity="0.6"/>
+              <stop offset="100%" stop-color="#9D6FFB" stop-opacity="0.6"/>
+            </linearGradient>
+          </defs>
+          <g fill="none" stroke="url(#triGrad)" stroke-width="1.5" stroke-dasharray="6 6">
+            <path d="M 270 80 L 460 410 L 80 410 Z"/>
+          </g>
+          <g fill="none" stroke="rgba(34,211,238,0.40)" stroke-width="1">
+            <line x1="270" y1="80" x2="270" y2="270"/>
+            <line x1="460" y1="410" x2="270" y2="270"/>
+            <line x1="80" y1="410" x2="270" y2="270"/>
+          </g>
+        </svg>
+
+        <div class="tri-node green" style="top: 0; left: 50%; transform: translateX(-50%);">
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+          <h5>Yaub Móvil Agent</h5>
+          <p>IA conversacional</p>
+        </div>
+        <div class="tri-node cyan" style="bottom: 60px; right: -30px;">
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 6l9 7 9-7"/></svg></div>
+          <h5>Yaub SMS</h5>
+          <p>Notificaciones</p>
+        </div>
+        <div class="tri-node purple" style="bottom: 60px; left: -30px;">
+          <div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 12h20"/></svg></div>
+          <h5>YaubPay</h5>
+          <p>Capa de pagos</p>
+        </div>
+        <div class="tri-center">
+          Yaub<br/>Stack
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 24px; justify-content: center;">
+        <ul class="dot-list purple">
+          <li><b style="color: var(--text); font-weight: 500;">Recargas instantáneas</b> de plan vía WhatsApp con tokenización de tarjeta.</li>
+          <li><b style="color: var(--text); font-weight: 500;">Pago de equipos a crédito</b> con MDM — el cobro libera el bloqueo en menos de 60 segundos.</li>
+          <li><b style="color: var(--text); font-weight: 500;">Descuento de nómina B2B</b> procesado vía SPEI/STP en lote semanal.</li>
+          <li><b style="color: var(--text); font-weight: 500;">Cobros de SMS</b> para empresas usuarias — sin pasar por Stripe externo.</li>
+          <li><b style="color: var(--text); font-weight: 500;">Splits automáticos</b> Like Phone / Altán / Yaub conforme al revenue share.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer"><div class="brand"><span class="mark">Y</span></div><div class="num">19 / 27</div></div>
+</section>
+
+<!-- ======================================================
+     SLIDE 21 — PAYMENT SWIMLANE
+     ====================================================== -->
+<section data-screen-label="20 Flujo de pago">
+  <div class="aurora-bg" style="opacity:0.3"></div>
+  <div class="slide-body">
+    <div class="section-accent purple"><span class="bar"></span><span class="eyebrow purple"><span class="dot"></span>Flujo conversacional</span></div>
+    <h2 class="h-title sm">Pago vía conversación — <span class="grad-text">38 segundos</span></h2>
+
+    <div class="swim-wrap">
+      <div class="swim-actors">
+        <div class="swim-actor"><span class="label">Actor 01</span><span class="who">Cliente</span></div>
+        <div class="swim-actor green"><span class="label">Actor 02</span><span class="who">Yaub Agent</span></div>
+        <div class="swim-actor purple"><span class="label">Actor 03</span><span class="who">YaubPay</span></div>
+        <div class="swim-actor cyan"><span class="label">Actor 04</span><span class="who">Banco / SPEI</span></div>
+      </div>
+
+      <div class="swim-flow">
+        <div class="swim-step"><span class="num">1</span><span><b style="color: var(--text); font-weight: 500;">"Quiero recargar mi plan Yaub Play."</b></span><span class="actor-tag">Cliente · WhatsApp</span></div>
+        <div class="swim-step green"><span class="num">2</span><span>"Son <b style="color: var(--green);">$280</b>, ¿con qué método pagas? Tarjeta tokenizada terminada en •4521 disponible."</span><span class="actor-tag">Yaub Agent</span></div>
+        <div class="swim-step"><span class="num">3</span><span>"Sí, con la •4521."</span><span class="actor-tag">Cliente</span></div>
+        <div class="swim-step purple"><span class="num">4</span><span>YaubPay tokeniza, cobra, valida 3DS y confirma <b style="color: var(--purple);">en 1.4 s</b>.</span><span class="actor-tag">YaubPay</span></div>
+        <div class="swim-step cyan"><span class="num">5</span><span>SPEI/Stripe responde <b style="color: var(--cyan);">200 OK</b> con folio bancario.</span><span class="actor-tag">Banco</span></div>
+        <div class="swim-step green"><span class="num">6</span><span>"Listo. Plan activo + recompensa de <b style="color: var(--green);">250 MB aplicada</b>. SMS de confirmación enviado."</span><span class="actor-tag">Yaub Agent</span></div>
+      </div>
+    </div>
+
+    <div class="timer-strip">
+      <span class="t-label">Tiempo total extremo a extremo</span>
+      <span class="t-val">38 segundos</span>
+    </div>
+  </div>
+  <div class="slide-footer"><div class="brand"><span class="mark">Y</span></div><div class="num">20 / 27</div></div>
+</section>
+
+<!-- ======================================================
+     SLIDE 22 — PAYMENT METHODS + ROI
+     ====================================================== -->
+<section class="s-methods" data-screen-label="21 Métodos + ROI">
+  <div class="aurora-bg" style="opacity:0.4"></div>
+  <div class="slide-body">
+    <div class="section-accent purple"><span class="bar"></span><span class="eyebrow purple"><span class="dot"></span>Métodos y ROI</span></div>
+    <h2 class="h-title sm">6 métodos de pago. <span class="grad-text">Margen propio.</span></h2>
+
+    <div class="methods-wrap">
+      <div>
+        <div style="font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text-faint); margin-bottom: 14px;">Métodos disponibles desde el día 1</div>
+        <div class="methods-grid">
+          <div class="method"><div class="ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 12h20"/></svg></div>Tarjeta crédito/débito (Stripe)</div>
+          <div class="method"><div class="ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>SPEI inmediato</div>
+          <div class="method"><div class="ico" style="background: rgba(251,191,36,0.14); color: var(--warning);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 9h6v6H9z"/></svg></div>OXXO Pay (cash to digital)</div>
+          <div class="method"><div class="ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M3 6h18M3 18h18"/></svg></div>Transferencia interbancaria</div>
+          <div class="method"><div class="ico" style="background: var(--green-soft); color: var(--green);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg></div>Saldo precargado Yaub</div>
+          <div class="method"><div class="ico" style="background: var(--purple-soft); color: var(--purple);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 11l-3 3-2-2"/></svg></div>Descuento de nómina automático</div>
+        </div>
+
+        <div style="margin-top: 28px; padding: 20px 22px; border-radius: 14px; border: 1px solid var(--line); background: rgba(255,255,255,0.02); display: flex; gap: 16px; align-items: center;">
+          <div style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--cyan); flex: 0 0 auto;">3DS Stripe Radar</div>
+          <div style="font-size: 14px; color: var(--text-dim); line-height: 1.5;">Antifraude nativo + tokenización PCI DSS Level 1 — sin almacenar PAN en infraestructura Yaub.</div>
+        </div>
+      </div>
+
+      <div class="roi-card">
+        <span class="label">ROI YaubPay vs PSP externo</span>
+        <div class="delta">
+          <span class="big">$2.50</span>
+          <span class="vs">retiene Yaub Móvil por cada $100 procesados</span>
+        </div>
+        <div class="copy">
+          Vs. <b style="color: var(--text-faint); text-decoration: line-through; font-weight: 400;">$4.80</b> que pagaría a un PSP externo. Sobre <b>50,000 recargas/mes</b> ($14M MXN procesados):
+        </div>
+        <div style="display: flex; align-items: baseline; gap: 12px;">
+          <span style="font-size: 56px; font-weight: 600; letter-spacing: -0.03em; color: var(--green); font-variant-numeric: tabular-nums;">$322,000</span>
+          <span style="font-size: 16px; color: var(--text-dim);">MXN ahorro mensual</span>
+        </div>
+        <div class="footnote">Anualizado: $3.86M MXN de margen capturado por la capa propia de pagos.</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer"><div class="brand"><span class="mark">Y</span></div><div class="num">21 / 27</div></div>
+</section>
+
+<!-- ======================================================
+     SLIDE 23 — TIER STRATEGY
+     ====================================================== -->
+<section data-screen-label="22 Estrategia tiers">
+  <div class="aurora-bg" style="opacity:0.4"></div>
+  <div class="slide-body">
+    <div class="section-accent"><span class="bar"></span><span class="eyebrow"><span class="dot"></span>Sección 7 · Go-to-market</span></div>
+    <h2 class="h-title sm">Vendemos Yaub Móvil <span class="grad-text">al revés</span></h2>
+    <p class="h-sub">No solo a usuarios finales — también a otros operadores como solución llave en mano.</p>
+
+    <div class="tiers">
+      <div class="tier t1">
+        <span class="num">01</span>
+        <span class="name">Yaub Móvil B2C/B2B directo</span>
+        <span class="desc">Activación de SIMs propias con marca Yaub sobre red Altán. El producto que ya está vivo hoy con planes, agente IA y cobranza fidelizada operando.</span>
+        <span class="stage-tag">Ya operando</span>
+      </div>
+      <div class="tier t2">
+        <span class="num">02</span>
+        <span class="name">Platform-as-a-Service para MVNOs</span>
+        <span class="desc">White-label completo del stack — agente IA + SMS + YaubPay + cobranza fidelizada — para que otros MVNOs lancen sin invertir en software.</span>
+        <span class="stage-tag">Q3 2026</span>
+      </div>
+      <div class="tier t3">
+        <span class="num">03</span>
+        <span class="name">Enabler para Altán Redes</span>
+        <span class="desc">Yaub Móvil como capa de inteligencia para todos los MVNOs sobre Altán. Reactivamos uso de red y diferenciamos al mayorista frente a Telcel.</span>
+        <span class="stage-tag">Q4 2026</span>
+      </div>
+      <div class="tier t4">
+        <span class="num">04</span>
+        <span class="name">LATAM expansion vía partners</span>
+        <span class="desc">Modelo replicable en Colombia, Perú, Chile, Argentina vía partners regionales con licencia y revenue share.</span>
+        <span class="stage-tag">2027+</span>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer"><div class="brand"><span class="mark">Y</span></div><div class="num">22 / 27</div></div>
+</section>
+
+<!-- ======================================================
+     SLIDE 24 — GANTT
+     ====================================================== -->
+<section data-screen-label="23 Roadmap">
+  <div class="aurora-bg" style="opacity:0.3"></div>
+  <div class="slide-body">
+    <div class="section-accent"><span class="bar"></span><span class="eyebrow"><span class="dot"></span>Roadmap 12 meses</span></div>
+    <h2 class="h-title sm">Q1 ya está vivo. <span class="grad-text">Lo demás está en obra.</span></h2>
+
+    <div class="gantt">
+      <div class="q-header"></div>
+      <div class="q-header now">Q1 · 2026</div>
+      <div class="q-header">Q2 · 2026</div>
+      <div class="q-header">Q3 · 2026</div>
+      <div class="q-header">Q4 · 2026</div>
+
+      <div class="row-label">B2C + B2B + Agent IA</div>
+      <div class="row-cell"><div class="bar green span-1">Producción · activo</div></div>
+      <div class="row-cell"><div class="bar green span-1">Optimización + escala</div></div>
+      <div class="row-cell"><div class="bar green span-1">Optimización + escala</div></div>
+      <div class="row-cell"><div class="bar green span-1">Optimización + escala</div></div>
+
+      <div class="row-label">Equipos a crédito + MDM</div>
+      <div class="row-cell"><div class="bar empty">—</div></div>
+      <div class="row-cell"><div class="bar purple span-1">Lanzamiento + piloto 500 eq.</div></div>
+      <div class="row-cell"><div class="bar purple span-1">Escala 5,000 eq.</div></div>
+      <div class="row-cell"><div class="bar purple span-1">Escala 18,000 eq.</div></div>
+
+      <div class="row-label">YaubPay v1</div>
+      <div class="row-cell"><div class="bar empty">—</div></div>
+      <div class="row-cell"><div class="bar cyan span-1">v1 + 6 métodos</div></div>
+      <div class="row-cell"><div class="bar cyan span-1">v1.5 con descuento nómina</div></div>
+      <div class="row-cell"><div class="bar cyan span-1">v2 con splits multi-merchant</div></div>
+
+      <div class="row-label">Yaub SMS comercial</div>
+      <div class="row-cell"><div class="bar empty">—</div></div>
+      <div class="row-cell"><div class="bar empty">Beta privada</div></div>
+      <div class="row-cell"><div class="bar warning span-1">Lanzamiento + casos enterprise</div></div>
+      <div class="row-cell"><div class="bar warning span-1">Escala 12M SMS/mes</div></div>
+
+      <div class="row-label">White-label a operadores</div>
+      <div class="row-cell"><div class="bar empty">—</div></div>
+      <div class="row-cell"><div class="bar empty">—</div></div>
+      <div class="row-cell"><div class="bar empty">Diseño técnico</div></div>
+      <div class="row-cell"><div class="bar purple span-1">2 operadores piloto + LATAM eval</div></div>
+    </div>
+  </div>
+  <div class="slide-footer"><div class="brand"><span class="mark">Y</span></div><div class="num">23 / 27</div></div>
+</section>
+
+<!-- ======================================================
+     SLIDE 25 — KPIs
+     ====================================================== -->
+<section data-screen-label="24 KPIs 12 meses">
+  <div class="aurora-bg"></div>
+  <div class="slide-body">
+    <div class="section-accent"><span class="bar"></span><span class="eyebrow"><span class="dot"></span>Métricas de éxito · 12 meses post-lanzamiento</span></div>
+    <h2 class="h-title sm">Dónde estaremos en <span class="grad-text">mayo 2027</span></h2>
+
+    <div class="kpi-grid">
+      <div class="kpi">
+        <span class="tag">Adopción B2C</span>
+        <span class="val">250<span class="u">K</span></span>
+        <span class="label">SIMs activas con marca Yaub</span>
+      </div>
+      <div class="kpi">
+        <span class="tag">Adopción B2B</span>
+        <span class="val">5,000</span>
+        <span class="label">Empresas con descuento de nómina</span>
+      </div>
+      <div class="kpi">
+        <span class="tag">Hardware</span>
+        <span class="val">18<span class="u">K</span></span>
+        <span class="label">Equipos financiados con MDM</span>
+      </div>
+      <div class="kpi">
+        <span class="tag">SMS</span>
+        <span class="val">12<span class="u">M / mes</span></span>
+        <span class="label">SMS comerciales procesados</span>
+      </div>
+      <div class="kpi cyan">
+        <span class="tag">YaubPay</span>
+        <span class="val">$42<span class="u">M MXN</span></span>
+        <span class="label">GMV mensual procesado en YaubPay</span>
+      </div>
+      <div class="kpi cyan">
+        <span class="tag">Retención</span>
+        <span class="val">92<span class="u">%</span></span>
+        <span class="label">Retention rate vs 85% industria</span>
+      </div>
+      <div class="kpi cyan">
+        <span class="tag">Churn</span>
+        <span class="val">4.8<span class="u">%</span></span>
+        <span class="label">Churn rate vs 4.2% industria objetivo</span>
+      </div>
+      <div class="kpi cyan">
+        <span class="tag">Satisfacción</span>
+        <span class="val">78</span>
+        <span class="label">NPS sobre conversaciones del Agent</span>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer"><div class="brand"><span class="mark">Y</span></div><div class="num">24 / 27</div></div>
+</section>
+
+<!-- ======================================================
+     SLIDE 26 — ECONOMICS
+     ====================================================== -->
+<section data-screen-label="25 Economía">
+  <div class="aurora-bg" style="opacity:0.4"></div>
+  <div class="slide-body">
+    <div class="section-accent"><span class="bar"></span><span class="eyebrow"><span class="dot"></span>Unit economics</span></div>
+    <h2 class="h-title sm">La economía del proyecto</h2>
+    <p class="h-sub">Modelo unit-economics positivo desde el mes 8 de operación.</p>
+
+    <div class="econ-wrap">
+      <table class="econ-table">
+        <tr><td class="metric">Revenue por SIM B2C</td><td class="value green">$250 ARPU / mes</td></tr>
+        <tr><td class="metric">Revenue por línea B2B</td><td class="value green">$180 ARPU / mes</td></tr>
+        <tr><td class="metric">Margen sobre planes (post Like Phone / Altán)</td><td class="value green">38%</td></tr>
+        <tr><td class="metric">Margen MDM equipos</td><td class="value purple">22% s/principal</td></tr>
+        <tr><td class="metric">Margen Yaub SMS Onnet</td><td class="value warning">65%</td></tr>
+        <tr><td class="metric">Margen Yaub SMS Offnet</td><td class="value warning">38%</td></tr>
+        <tr><td class="metric">Margen YaubPay por transacción</td><td class="value cyan">2.5%</td></tr>
+      </table>
+
+      <div class="combined-card">
+        <span class="label">Combined gross margin objetivo</span>
+        <span class="big">41%</span>
+        <span class="sub">Promedio ponderado del stack — sin contar margen incremental por reducción de churn (cobranza fidelizada).</span>
+        <div class="footnote">Modelo unit-economics positivo desde el <b style="color: var(--green);">mes 8</b>. Break-even consolidado en mes 14.</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer"><div class="brand"><span class="mark">Y</span></div><div class="num">25 / 27</div></div>
+</section>
+
+<!-- ======================================================
+     SLIDE 27 — WHY NOW / WHY US
+     ====================================================== -->
+<section data-screen-label="26 Por qué ahora">
+  <div class="aurora-bg"></div>
+  <div class="slide-body">
+    <div class="section-accent"><span class="bar"></span><span class="eyebrow"><span class="dot"></span>Sección 8 · Cierre</span></div>
+    <h2 class="h-title sm">Por qué <span class="grad-text">este momento</span>, por qué <span class="grad-text">este equipo</span></h2>
+
+    <div class="why-grid">
+      <div class="why-col now glass">
+        <h3>· Por qué ahora ·</h3>
+        <h4>El mercado mexicano <em style="color: var(--cyan); font-style: normal;">justo</em> alcanzó la madurez técnica.</h4>
+        <ul class="why-list">
+          <li><span class="key">01</span><span class="body"><b>LATAM acelera digitalización</b> post-COVID — penetración móvil 95%.</span></li>
+          <li><span class="key">02</span><span class="body"><b>MVNOs tomando 18%</b> del mercado MX, creciendo +4 puntos al año.</span></li>
+          <li><span class="key">03</span><span class="body"><b>IA conversacional</b> alcanzó madurez productiva (2025+) — Claude/GPT/Gemini ya son confiables en español.</span></li>
+          <li><span class="key">04</span><span class="body"><b>PROFECO endurece compliance</b> — Yaub ya cumple con expedientes digitales y registro de quejas automático.</span></li>
+          <li><span class="key">05</span><span class="body"><b>Altán necesita partners diferenciados</b> que reactiven uso de red mayorista frente a Telcel.</span></li>
+        </ul>
+      </div>
+
+      <div class="why-col us glass">
+        <h3>· Por qué nosotros ·</h3>
+        <h4>10 años operando contact centers. Stack tecnológico propio.</h4>
+        <ul class="why-list">
+          <li><span class="key">01</span><span class="body"><b>Jacobo Payán</b> — 10+ años operando contact centers, CEO Alianzatel y Director Gabssa.</span></li>
+          <li><span class="key">02</span><span class="body"><b>Alianzatel S.A. de C.V.</b> — 5,000+ agentes humanos como red de fallback del Agent.</span></li>
+          <li><span class="key">03</span><span class="body"><b>Like Phone</b> — experiencia operativa probada como MVNO en producción.</span></li>
+          <li><span class="key">04</span><span class="body"><b>Yaub Platform</b> con agentes IA en producción para <b style="color: var(--green);">KFC, Coffee&amp;Job, Superboletos, NR Finance, Avalanz</b>.</span></li>
+          <li><span class="key">05</span><span class="body"><b>Stack propio</b> (LLM router, cadence engine, WA handler, YaubPay) — sin dependencia de terceros.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="slide-footer"><div class="brand"><span class="mark">Y</span></div><div class="num">26 / 27</div></div>
+</section>
+
+<!-- ======================================================
+     SLIDE 28 — CLOSING
+     ====================================================== -->
+<section class="s-close" data-screen-label="27 Cierre">
+  <div class="grid-bg" style="opacity: 0.6;"></div>
+  <div class="close-content">
+    <div class="head-eyebrow">· Cierre y llamada a la acción ·</div>
+    <h1>
+      No es un MVNO.<br/>
+      Es el primer operador móvil que<br/>
+      <span class="grad">conversa, cobra y fideliza</span><br/>
+      con IA.
+    </h1>
+    <p class="close-sub">Yaub Móvil — telefonía con inteligencia desde la SIM hasta la cobranza.</p>
+  </div>
+
+  <div class="close-foot">
+    <div class="who">
+      <span class="name">Jacobo Payán</span>
+      <span class="role">CEO · Yaub AI · Alianzatel · Gabssa</span>
+    </div>
+    <div class="contact">
+      <a href="mailto:jacobopayan@yaub.ai">jacobopayan@yaub.ai</a>
+      <span>yaub.ai/movil</span>
+      <span style="color: var(--text-faint); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; margin-top: 8px;">Mayo 2026 · Confidencial</span>
+    </div>
+  </div>
+</section>
+</deck-stage>
+
+<script src="deck-stage.js"></script>
+</body>
+</html>
