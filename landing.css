@@ -40,7 +40,11 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px;
+  overflow-x: clip;
+}
 
 body {
   margin: 0;
@@ -50,7 +54,9 @@ body {
   font-feature-settings: "ss01", "cv11";
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  overflow-x: hidden;
+  overflow-x: clip;
+  width: 100%;
+  overscroll-behavior-y: none;
 }
 
 a { color: inherit; text-decoration: none; }
@@ -134,11 +140,17 @@ button { font-family: inherit; }
   top: 0; left: 0; right: 0;
   z-index: 100;
   padding: 18px 0;
-  background: rgba(0,0,0,0.65);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  background: rgba(0,0,0,0.72);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
   border-bottom: 1px solid var(--line);
-  transition: padding 0.2s ease;
+  transform: translateZ(0);
+  will-change: background-color;
+  transition: background-color .25s ease, border-color .25s ease, padding .25s ease;
+}
+.nav.is-scrolled {
+  background: rgba(0,0,0,0.88);
+  border-bottom-color: rgba(255,255,255,0.10);
 }
 .nav-inner {
   max-width: var(--max-w);
@@ -1145,12 +1157,21 @@ button { font-family: inherit; }
 /* ======== reveal-on-scroll ======== */
 .reveal {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transform: translateY(18px);
+  transition: opacity .7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform .7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
 }
 .reveal.in {
   opacity: 1;
   transform: translateY(0);
+  will-change: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal, .reveal.in { transition: none; transform: none; opacity: 1; }
+  *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
 }
 
 /* ======== responsive (loose — desktop-first) ======== */
@@ -1569,13 +1590,18 @@ button { font-family: inherit; }
     align-items: stretch !important;
     gap: 6px !important;
     padding: 14px;
-    background: rgba(10,10,18,0.96);
+    background: rgba(10,10,18,0.98);
     border: 1px solid rgba(255,255,255,0.08);
     border-radius: 18px;
-    backdrop-filter: blur(20px);
     box-shadow: 0 30px 80px -20px rgba(0,0,0,0.7);
+    max-height: calc(100vh - 88px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
   }
   .nav-links.is-open { display: flex; }
+  /* lighter nav blur on mobile to avoid scroll jitter on iOS */
+  .nav { backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); background: rgba(0,0,0,0.85); }
+  body.nav-open { overflow: hidden; touch-action: none; }
   .nav-drop { position: static; }
   .nav-drop-btn {
     width: 100%; justify-content: flex-start;

@@ -891,19 +891,32 @@
   });
 
   // Mobile nav toggle
+  const navEl     = document.querySelector('.nav');
   const navToggle = document.querySelector('.nav-toggle');
-  const navLinks = document.querySelector('.nav-links');
+  const navLinks  = document.querySelector('.nav-links');
+  const setNavOpen = (open) => {
+    navLinks.classList.toggle('is-open', open);
+    document.body.classList.toggle('nav-open', open);
+    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  };
   if (navToggle && navLinks) {
-    navToggle.addEventListener('click', () => {
-      const open = navLinks.classList.toggle('is-open');
-      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
+    navToggle.addEventListener('click', () => setNavOpen(!navLinks.classList.contains('is-open')));
     navLinks.addEventListener('click', (e) => {
-      if (e.target.closest('a, .nav-drop-btn, .nav-menu-item')) {
-        navLinks.classList.remove('is-open');
-        navToggle.setAttribute('aria-expanded', 'false');
-      }
+      if (e.target.closest('a, .nav-drop-btn, .nav-menu-item')) setNavOpen(false);
     });
+  }
+
+  // is-scrolled state for the fixed nav (rAF-throttled, transform-friendly)
+  if (navEl) {
+    let ticking = false;
+    const update = () => {
+      navEl.classList.toggle('is-scrolled', window.scrollY > 12);
+      ticking = false;
+    };
+    window.addEventListener('scroll', () => {
+      if (!ticking) { requestAnimationFrame(update); ticking = true; }
+    }, { passive: true });
+    update();
   }
 </script>
 
