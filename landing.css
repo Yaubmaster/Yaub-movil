@@ -1243,7 +1243,10 @@ button { font-family: inherit; }
   background: var(--grad-cyan); color: #06121a;
 }
 .plan-card.b2b .plan-flag { background: var(--grad-aurora); color: #fff; }
-.plan-card h4 { font-size: 19px; font-weight: 600; margin: 12px 0 10px; letter-spacing: -0.01em; }
+.plan-card h4 { font-size: 19px; font-weight: 600; margin: 12px 0 10px; letter-spacing: -0.01em; display: flex; align-items: center; gap: 8px; }
+.plan-card h4 .plan-icon { width: 22px; height: 22px; object-fit: contain; flex: 0 0 auto; filter: drop-shadow(0 2px 6px rgba(34,211,238,0.25)); }
+.plan-card.b2b h4 .plan-icon { filter: drop-shadow(0 2px 6px rgba(157,111,251,0.30)); }
+.plan-card h4 .plan-name { white-space: pre; }
 .plan-price { display: flex; align-items: baseline; gap: 8px; margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px dashed rgba(255,255,255,0.08); }
 .plan-price .px { font-size: 30px; font-weight: 700; letter-spacing: -0.02em; background: var(--grad-cyan); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .plan-card.b2b .plan-price .px { background: var(--grad-aurora); -webkit-background-clip: text; background-clip: text; color: transparent; }
