@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Yaub SMS Console — B2B Messaging</title>
+<title>Yaub Móvil · SMS Console — B2B Messaging</title>
+<link rel="icon" type="image/png" href="assets/yaub-icon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap">
@@ -50,12 +51,31 @@
     color: var(--text); text-decoration: none;
   }
   .brand-mark {
-    width: 26px; height: 26px; border-radius: 7px;
-    background: var(--grad-aurora);
-    display: flex; align-items: center; justify-content: center;
-    color: white; font-weight: 700; font-size: 13px;
-    box-shadow: 0 0 18px rgba(157,111,251,0.4);
+    width: 28px; height: 28px; object-fit: contain;
+    flex: 0 0 auto;
+    filter: drop-shadow(0 0 14px rgba(157,111,251,0.45));
   }
+  .topbar-burger {
+    display: none;
+    width: 38px; height: 38px;
+    background: transparent; border: 1px solid var(--line); border-radius: 9px;
+    padding: 0; cursor: pointer;
+    flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+    flex: 0 0 auto;
+  }
+  .topbar-burger span {
+    display: block; width: 16px; height: 1.6px; background: var(--text);
+    border-radius: 2px; transition: transform .2s ease, opacity .2s ease;
+  }
+  .topbar-burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(5.6px) rotate(45deg); }
+  .topbar-burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .topbar-burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-5.6px) rotate(-45deg); }
+  .sidebar-scrim {
+    display: none;
+    position: fixed; inset: 60px 0 0 0; background: rgba(7,8,11,0.6);
+    backdrop-filter: blur(4px); z-index: 39;
+  }
+  .sidebar-scrim.show { display: block; }
   .brand-name { font-size: 15px; }
   .brand-name .sub { color: var(--text-mute); font-weight: 400; margin-left: 4px; }
   .topbar-divider { width: 1px; height: 22px; background: var(--line-2); }
@@ -384,10 +404,79 @@
   /* tiny utility */
   .grow { flex: 1; }
 
+  /* ===== RESPONSIVE ===== */
   @media (max-width: 900px) {
+    .topbar { padding: 0 14px; gap: 10px; }
+    .topbar-burger { display: flex; }
+    .hide-sm { display: none !important; }
+    .brand-name { font-size: 14px; }
+    .brand-name .sub { display: none; }
+
     .shell { grid-template-columns: 1fr; }
-    .sidebar { border-right: none; border-bottom: 1px solid var(--line); }
-    .stats { grid-template-columns: 1fr 1fr; }
+    .sidebar {
+      position: fixed; top: 60px; left: 0; bottom: 0;
+      width: 280px; max-width: 86vw;
+      transform: translateX(-100%); transition: transform .25s ease;
+      z-index: 40;
+      border-right: 1px solid var(--line); border-bottom: none;
+      overflow-y: auto;
+    }
+    .sidebar.open { transform: translateX(0); box-shadow: 24px 0 60px rgba(0,0,0,0.5); }
+
+    .main { padding: 18px 16px 60px; }
+    .page-head { flex-direction: column; align-items: stretch; gap: 14px; margin-bottom: 18px; }
+    .page-title { font-size: 22px; }
+    .page-sub { font-size: 13px; }
+    .page-actions { flex-wrap: wrap; }
+    .page-actions .btn { flex: 1; justify-content: center; }
+
+    .stats { grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+    .stat-card { padding: 14px; }
+    .stat-card .num { font-size: 24px; }
+    .stat-card .spark { width: 44px; height: 20px; top: 12px; right: 12px; }
+
+    .work { gap: 16px; }
+    .panel-head { padding: 14px 16px; }
+    .panel-body { padding: 16px; }
+    .panel-title { font-size: 14px; }
+
+    .composer-tabs {
+      overflow-x: auto; flex-wrap: nowrap;
+      scrollbar-width: none; -ms-overflow-style: none;
+    }
+    .composer-tabs::-webkit-scrollbar { display: none; }
+    .composer-tab { flex: 0 0 auto; padding: 9px 14px; }
+
+    .audience-row { grid-template-columns: 1fr; }
+    .templates { grid-template-columns: 1fr; }
+    .send-row { flex-direction: column; align-items: stretch; }
+    .send-row > div[style] { flex-direction: column; width: 100%; }
+    .send-row .btn { width: 100%; justify-content: center; }
+    .send-info { text-align: center; }
+
+    .activity-row {
+      grid-template-columns: 1fr auto;
+      grid-template-areas:
+        "when status"
+        "what what"
+        "vol  vol";
+      gap: 4px 12px; padding: 14px 0;
+    }
+    .activity-row .when   { grid-area: when; }
+    .activity-row .status { grid-area: status; justify-self: end; }
+    .activity-row .what   { grid-area: what; }
+    .activity-row .vol    { grid-area: vol; color: var(--text-mute); }
+
+    .modal { padding: 22px 20px; }
+    .modal h3 { font-size: 16px; }
+  }
+
+  @media (max-width: 480px) {
+    .stats { grid-template-columns: 1fr; }
+    .brand-name { font-size: 13px; }
+    .topbar-user { width: 28px; height: 28px; font-size: 11px; }
+    .page-title { font-size: 20px; }
+    .phone-preview { max-width: 240px; }
   }
 </style>
 </head>
@@ -395,21 +484,26 @@
 
 <!-- TOPBAR -->
 <header class="topbar">
+  <button class="topbar-burger" id="burgerBtn" aria-label="Menú" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
   <a href="index.html" class="brand">
-    <span class="brand-mark">Y</span>
-    <span class="brand-name">Yaub<span class="sub"> SMS Console</span></span>
+    <img class="brand-mark" src="assets/yaub-icon.png" alt="" aria-hidden="true" />
+    <span class="brand-name">Yaub Móvil<span class="sub"> · SMS Console</span></span>
   </a>
-  <span class="topbar-divider"></span>
-  <a href="index.html" class="topbar-back">← Volver al sitio</a>
+  <span class="topbar-divider hide-sm"></span>
+  <a href="index.html" class="topbar-back hide-sm">← Volver al sitio</a>
   <span class="topbar-spacer"></span>
-  <span class="topbar-org"><span class="dot"></span> Acme Corp · 2,148 líneas</span>
+  <span class="topbar-org hide-sm"><span class="dot"></span> Acme Corp · 2,148 líneas</span>
   <div class="topbar-user">JP</div>
 </header>
+
+<div class="sidebar-scrim" id="scrim"></div>
 
 <div class="shell">
 
   <!-- SIDEBAR -->
-  <aside class="sidebar">
+  <aside class="sidebar" id="sidebar">
     <div class="sidebar-section">
       <div class="sidebar-head">Mensajería</div>
       <a href="#" class="sidebar-link active"><span class="ico"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span> Enviar SMS</a>
@@ -772,6 +866,22 @@
     }, 1200);
   });
   modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('show'); });
+
+  // mobile sidebar drawer
+  const burger  = document.getElementById('burgerBtn');
+  const sidebar = document.getElementById('sidebar');
+  const scrim   = document.getElementById('scrim');
+  const toggleSidebar = (open) => {
+    const next = open ?? !sidebar.classList.contains('open');
+    sidebar.classList.toggle('open', next);
+    scrim.classList.toggle('show', next);
+    burger.setAttribute('aria-expanded', next ? 'true' : 'false');
+  };
+  burger.addEventListener('click', () => toggleSidebar());
+  scrim.addEventListener('click', () => toggleSidebar(false));
+  sidebar.querySelectorAll('.sidebar-link').forEach(a => {
+    a.addEventListener('click', () => { if (window.innerWidth <= 900) toggleSidebar(false); });
+  });
 </script>
 
 </body>
