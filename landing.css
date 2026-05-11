@@ -1358,6 +1358,7 @@ button { font-family: inherit; }
   height: 100%; width: auto; max-width: 220px;
   object-fit: contain;
   filter: grayscale(1) brightness(1.6);
+  mix-blend-mode: screen;
   transition: filter .2s ease;
 }
 .brand-logo:hover img { filter: grayscale(0) brightness(1); }
