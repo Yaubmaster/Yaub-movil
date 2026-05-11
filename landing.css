@@ -993,6 +993,35 @@ button { font-family: inherit; }
   30% { opacity: 1; transform: translateY(-3px); }
 }
 
+/* ======== chat reveal (on scroll into view) ======== */
+.phone .wa-body > .bubble,
+.phone .wa-body > .typing-bubble {
+  opacity: 0;
+  transform: translateY(12px) scale(0.96);
+  transition: opacity .42s cubic-bezier(.22,1,.36,1),
+              transform .42s cubic-bezier(.22,1,.36,1);
+}
+.phone .wa-body > .bubble.in  { transform-origin: bottom left;  }
+.phone .wa-body > .bubble.out { transform-origin: bottom right; transform: translateY(12px) translateX(8px) scale(0.96); }
+.phone.is-live .wa-body > .bubble,
+.phone.is-live .wa-body > .typing-bubble {
+  opacity: 1;
+  transform: translateY(0) translateX(0) scale(1);
+}
+.phone.is-live .wa-body > *:nth-child(1) { transition-delay: .15s; }
+.phone.is-live .wa-body > *:nth-child(2) { transition-delay: .85s; }
+.phone.is-live .wa-body > *:nth-child(3) { transition-delay: 1.55s; }
+.phone.is-live .wa-body > *:nth-child(4) { transition-delay: 2.20s; }
+.phone.is-live .wa-body > *:nth-child(5) { transition-delay: 2.85s; }
+.phone.is-live .wa-body > *:nth-child(6) { transition-delay: 3.45s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .phone .wa-body > .bubble,
+  .phone .wa-body > .typing-bubble {
+    opacity: 1; transform: none; transition: none;
+  }
+}
+
 /* ======== cobranza timeline ======== */
 .timeline {
   position: relative;

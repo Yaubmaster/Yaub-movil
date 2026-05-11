@@ -850,6 +850,24 @@
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
+  // Chat mock: replay bubble-by-bubble each time the phone enters view
+  const phone = document.querySelector('.phone');
+  if (phone) {
+    const chatIO = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          phone.classList.remove('is-live');
+          // force reflow so the transition restarts cleanly
+          void phone.offsetWidth;
+          phone.classList.add('is-live');
+        } else {
+          phone.classList.remove('is-live');
+        }
+      });
+    }, { threshold: 0.35 });
+    chatIO.observe(phone);
+  }
+
   // tabs swap real B2C / B2B flows
   document.querySelectorAll('.tab').forEach(t => {
     t.addEventListener('click', () => {
