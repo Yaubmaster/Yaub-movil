@@ -1110,7 +1110,10 @@ button { font-family: inherit; }
 }
 .cta-final .h2 { max-width: 900px; margin: 0 auto 24px; }
 .cta-final .lede { max-width: 600px; margin: 0 auto 36px; }
-.cta-final .actions { display: inline-flex; gap: 14px; }
+.cta-final .actions {
+  display: flex; gap: 14px;
+  justify-content: center; align-items: center; flex-wrap: wrap;
+}
 
 /* ======== footer ======== */
 .footer {
@@ -1673,8 +1676,24 @@ button { font-family: inherit; }
   .footer-base { flex-direction: column; gap: 10px; text-align: center; }
 
   /* CTA final */
-  .cta-final { padding: 64px 0 56px !important; }
+  .cta-final { padding: 56px 0 48px !important; }
   .cta-final h2 { font-size: clamp(28px, 7vw, 38px) !important; }
+  .cta-final .lede { margin-bottom: 24px !important; }
+  .cta-final .actions {
+    flex-direction: column; align-items: stretch !important;
+    gap: 10px; max-width: 360px; margin: 0 auto;
+    padding: 0 4px;
+  }
+  .cta-final .actions .btn,
+  .cta-final .actions .btn.lg { width: 100%; justify-content: center; padding: 14px 20px; }
+
+  /* harmonize module padding on mobile */
+  .section { padding: 48px 0 !important; }
+  .section.tight { padding: 36px 0 !important; }
+  .section-head { margin-bottom: 28px !important; }
+  .stack-section { padding: 48px 0 !important; }
+  .audience { padding: 24px 0 40px !important; }
+  .hero { padding: 96px 0 32px !important; }
 }
 
 @media (max-width: 420px) {
