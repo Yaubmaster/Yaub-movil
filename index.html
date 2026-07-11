@@ -52,6 +52,7 @@
     </div>
     <div class="nav-cta">
       <a href="https://yaub.ai" target="_blank" rel="noopener" class="btn">Conoce Yaub AI ↗</a>
+      <button type="button" class="btn" data-recarga-open>Recargar</button>
       <a href="#planes" class="btn primary">Conocer planes</a>
     </div>
     <button class="nav-toggle" type="button" aria-label="Menú" aria-expanded="false">
@@ -155,6 +156,7 @@
         <span class="plans-eye plans-eye--b2c">CATÁLOGO PERSONAL</span>
         <h3 class="plans-title">9 planes Yaub. <span class="grad-cyan">Para cada bolsillo.</span></h3>
         <p class="plans-lede">Recargas semanales, quincenales o mensuales. Activación por WhatsApp en 38 segundos.</p>
+        <button type="button" class="btn primary" data-recarga-open>Recargar mi línea ahora</button>
       </div>
       <div class="plans-grid plans-grid--b2c">
         <article class="plan-card b2c"><span class="plan-gb">2GB</span><h4><img class="plan-icon" src="assets/yaub-icon.png" alt="" aria-hidden="true" /><span class="plan-name">Yaub </span>Flash</h4><div class="plan-price"><span class="px">$77</span><span class="pd">/ 7 días</span></div><ul><li>10,830 min</li><li>875 SMS</li><li>Recompensa GB</li></ul></article>
@@ -962,6 +964,9 @@
     update();
   }
 </script>
+
+<!-- Widget de recarga (modal Conekta vía yaub-movil-checkout) -->
+<script src="recarga.js" defer></script>
 
 </body>
 </html>
