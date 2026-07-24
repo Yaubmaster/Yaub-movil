@@ -141,22 +141,47 @@ footer{padding:34px 0 44px;color:var(--ink-3);font-size:13px;}
 @media (max-width:560px){.plans{grid-template-columns:1fr}.cta-row .btn{width:100%;justify-content:center;}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important;transition:none !important;}[data-r]{opacity:1;transform:none;}}
 /* ============================================================
-   Adaptación de assets del repo (los logos/íconos existentes son
-   blancos, diseñados para fondo oscuro): chip oscuro en nav y
-   footer, orbe con gradiente en el hero y logo Gabssa a tinta
-   sobre la banda blanca del carrusel. Solo tratamiento de assets;
-   no altera el layout de la referencia.
+   Ajustes sobre la referencia: tamaño del ícono del CTA de nav,
+   padding lateral del hero en móvil (el shorthand de .hero lo
+   dejaba en 0), logo Altán inline, logo Gabssa (asset blanco del
+   repo) a tinta sobre la banda blanca del carrusel.
    ============================================================ */
 .nav-cta svg{width:18px;height:18px;flex:none;}
 .hero.wrap{padding-left:24px;padding-right:24px;}
-.lg{background:var(--ink);border-radius:12px;padding:6px 9px;display:inline-flex;align-items:center;justify-content:center;}
-.navin .lg img{height:26px;}
-.foot-in .lg{border-radius:10px;padding:5px 7px;}
-.foot-in .lg img{height:18px;opacity:1;}
-.altan img{height:22px;width:auto;}
-.hero-vis .orb{width:min(280px,58%);aspect-ratio:1;border-radius:50%;background:linear-gradient(135deg,var(--cyan-b),var(--cyan) 45%,var(--violet));display:flex;align-items:center;justify-content:center;box-shadow:0 24px 48px rgba(8,145,178,0.30);animation:floaty 6s ease-in-out infinite;}
-.hero-vis .orb .yaubie{width:70%;animation:none;filter:none;}
-.mq .co img{filter:brightness(0);opacity:.8;}
+.altan img{height:24px;width:auto;}
+.mq .co img{filter:brightness(0);opacity:.8;height:44px;}
+/* ============================================================
+   Sección "¿Sigues pagando por recarga?" (comparativa genérica,
+   sin marcas) + banda de redes sociales ilimitadas.
+   ============================================================ */
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:30px;align-items:stretch;}
+.vs-card{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:26px 24px;display:flex;flex-direction:column;gap:6px;box-shadow:0 14px 36px rgba(20,20,31,0.05);position:relative;}
+.vs-card .who{font-weight:800;font-size:17px;display:flex;align-items:center;gap:10px;}
+.vs-card .who img{height:28px;width:auto;}
+.vs-card .line{font-size:15px;color:var(--ink-2);}
+.vs-card .line b{color:var(--ink);font-size:19px;font-weight:800;}
+.vs-card .big{font-size:clamp(42px,4.8vw,58px);font-weight:800;letter-spacing:-0.03em;line-height:1;margin-top:6px;}
+.vs-card .big small{font-size:20px;font-weight:800;color:var(--ink-3);letter-spacing:0;}
+.vs-card .big.cy{color:var(--cyan);}
+.vs-card .big.cy small{color:var(--cyan);}
+.vs-card .cap{font-size:13.5px;color:var(--ink-3);font-weight:600;}
+.vs-card ul{list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:12px;}
+.vs-card ul li{font-size:14px;color:var(--ink-2);display:flex;gap:9px;}
+.vs-card.bad ul li::before{content:"✕";color:#DC2626;font-weight:800;flex:none;}
+.vs-card.good{border:2px solid var(--cyan);background:linear-gradient(180deg,rgba(34,211,238,0.06),var(--surface) 45%);}
+.vs-card.good ul li::before{content:"✓";color:var(--lime);font-weight:800;flex:none;}
+.vs-card.good .badge2{position:absolute;top:-13px;right:22px;background:linear-gradient(120deg,var(--cyan),var(--cyan-b));color:#fff;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:5px 14px;border-radius:999px;box-shadow:0 8px 18px rgba(8,145,178,0.35);}
+.rs-band{margin-top:18px;background:linear-gradient(120deg,var(--cyan),var(--cyan-b));border-radius:22px;padding:24px 28px;display:flex;align-items:center;gap:22px;flex-wrap:wrap;color:#fff;box-shadow:0 14px 36px rgba(8,145,178,0.25);}
+.rs-band .t small{display:block;font-weight:700;font-size:13px;opacity:.9;margin-bottom:2px;}
+.rs-band .t b{font-size:clamp(22px,2.6vw,30px);font-weight:800;line-height:1.08;letter-spacing:-0.01em;}
+.rs-icons{margin-left:auto;display:flex;gap:10px;flex-wrap:wrap;}
+.rs-icons .ic{width:48px;height:48px;border-radius:13px;background:#fff;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 8px 18px rgba(20,20,31,0.12);}
+.rs-icons .ic svg{width:26px;height:26px;}
+.rs-icons .ic.wa{background:#25D366;}
+@media (max-width:900px){
+  .vs{grid-template-columns:1fr;}
+  .rs-icons{margin-left:0;}
+}
 </style>
 </head>
 <body>
@@ -164,7 +189,7 @@ footer{padding:34px 0 44px;color:var(--ink-3);font-size:13px;}
 
 <nav>
   <div class="navin">
-    <span class="lg"><img src="assets/yaub-icon.png" alt="Yaub Móvil"></span>
+    <img src="assets/yaubmovil-logo-dark.png" alt="Yaub Móvil">
     <span class="wm">yaub <em>móvil</em></span>
     <a class="nav-cta" href="#" data-wa="Hola 👋 Quiero información de Yaub Móvil">Hablar con Yaub Pal
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2zm5.4 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5s.8 1.9.8 2c.1.1.1.3 0 .5-.4.9-.9 1-.7 1.4.9 1.5 2 2.4 3.3 3 .3.2.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2.1 1c.3.2.5.3.6.4 0 .2 0 .7-.1 1z"></path></svg>
@@ -178,21 +203,21 @@ footer{padding:34px 0 44px;color:var(--ink-3);font-size:13px;}
     <div>
       <span class="badge" data-r="" style="--r:0;"><span class="dot"></span>La nueva telefonía con IA</span>
       <h1 data-r="" style="--r:1;">Telefonía que te <span class="cy">contesta al instante</span>, no que te forma.</h1>
-      <p class="sub" data-r="" style="--r:2;">36 GB, redes sociales ilimitadas y un agente de IA que activa, porta y recarga tu línea por WhatsApp. Sin filas, sin esperas, sin letras chiquitas.</p>
+      <p class="sub" data-r="" style="--r:2;">36 GB manteniendo tu mismo número, redes sociales ilimitadas y un agente de IA que activa, porta y recarga tu línea por WhatsApp. Sin filas, sin esperas, sin letras chiquitas.</p>
       <div class="cta-row" data-r="" style="--r:3;">
         <a class="btn btn-solo" href="#" data-wa="Hola 👋 Quiero cambiarme a Yaub Móvil por mi cuenta">Quiero cambiarme solo
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
         <a class="btn btn-nom" href="#" data-wa="Hola 👋 Trabajo en una empresa afiliada y quiero mi plan con descuento por nómina">Con descuento por nómina
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
       </div>
-      <p class="altan" data-r="" style="--r:4;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--lime)" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"></path></svg>Respaldados por <b>Red Altán</b> — la red mayorista con mayor cobertura de México.<img src="assets/logo-altan.png" alt="Altán Redes"></p>
+      <p class="altan" data-r="" style="--r:4;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--lime)" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"></path></svg>Respaldados por <img src="assets/logo-altan.png" alt="Red Altán"> — la red mayorista con mayor cobertura de México.</p>
     </div>
     <div class="hero-vis" data-r="" style="--r:2;">
       <div class="ring"></div><div class="ring r2"></div>
-      <div class="orb"><img class="yaubie" src="assets/yaubmovil-icon-v2.png" alt="Yaubie, el agente de Yaub Móvil"></div>
-      <div class="chip c1">⚡ Activación en <span class="em">38 s</span></div>
+      <img class="yaubie" src="assets/yaubie.png" alt="Yaubie, el agente de Yaub Móvil">
+      <div class="chip c1">⚡ Activación <span class="em">en minutos</span></div>
       <div class="chip c2">💬 Yaub Pal <span class="em">24/7</span></div>
-      <div class="chip c3">📲 eSIM <span class="em">al momento</span></div>
+      <div class="chip c3">📲 eSIM <span class="em">o SIM física</span></div>
     </div>
   </div>
 </header>
@@ -200,21 +225,21 @@ footer{padding:34px 0 44px;color:var(--ink-3);font-size:13px;}
 <section class="wrap" id="planes">
   <p class="kicker" data-r="">Planes vigentes</p>
   <h2 data-r="">Un solo plan estrella. <span style="color:var(--cyan);">Dos formas de tenerlo.</span></h2>
-  <p class="lead" data-r="">El mismo plan de 36 GB: más barato si tu empresa está afiliada al descuento por nómina.</p>
+  <p class="lead" data-r="">El mismo plan de 36 GB: más barato si tu empresa está afiliada al descuento por nómina. Los 36 GB aplican portando tu número — te cambias y mantienes el mismo. En línea nueva incluye 12 GB.</p>
   <div class="plans">
     <div class="plan star" data-r="" style="--r:0;">
       <span class="ribbon">Descuento por nómina</span>
       <span class="tag">Empresas afiliadas</span>
       <div class="price"><span class="n">$280</span><small>/mes</small></div>
       <span class="gb">36 GB · redes ilimitadas</span>
-      <ul><li>Llamadas y SMS ilimitados</li><li>Se descuenta solo de tu nómina</li><li>Yaub Pal 24/7 en WhatsApp</li></ul>
+      <ul><li>Mantén tu número: 36 GB · línea nueva: 12 GB</li><li>Llamadas y SMS ilimitados</li><li>eSIM o SIM física</li><li>Se descuenta solo de tu nómina</li></ul>
       <div class="go"><a href="#" data-wa="Hola 👋 Trabajo en una empresa afiliada y quiero el plan de $280 con descuento por nómina">Lo quiero</a></div>
     </div>
     <div class="plan" data-r="" style="--r:1;">
       <span class="tag">Venta libre</span>
       <div class="price"><span class="n">$349</span><small>/mes</small></div>
       <span class="gb">36 GB · redes ilimitadas</span>
-      <ul><li>Llamadas y SMS ilimitados</li><li>Sin plazos forzosos</li><li>Yaub Pal 24/7 en WhatsApp</li></ul>
+      <ul><li>Mantén tu número: 36 GB · línea nueva: 12 GB</li><li>Llamadas y SMS ilimitados</li><li>eSIM o SIM física</li><li>Sin plazos forzosos</li></ul>
       <div class="go"><a href="#" data-wa="Hola 👋 Quiero el plan de $349 de venta libre de Yaub Móvil">Lo quiero</a></div>
     </div>
     <div class="plan" data-r="" style="--r:2;">
@@ -234,17 +259,51 @@ footer{padding:34px 0 44px;color:var(--ink-3);font-size:13px;}
   </div>
 </section>
 
+<section class="wrap" id="recargas">
+  <p class="kicker" data-r="">Deja de recargar cada semana</p>
+  <h2 data-r="">¿Sigues pagando por recarga? <span style="color:var(--cyan);">Mira lo que pasa.</span></h2>
+  <p class="lead" data-r="">Al mes, con recargas de $50 a la semana juntas apenas 2 GB · con Yaub tienes 36 GB completos.</p>
+  <div class="vs">
+    <div class="vs-card bad" data-r="" style="--r:0;">
+      <span class="who">💸 Recarga tradicional</span>
+      <p class="line">Recargas <b>$50</b> a la semana</p>
+      <div class="big">0.5 <small>GB</small></div>
+      <p class="cap">por esos $50 de la semana</p>
+      <ul><li>Se te acaban los datos en días</li><li>Recargar una y otra vez</li><li>Redes sociales limitadas</li></ul>
+    </div>
+    <div class="vs-card good" data-r="" style="--r:1;">
+      <span class="badge2">Yaub Móvil</span>
+      <span class="who"><img src="assets/yaubmovil-logo-dark.png" alt="Yaub Móvil"> Con Yaub</span>
+      <p class="line"><b>$70</b> a la semana vía nómina</p>
+      <div class="big cy">36 <small>GB</small></div>
+      <p class="cap">al mes · <b style="color:var(--cyan);">$70 = 9 GB a la semana</b></p>
+      <ul><li>36 GB a velocidad plena, sin cortes</li><li>Mantienes tu mismo número</li><li>Llamadas y SMS ilimitados</li><li>Se descuenta solo de tu nómina</li></ul>
+    </div>
+  </div>
+  <div class="rs-band" data-r="">
+    <div class="t"><small>Con Yaub Móvil</small><b>Redes sociales<br>ILIMITADAS</b></div>
+    <div class="rs-icons">
+      <span class="ic wa"><svg viewBox="0 0 32 32"><path fill="#fff" d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.2 1.6 6L4 29l8.2-1.6c1.8.9 3.8 1.4 5.8 1.4 6.6 0 12-5.4 12-12S22.6 3 16 3zm5.4 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5s.8 1.9.8 2c.1.1.1.3 0 .5-.4.9-.9 1-.7 1.4.9 1.5 2 2.4 3.3 3 .3.2.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2.1 1c.3.2.5.3.6.4 0 .2 0 .7-.1 1z"></path></svg></span>
+      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#E1306C" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.2" cy="6.8" r="1.2" fill="#E1306C" stroke="none"></circle></svg></span>
+      <span class="ic"><svg viewBox="0 0 24 24"><path fill="#14141F" d="M20.8 8.4a6.5 6.5 0 0 1-3.8-1.2v6.4a5.9 5.9 0 1 1-5.9-5.9c.2 0 .4 0 .6.03v3.1a2.9 2.9 0 1 0 2.3 2.8V2.2h3a3.7 3.7 0 0 0 .1.7 3.9 3.9 0 0 0 1.7 2.5c.6.4 1.3.6 2 .6z"></path></svg></span>
+      <span class="ic"><svg viewBox="0 0 24 24"><path fill="#1877F2" d="M13.4 21.5v-7.9h2.6l.5-3.1h-3.1V8.5c0-.9.3-1.6 1.6-1.6h1.6V4.1c-.3 0-1.3-.1-2.3-.1-2.4 0-4 1.4-4 4v2.5H7.6v3.1h2.7v7.9h3.1z"></path></svg></span>
+      <span class="ic"><svg viewBox="0 0 24 24"><path fill="#14141F" d="M3.5 3h4.8l4.1 5.6L17.2 3h2.6l-6.2 7.2L20.5 21h-4.8l-4.4-6-5.2 6H3.5l6.7-7.7L3.5 3z"></path></svg></span>
+      <span class="ic"><svg viewBox="0 0 24 24"><path fill="#FF0000" d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8c1.6.4 7.8.4 7.8.4s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8z"></path><path fill="#fff" d="M10 15.2V8.8l5.2 3.2z"></path></svg></span>
+    </div>
+  </div>
+</section>
+
 <div class="mq-band" data-r="">
   <p class="mq-label">Empresas afiliadas al descuento por nómina</p>
   <div class="mq" aria-label="Carrusel de empresas afiliadas">
     <!-- pista duplicada para loop infinito -->
-    <span class="co"><img src="assets/logo-gabssa.png" alt="Grupo Gabssa">Grupo Gabssa</span>
+    <span class="co"><img src="assets/logo-gabssa.png" alt="Grupo Gabssa"></span>
     <span class="co soon">Tu empresa podría ser la siguiente →</span>
-    <span class="co"><img src="assets/logo-gabssa.png" alt="Grupo Gabssa">Grupo Gabssa</span>
+    <span class="co"><img src="assets/logo-gabssa.png" alt="Grupo Gabssa"></span>
     <span class="co soon">¿Eres RH? Escríbenos</span>
-    <span class="co"><img src="assets/logo-gabssa.png" alt="Grupo Gabssa">Grupo Gabssa</span>
+    <span class="co"><img src="assets/logo-gabssa.png" alt="Grupo Gabssa"></span>
     <span class="co soon">Tu empresa podría ser la siguiente →</span>
-    <span class="co"><img src="assets/logo-gabssa.png" alt="Grupo Gabssa">Grupo Gabssa</span>
+    <span class="co"><img src="assets/logo-gabssa.png" alt="Grupo Gabssa"></span>
     <span class="co soon">¿Eres RH? Escríbenos</span>
   </div>
 </div>
@@ -286,7 +345,7 @@ footer{padding:34px 0 44px;color:var(--ink-3);font-size:13px;}
 
 <footer class="wrap">
   <div class="foot-in">
-    <span class="lg"><img src="assets/yaub-icon.png" alt="Yaub Móvil"></span>
+    <img src="assets/yaubmovil-logo-dark.png" alt="Yaub Móvil">
     <span>© 2026 Yaub Móvil · sobre Red Altán · yaubmovil.mx</span>
     <span class="sp"><a href="#planes">Planes</a><a href="#" data-wa="Hola 👋 Soy de Recursos Humanos y quiero afiliar mi empresa al descuento por nómina">Empresas</a></span>
   </div>
@@ -300,12 +359,10 @@ footer{padding:34px 0 44px;color:var(--ink-3);font-size:13px;}
 <script>
 /* ============================================================
    NÚMERO DE WHATSAPP — cambia solo esta línea.
-   WA_NUMBER debe ser el número del agente de WhatsApp conectado
-   al CRM, en formato 521XXXXXXXXXX (52 + 1 + 10 dígitos).
-   No se encontró un número configurado en el sitio anterior,
-   por eso queda este placeholder documentado.
+   Agente de Yaub Móvil conectado al CRM (activaciones y recargas):
+   55 8962 7902, en formato internacional 52XXXXXXXXXX.
    ============================================================ */
-const WA_NUMBER = "5215500000000"; /* <-- pon aquí el número real, formato 521XXXXXXXXXX */
+const WA_NUMBER = "525589627902";
 
 function waUrl(msg){return "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(msg);}
 document.querySelectorAll("[data-wa]").forEach(a => {
