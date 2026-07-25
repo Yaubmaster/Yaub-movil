@@ -150,6 +150,28 @@ footer{padding:34px 0 44px;color:var(--ink-3);font-size:13px;}
    ============================================================ */
 .nav-cta svg{width:18px;height:18px;flex:none;}
 .hero.wrap{padding-left:24px;padding-right:24px;}
+/* ============================================================
+   Fix del vaivén lateral en móvil. Dos causas reales:
+   1) .tools{grid-template-columns:1fr} (breakpoint ≤900) deja el
+      mínimo del track en auto, y el min-content del input de los
+      formularios (~250px + botón) infla la tarjeta a ~430px en un
+      viewport de 390 → minmax(0,1fr) lo permite encoger.
+   2) Los anillos del hero (340/440px fijos, position:absolute)
+      sobresalen del viewport → se acotan con vw en móvil.
+   html{overflow-x:clip} de red de seguridad: body{overflow-x:hidden}
+   solo no evita el paneo lateral en móvil.
+   ============================================================ */
+html{overflow-x:clip;}
+@media (max-width:900px){
+  .tools{grid-template-columns:minmax(0,1fr);}
+  .hero-vis .ring{width:min(340px,84vw);height:min(340px,84vw);}
+  .hero-vis .ring.r2{width:min(440px,96vw);height:min(440px,96vw);}
+  .navin .wm{white-space:nowrap;}
+  .nav-cta{white-space:nowrap;}
+}
+@media (max-width:560px){
+  .nav-cta{font-size:13px;padding:9px 14px;}
+}
 /* respiro entre módulos: ni muy pegado ni demasiado scroll.
    Nota: section.wrap para ganarle a .wrap{padding:0 24px}, que por
    especificidad anulaba el padding vertical de section en la
@@ -192,6 +214,7 @@ section.wrap{padding-top:clamp(48px,6.5vh,72px);padding-bottom:clamp(48px,6.5vh,
 .rs-icons .ic{width:48px;height:48px;border-radius:13px;background:#fff;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 8px 18px rgba(20,20,31,0.12);}
 .rs-icons .ic svg{width:26px;height:26px;}
 .rs-icons .ic.wa{background:#25D366;}
+.rs-icons .ic.sc{background:#FFFC00;}
 @media (max-width:900px){
   .vs{grid-template-columns:1fr;gap:32px;}
   .rs-icons{margin-left:0;}
@@ -299,12 +322,13 @@ section.wrap{padding-top:clamp(48px,6.5vh,72px);padding-bottom:clamp(48px,6.5vh,
   <div class="rs-band" data-r="">
     <div class="t"><small>Con Yaub Móvil</small><b>Redes sociales<br>ILIMITADAS</b></div>
     <div class="rs-icons">
-      <span class="ic wa"><svg viewBox="0 0 32 32"><path fill="#fff" d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.2 1.6 6L4 29l8.2-1.6c1.8.9 3.8 1.4 5.8 1.4 6.6 0 12-5.4 12-12S22.6 3 16 3zm5.4 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5s.8 1.9.8 2c.1.1.1.3 0 .5-.4.9-.9 1-.7 1.4.9 1.5 2 2.4 3.3 3 .3.2.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2.1 1c.3.2.5.3.6.4 0 .2 0 .7-.1 1z"></path></svg></span>
-      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#E1306C" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.2" cy="6.8" r="1.2" fill="#E1306C" stroke="none"></circle></svg></span>
-      <span class="ic"><svg viewBox="0 0 24 24"><path fill="#14141F" d="M20.8 8.4a6.5 6.5 0 0 1-3.8-1.2v6.4a5.9 5.9 0 1 1-5.9-5.9c.2 0 .4 0 .6.03v3.1a2.9 2.9 0 1 0 2.3 2.8V2.2h3a3.7 3.7 0 0 0 .1.7 3.9 3.9 0 0 0 1.7 2.5c.6.4 1.3.6 2 .6z"></path></svg></span>
       <span class="ic"><svg viewBox="0 0 24 24"><path fill="#1877F2" d="M13.4 21.5v-7.9h2.6l.5-3.1h-3.1V8.5c0-.9.3-1.6 1.6-1.6h1.6V4.1c-.3 0-1.3-.1-2.3-.1-2.4 0-4 1.4-4 4v2.5H7.6v3.1h2.7v7.9h3.1z"></path></svg></span>
+      <span class="ic"><svg viewBox="0 0 24 24"><path fill="#0084FF" d="M12 2C6.5 2 2.2 6.1 2.2 11.2c0 2.9 1.4 5.5 3.6 7.2v3.4l3.3-1.8c.9.3 1.9.4 2.9.4 5.5 0 9.8-4.1 9.8-9.2S17.5 2 12 2zm1 12.4l-2.5-2.7-4.9 2.7 5.4-5.7 2.6 2.7 4.8-2.7-5.4 5.7z"></path></svg></span>
+      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#E1306C" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.2" cy="6.8" r="1.2" fill="#E1306C" stroke="none"></circle></svg></span>
       <span class="ic"><svg viewBox="0 0 24 24"><path fill="#14141F" d="M3.5 3h4.8l4.1 5.6L17.2 3h2.6l-6.2 7.2L20.5 21h-4.8l-4.4-6-5.2 6H3.5l6.7-7.7L3.5 3z"></path></svg></span>
-      <span class="ic"><svg viewBox="0 0 24 24"><path fill="#FF0000" d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8c1.6.4 7.8.4 7.8.4s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8z"></path><path fill="#fff" d="M10 15.2V8.8l5.2 3.2z"></path></svg></span>
+      <span class="ic wa"><svg viewBox="0 0 32 32"><path fill="#fff" d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.2 1.6 6L4 29l8.2-1.6c1.8.9 3.8 1.4 5.8 1.4 6.6 0 12-5.4 12-12S22.6 3 16 3zm5.4 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5s.8 1.9.8 2c.1.1.1.3 0 .5-.4.9-.9 1-.7 1.4.9 1.5 2 2.4 3.3 3 .3.2.5.1.7-.1l1-1.2c.2-.3.4-.2.7-.1l2.1 1c.3.2.5.3.6.4 0 .2 0 .7-.1 1z"></path></svg></span>
+      <span class="ic sc"><svg viewBox="0 0 24 24"><path fill="#fff" stroke="rgba(20,20,31,0.22)" stroke-width="0.6" d="M12 2.4c2.9 0 5 2.2 5.1 5.1l.1 2c.4.2.8 0 1.2-.1.5-.2 1.1-.1 1.3.3.3.5-.1 1-.7 1.3-.5.3-1.2.5-1.3 1-.1.4.1.9.4 1.4.6 1 1.5 1.9 2.6 2.3.4.1.6.4.5.7-.1.5-1 .8-2.1 1-.2 0-.3.3-.4.6-.1.3-.2.6-.6.6-.8 0-1.6-.3-2.6 0-.9.3-1.5 1.2-3.5 1.2s-2.6-.9-3.5-1.2c-1-.3-1.8 0-2.6 0-.4 0-.5-.3-.6-.6-.1-.3-.2-.6-.4-.6-1.1-.2-2-.5-2.1-1-.1-.3.1-.6.5-.7 1.1-.4 2-1.3 2.6-2.3.3-.5.5-1 .4-1.4-.1-.5-.8-.7-1.3-1-.6-.3-1-.8-.7-1.3.2-.4.8-.5 1.3-.3.4.1.8.3 1.2.1l.1-2C7 4.6 9.1 2.4 12 2.4z"></path></svg></span>
+      <span class="ic"><svg viewBox="0 0 24 24"><path fill="#229ED9" d="M21.9 5.2l-3 14.2c-.2 1-.8 1.2-1.6.8l-4.6-3.4-2.2 2.1c-.2.2-.4.4-.9.4l.3-4.6 8.4-7.6c.4-.3-.1-.5-.6-.2l-10.4 6.5-4.5-1.4c-1-.3-1-1 .2-1.4l17.5-6.7c.8-.3 1.5.2 1.4 1.3z"></path></svg></span>
     </div>
   </div>
 </section>
