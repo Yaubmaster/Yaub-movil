@@ -1,0 +1,32 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Secretos — nunca commitear llaves ni credenciales
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p8
+*.p12
+
+# Dependencias y builds (por si el sitio deja de ser estático)
+node_modules/
+dist/
+build/
+.vercel/
+
+# Logs y temporales
+*.log
+npm-debug.log*
+yarn-error.log*
+*.tmp
+*.swp
+
+# Editores
+.idea/
+.vscode/*
+!.vscode/extensions.json
