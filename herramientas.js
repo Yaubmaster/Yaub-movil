@@ -162,8 +162,14 @@
             '">Revisarlo con un asesor</a>');
         }
 
-        // Compatible: lo que más le importa al cliente es si puede usar eSIM
-        // (activación inmediata) o si necesita SIM física (envío a domicilio).
+        /* Compatible. Lo que decide el siguiente paso del cliente es si su equipo
+         * soporta eSIM:
+         *   sí  → se activa desde aquí mismo.
+         *   no  → necesita SIM física, y Yaub NO la envía a domicilio: la entrega
+         *         RH de su empresa. NO prometer envío, paquetería ni nada parecido
+         *         (misma regla que el prompt del agente: "NO ofrezcas envío a
+         *         domicilio"). Para quien no viene por una empresa afiliada, el
+         *         canal es WhatsApp con un asesor, no un envío. */
         var chips =
           '<span class="tool-chip' + (d.soporta_esim ? " on" : "") + '">' +
           (d.soporta_esim ? "✓ eSIM" : "Solo SIM física") + "</span>" +
@@ -174,13 +180,16 @@
           "<strong>✅ " + nombre + " es compatible.</strong>" +
           '<span class="tool-chips">' + chips + "</span>" +
           "<span>" + (d.soporta_esim
-            ? "Puedes activarte con eSIM, sin esperar un envío."
-            : "Tu equipo necesita SIM física; te la enviamos a domicilio.") + "</span>" +
+            ? "Tu equipo soporta eSIM: te activamos sin cambiar de chip."
+            : "Tu equipo no soporta eSIM, así que necesita SIM física. Si tu empresa " +
+              "está afiliada, RH te la entrega; si no, escríbenos y te decimos cómo obtenerla.") +
+          "</span>" +
           '<a class="tool-wa" target="_blank" rel="noopener" href="' +
           esc(waUrl("Hola 👋 Validé mi equipo" + (equipo ? " " + equipo : " (IMEI " + imei + ")") +
-            " y es compatible" + (d.soporta_esim ? " con eSIM" : " (necesito SIM física)") +
-            ". Quiero cambiarme a Yaub Móvil")) +
-          '">Quiero cambiarme</a>');
+            (d.soporta_esim
+              ? " y soporta eSIM. Quiero cambiarme a Yaub Móvil"
+              : " y no soporta eSIM, necesito SIM física. ¿Cómo la obtengo?"))) +
+          '">' + (d.soporta_esim ? "Quiero cambiarme" : "Cómo obtener mi SIM") + "</a>");
       })
       .catch(function () {
         falla(out, "No pudimos validar tu equipo ahora mismo.",
