@@ -221,7 +221,7 @@ section.wrap{padding-top:clamp(48px,6.5vh,72px);padding-bottom:clamp(48px,6.5vh,
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
         <a class="btn btn-nom" href="#" data-wa="Hola 👋 Trabajo en una empresa afiliada y quiero mi plan con descuento por nómina">Con descuento por nómina
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
-        <a class="btn btn-rec" href="#" data-wa="Hola 👋 Quiero hacer una recarga a mi línea Yaub">Recargar
+        <a class="btn btn-rec" href="#" data-recarga-open="">Recargar
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
       </div>
       <p class="altan" data-r="" style="--r:4;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--lime)" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"></path></svg>Respaldados por <img src="assets/logo-altan.png" alt="Red Altán"> — la red mayorista con mayor cobertura de México.</p>
@@ -261,14 +261,14 @@ section.wrap{padding-top:clamp(48px,6.5vh,72px);padding-bottom:clamp(48px,6.5vh,
       <div class="price"><span class="n">$62</span><small>/7 días</small></div>
       <span class="gb">2 GB</span>
       <ul><li>Llamadas y SMS</li><li>Ideal para probar Yaub</li></ul>
-      <div class="go"><a href="#" data-wa="Hola 👋 Quiero el paquete de 7 días por $62">Lo quiero</a></div>
+      <div class="go"><a href="#" data-recarga-open="" data-recarga-cv="276">Lo quiero</a></div>
     </div>
     <div class="plan" data-r="" style="--r:3;">
       <span class="tag">15 días</span>
       <div class="price"><span class="n">$108</span><small>/15 días</small></div>
       <span class="gb">5 GB</span>
       <ul><li>Llamadas y SMS</li><li>Flexible, sin compromiso</li></ul>
-      <div class="go"><a href="#" data-wa="Hola 👋 Quiero el paquete de 15 días por $108">Lo quiero</a></div>
+      <div class="go"><a href="#" data-recarga-open="" data-recarga-cv="278">Lo quiero</a></div>
     </div>
   </div>
 </section>
@@ -336,8 +336,8 @@ section.wrap{padding-top:clamp(48px,6.5vh,72px);padding-bottom:clamp(48px,6.5vh,
     </div>
     <div class="tool" data-r="" style="--r:2;">
       <h3>⚡ Recarga en segundos</h3>
-      <p>Pon tu número Yaub y te mandamos el link de pago por WhatsApp.</p>
-      <form class="field" data-waform="Hola 👋 Quiero hacer una recarga al número: ">
+      <p>Pon tu número Yaub, elige tu recarga y paga aquí mismo. Se acredita sola.</p>
+      <form class="field" data-recarga-form="">
         <input type="tel" inputmode="numeric" maxlength="10" placeholder="Tu número a 10 dígitos" required="">
         <button type="submit">Recargar</button>
       </form>
@@ -373,10 +373,15 @@ section.wrap{padding-top:clamp(48px,6.5vh,72px);padding-bottom:clamp(48px,6.5vh,
 <script>
 /* ============================================================
    NÚMERO DE WHATSAPP — cambia solo esta línea.
-   Agente de Yaub Móvil conectado al CRM (activaciones y recargas):
-   55 8962 7902, en formato internacional 52XXXXXXXXXX.
+   Línea oficial de Yaub Móvil (WABA "Yaub Movil", agente conectado al CRM
+   para activaciones, portabilidad y recargas): +52 1 55 8962 7209.
+   Formato = tal como está registrada la WABA (52 + 1 + 10 dígitos); es el que
+   wa.me resuelve sin ambigüedad para móviles de México.
+   Fuente de verdad: whatsapp_numbers en yaub-platform-prod.
    ============================================================ */
-const WA_NUMBER = "525589627902";
+const WA_NUMBER = "5215589627209";
+/* recarga.js lo reusa como fallback si el catálogo de recargas no responde. */
+window.YAUB_WA_NUMBER = WA_NUMBER;
 
 function waUrl(msg){return "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(msg);}
 document.querySelectorAll("[data-wa]").forEach(a => {
@@ -395,4 +400,8 @@ document.querySelectorAll("[data-waform]").forEach(f => {
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: 0.15 });
 document.querySelectorAll("[data-r]").forEach(el => io.observe(el));
 </script>
+
+<!-- Pasarela de recarga (modal + liga de pago Conekta vía LikePhone).
+     defer => corre después del script de arriba, así toma window.YAUB_WA_NUMBER. -->
+<script src="recarga.js" defer></script>
 </body></html>
