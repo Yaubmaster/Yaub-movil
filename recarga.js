@@ -34,10 +34,17 @@
    * Para agregar o quitar una recarga del landing, edita solo esta lista.
    * ──────────────────────────────────────────────────────────── */
   var RECARGAS_VIGENTES = [
-    { cv_plan: 276, badge: null },          // $62  · 2 GB  · 7 días
-    { cv_plan: 278, badge: null },          // $108 · 5 GB  · 15 días
-    { cv_plan: 284, badge: "Más datos" },   // $280 · 12 GB · 30 días
+    { cv_plan: 276, badge: null },   // $62  · 2 GB · 7 días
+    { cv_plan: 278, badge: null },   // $108 · 5 GB · 15 días
   ];
+
+  /* NO agregar aquí el cv_plan 284 ($280 · 12 GB · 30 días, "Plan LikePlay").
+   * LikePhone lo lista como recargable, pero es el plan EXCLUSIVO de descuento
+   * por nómina: se contrata por RH y se cobra vía nómina. No se recarga desde
+   * ningún lugar — ni aquí, ni el app, ni el agente.
+   * El bloqueo de verdad está en el servidor (_shared/yaub_movil_plans.ts), que
+   * lo saca del catálogo y rechaza la orden; esta lista solo decide qué se
+   * muestra, así que aunque se colara aquí no se podría pagar. */
 
   // Número de WhatsApp de Yaub Móvil (fallback si el catálogo no responde).
   // Debe coincidir con WA_NUMBER de index.html.
