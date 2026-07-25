@@ -105,7 +105,9 @@ h2{font-size:clamp(26px,3.2vw,40px);font-weight:800;letter-spacing:-0.02em;line-
 .mq .co img{height:34px;width:auto;}
 .mq .co.soon{color:var(--ink-3);font-weight:600;font-size:14px;border:1.5px dashed var(--line);border-radius:999px;padding:8px 22px;margin:0 22px;}
 /* tools: cobertura + recarga */
-.tools{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:30px;}
+/* auto-fit para que las 3 herramientas quepan en fila en desktop y se
+   reacomoden solas en tablet/móvil sin un breakpoint extra. */
+.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(292px,1fr));gap:18px;margin-top:30px;}
 .tool{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:28px;box-shadow:0 14px 36px rgba(20,20,31,0.05);}
 .tool h3{font-size:19px;font-weight:800;margin-bottom:6px;}
 .tool p{font-size:14px;color:var(--ink-2);margin-bottom:16px;}
@@ -323,18 +325,29 @@ section.wrap{padding-top:clamp(48px,6.5vh,72px);padding-bottom:clamp(48px,6.5vh,
 </div>
 
 <section class="wrap">
-  <p class="kicker" data-r="">Todo por WhatsApp</p>
-  <h2 data-r="">Valida tu cobertura o recarga <span style="color:var(--cyan);">en un mensaje.</span></h2>
+  <p class="kicker" data-r="">Sin salir de aquí</p>
+  <h2 data-r="">Cobertura, equipo y recarga <span style="color:var(--cyan);">en esta página.</span></h2>
   <div class="tools">
     <div class="tool" data-r="" style="--r:1;">
       <h3>📍 ¿Llega Yaub a tu zona?</h3>
-      <p>Escribe tu código postal y Yaub Pal valida tu cobertura al instante.</p>
-      <form class="field" data-waform="Hola 👋 Quiero validar cobertura en el CP: ">
+      <p>Escribe tu código postal y validamos la cobertura al instante.</p>
+      <form class="field" data-cobertura="">
         <input type="text" inputmode="numeric" maxlength="5" placeholder="Código postal" required="">
         <button type="submit">Validar</button>
       </form>
+      <div class="tool-out" data-out="" hidden=""></div>
     </div>
     <div class="tool" data-r="" style="--r:2;">
+      <h3>📱 ¿Tu equipo es compatible?</h3>
+      <p>Pon tu IMEI y te decimos si sirve en la red y si soporta eSIM.</p>
+      <form class="field" data-compatibilidad="">
+        <input type="text" inputmode="numeric" maxlength="16" placeholder="IMEI (14-16 dígitos)" required="">
+        <button type="submit">Revisar</button>
+      </form>
+      <p class="tool-hint">Márcalo con <b>*#06#</b> en tu teléfono.</p>
+      <div class="tool-out" data-out="" hidden=""></div>
+    </div>
+    <div class="tool" data-r="" style="--r:3;">
       <h3>⚡ Recarga en segundos</h3>
       <p>Pon tu número Yaub, elige tu recarga y paga aquí mismo. Se acredita sola.</p>
       <form class="field" data-recarga-form="">
@@ -388,20 +401,17 @@ document.querySelectorAll("[data-wa]").forEach(a => {
   a.href = waUrl(a.dataset.wa);
   a.target = "_blank"; a.rel = "noopener";
 });
-document.querySelectorAll("[data-waform]").forEach(f => {
-  f.addEventListener("submit", e => {
-    e.preventDefault();
-    const v = f.querySelector("input").value.trim();
-    if (!v) return;
-    window.open(waUrl(f.dataset.waform + v), "_blank");
-  });
-});
+/* Ya no hay [data-waform]: los formularios de cobertura y compatibilidad se
+   resuelven en la página (herramientas.js) y el de recarga abre la pasarela
+   (recarga.js). WhatsApp queda para comprar, no para consultar. */
 /* reveal on scroll */
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: 0.15 });
 document.querySelectorAll("[data-r]").forEach(el => io.observe(el));
 </script>
 
-<!-- Pasarela de recarga (modal + liga de pago Conekta vía LikePhone).
-     defer => corre después del script de arriba, así toma window.YAUB_WA_NUMBER. -->
+<!-- defer => corren después del script de arriba, así toman window.YAUB_WA_NUMBER. -->
+<!-- Pasarela de recarga (modal + liga de pago Conekta vía LikePhone). -->
 <script src="recarga.js" defer></script>
+<!-- Cobertura por CP y compatibilidad por IMEI, resueltas en la página. -->
+<script src="herramientas.js" defer></script>
 </body></html>
