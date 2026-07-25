@@ -109,6 +109,21 @@
       });
   }
 
+  /* El catálogo de la red usa placeholders cuando no conoce el equipo: un IMEI
+   * real devolvió marca "Not Known" con modelo "N900". Pegarlos tal cual daba
+   * "Not Known N900: no podemos garantizar el servicio", que se lee como un error
+   * de la página. Descartamos esos valores y caemos a "Tu equipo". */
+  var PLACEHOLDER = /^(not known|unknown|desconocid\w*|n\/?a|-{1,}|null|undefined)$/i;
+
+  function limpio(v) {
+    var s = String(v == null ? "" : v).trim();
+    return s && !PLACEHOLDER.test(s) ? s : "";
+  }
+
+  function nombreEquipo(marca, modelo) {
+    return [limpio(marca), limpio(modelo)].filter(Boolean).join(" ");
+  }
+
   // ── Compatibilidad por IMEI ──
   function compatibilidad(form, out) {
     var input = form.querySelector("input");
@@ -135,7 +150,7 @@
             "Hola 👋 Mi IMEI no aparece en el catálogo. ¿Mi equipo sirve en Yaub Móvil?");
         }
 
-        var equipo = [d.marca, d.modelo].filter(Boolean).join(" ");
+        var equipo = nombreEquipo(d.marca, d.modelo);
         var nombre = equipo ? esc(equipo) : "Tu equipo";
 
         if (!d.compatible) {
@@ -162,8 +177,9 @@
             ? "Puedes activarte con eSIM, sin esperar un envío."
             : "Tu equipo necesita SIM física; te la enviamos a domicilio.") + "</span>" +
           '<a class="tool-wa" target="_blank" rel="noopener" href="' +
-          esc(waUrl("Hola 👋 Validé mi equipo " + equipo + " y es compatible" +
-            (d.soporta_esim ? " con eSIM" : " (necesito SIM física)") + ". Quiero cambiarme a Yaub Móvil")) +
+          esc(waUrl("Hola 👋 Validé mi equipo" + (equipo ? " " + equipo : " (IMEI " + imei + ")") +
+            " y es compatible" + (d.soporta_esim ? " con eSIM" : " (necesito SIM física)") +
+            ". Quiero cambiarme a Yaub Móvil")) +
           '">Quiero cambiarme</a>');
       })
       .catch(function () {
