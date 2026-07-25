@@ -105,7 +105,9 @@ h2{font-size:clamp(26px,3.2vw,40px);font-weight:800;letter-spacing:-0.02em;line-
 .mq .co img{height:34px;width:auto;}
 .mq .co.soon{color:var(--ink-3);font-weight:600;font-size:14px;border:1.5px dashed var(--line);border-radius:999px;padding:8px 22px;margin:0 22px;}
 /* tools: cobertura + recarga */
-.tools{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:30px;}
+/* auto-fit para que las 3 herramientas quepan en fila en desktop y se
+   reacomoden solas en tablet/móvil sin un breakpoint extra. */
+.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(292px,1fr));gap:18px;margin-top:30px;}
 .tool{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:28px;box-shadow:0 14px 36px rgba(20,20,31,0.05);}
 .tool h3{font-size:19px;font-weight:800;margin-bottom:6px;}
 .tool p{font-size:14px;color:var(--ink-2);margin-bottom:16px;}
@@ -221,7 +223,7 @@ section.wrap{padding-top:clamp(48px,6.5vh,72px);padding-bottom:clamp(48px,6.5vh,
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
         <a class="btn btn-nom" href="#" data-wa="Hola 👋 Trabajo en una empresa afiliada y quiero mi plan con descuento por nómina">Con descuento por nómina
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
-        <a class="btn btn-rec" href="#" data-wa="Hola 👋 Quiero hacer una recarga a mi línea Yaub">Recargar
+        <a class="btn btn-rec" href="#" data-recarga-open="">Recargar
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
       </div>
       <p class="altan" data-r="" style="--r:4;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--lime)" stroke-width="2.5" stroke-linecap="round"><path d="M20 6L9 17l-5-5"></path></svg>Respaldados por <img src="assets/logo-altan.png" alt="Red Altán"> — la red mayorista con mayor cobertura de México.</p>
@@ -261,14 +263,14 @@ section.wrap{padding-top:clamp(48px,6.5vh,72px);padding-bottom:clamp(48px,6.5vh,
       <div class="price"><span class="n">$62</span><small>/7 días</small></div>
       <span class="gb">2 GB</span>
       <ul><li>Llamadas y SMS</li><li>Ideal para probar Yaub</li></ul>
-      <div class="go"><a href="#" data-wa="Hola 👋 Quiero el paquete de 7 días por $62">Lo quiero</a></div>
+      <div class="go"><a href="#" data-recarga-open="" data-recarga-cv="276">Lo quiero</a></div>
     </div>
     <div class="plan" data-r="" style="--r:3;">
       <span class="tag">15 días</span>
       <div class="price"><span class="n">$108</span><small>/15 días</small></div>
       <span class="gb">5 GB</span>
       <ul><li>Llamadas y SMS</li><li>Flexible, sin compromiso</li></ul>
-      <div class="go"><a href="#" data-wa="Hola 👋 Quiero el paquete de 15 días por $108">Lo quiero</a></div>
+      <div class="go"><a href="#" data-recarga-open="" data-recarga-cv="278">Lo quiero</a></div>
     </div>
   </div>
 </section>
@@ -323,21 +325,32 @@ section.wrap{padding-top:clamp(48px,6.5vh,72px);padding-bottom:clamp(48px,6.5vh,
 </div>
 
 <section class="wrap">
-  <p class="kicker" data-r="">Todo por WhatsApp</p>
-  <h2 data-r="">Valida tu cobertura o recarga <span style="color:var(--cyan);">en un mensaje.</span></h2>
+  <p class="kicker" data-r="">Sin salir de aquí</p>
+  <h2 data-r="">Cobertura, equipo y recarga <span style="color:var(--cyan);">en esta página.</span></h2>
   <div class="tools">
     <div class="tool" data-r="" style="--r:1;">
       <h3>📍 ¿Llega Yaub a tu zona?</h3>
-      <p>Escribe tu código postal y Yaub Pal valida tu cobertura al instante.</p>
-      <form class="field" data-waform="Hola 👋 Quiero validar cobertura en el CP: ">
+      <p>Escribe tu código postal y validamos la cobertura al instante.</p>
+      <form class="field" data-cobertura="">
         <input type="text" inputmode="numeric" maxlength="5" placeholder="Código postal" required="">
         <button type="submit">Validar</button>
       </form>
+      <div class="tool-out" data-out="" hidden=""></div>
     </div>
     <div class="tool" data-r="" style="--r:2;">
+      <h3>📱 ¿Tu equipo es compatible?</h3>
+      <p>Pon tu IMEI y te decimos si sirve en la red y si soporta eSIM.</p>
+      <form class="field" data-compatibilidad="">
+        <input type="text" inputmode="numeric" maxlength="16" placeholder="IMEI (14-16 dígitos)" required="">
+        <button type="submit">Revisar</button>
+      </form>
+      <p class="tool-hint">Márcalo con <b>*#06#</b> en tu teléfono.</p>
+      <div class="tool-out" data-out="" hidden=""></div>
+    </div>
+    <div class="tool" data-r="" style="--r:3;">
       <h3>⚡ Recarga en segundos</h3>
-      <p>Pon tu número Yaub y te mandamos el link de pago por WhatsApp.</p>
-      <form class="field" data-waform="Hola 👋 Quiero hacer una recarga al número: ">
+      <p>Pon tu número Yaub, elige tu recarga y paga aquí mismo. Se acredita sola.</p>
+      <form class="field" data-recarga-form="">
         <input type="tel" inputmode="numeric" maxlength="10" placeholder="Tu número a 10 dígitos" required="">
         <button type="submit">Recargar</button>
       </form>
@@ -373,26 +386,32 @@ section.wrap{padding-top:clamp(48px,6.5vh,72px);padding-bottom:clamp(48px,6.5vh,
 <script>
 /* ============================================================
    NÚMERO DE WHATSAPP — cambia solo esta línea.
-   Agente de Yaub Móvil conectado al CRM (activaciones y recargas):
-   55 8962 7902, en formato internacional 52XXXXXXXXXX.
+   Línea oficial de Yaub Móvil (WABA "Yaub Movil", agente conectado al CRM
+   para activaciones, portabilidad y recargas): +52 1 55 8962 7209.
+   Formato = tal como está registrada la WABA (52 + 1 + 10 dígitos); es el que
+   wa.me resuelve sin ambigüedad para móviles de México.
+   Fuente de verdad: whatsapp_numbers en yaub-platform-prod.
    ============================================================ */
-const WA_NUMBER = "525589627902";
+const WA_NUMBER = "5215589627209";
+/* recarga.js lo reusa como fallback si el catálogo de recargas no responde. */
+window.YAUB_WA_NUMBER = WA_NUMBER;
 
 function waUrl(msg){return "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(msg);}
 document.querySelectorAll("[data-wa]").forEach(a => {
   a.href = waUrl(a.dataset.wa);
   a.target = "_blank"; a.rel = "noopener";
 });
-document.querySelectorAll("[data-waform]").forEach(f => {
-  f.addEventListener("submit", e => {
-    e.preventDefault();
-    const v = f.querySelector("input").value.trim();
-    if (!v) return;
-    window.open(waUrl(f.dataset.waform + v), "_blank");
-  });
-});
+/* Ya no hay [data-waform]: los formularios de cobertura y compatibilidad se
+   resuelven en la página (herramientas.js) y el de recarga abre la pasarela
+   (recarga.js). WhatsApp queda para comprar, no para consultar. */
 /* reveal on scroll */
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: 0.15 });
 document.querySelectorAll("[data-r]").forEach(el => io.observe(el));
 </script>
+
+<!-- defer => corren después del script de arriba, así toman window.YAUB_WA_NUMBER. -->
+<!-- Pasarela de recarga (modal + liga de pago Conekta vía LikePhone). -->
+<script src="recarga.js" defer></script>
+<!-- Cobertura por CP y compatibilidad por IMEI, resueltas en la página. -->
+<script src="herramientas.js" defer></script>
 </body></html>
