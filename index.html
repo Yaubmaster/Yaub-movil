@@ -247,6 +247,18 @@ section.wrap{padding-top:clamp(48px,6.5vh,72px);padding-bottom:clamp(48px,6.5vh,
 .plan .price-note b{color:var(--ink-2);}
 .plan .gb-cap{font-size:12.5px;font-weight:700;color:var(--ink-3);line-height:1.4;margin-top:-4px;}
 .plan .price .n.sm{font-size:clamp(30px,3vw,40px);}
+/* Precio de lista tachado al pasar a pago anual. Vive siempre en el DOM
+   (vacío en modo mensual, así no ocupa ancho) y la línea se dibuja con un
+   ::after que va de width:0 a 100%: tachar "en vivo" explica el descuento
+   mejor que sustituir el número de golpe. */
+.plan .price .was{position:relative;font-size:clamp(17px,1.7vw,22px);font-weight:800;letter-spacing:-0.02em;color:var(--ink-3);text-decoration:none;opacity:0;transform:translateY(3px);transition:opacity .3s var(--ease),transform .3s var(--ease);}
+.plan .price .was::after{content:"";position:absolute;left:-3px;top:52%;width:0;height:2.5px;border-radius:2px;background:#DC2626;transition:width .45s var(--ease) .15s;}
+.plan.is-anual .price .was{opacity:1;transform:none;}
+.plan.is-anual .price .was::after{width:calc(100% + 6px);}
+@media (prefers-reduced-motion:reduce){
+  .plan.is-anual .price .was{opacity:1;transform:none;}
+  .plan.is-anual .price .was::after{width:calc(100% + 6px);}
+}
 .plans-sep{margin-top:38px;font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);}
 .plan-legal{margin-top:20px;font-size:13px;color:var(--ink-3);line-height:1.6;max-width:70ch;}
 /* En móvil los switches ocupan el ancho completo y reparten sus dos
@@ -319,7 +331,7 @@ section.wrap{padding-top:clamp(48px,6.5vh,72px);padding-bottom:clamp(48px,6.5vh,
   <div class="plans plans-3">
     <div class="plan" data-r="" style="--r:0;" data-plan="" data-nombre="Esencial" data-pub="199" data-dxn="155" data-gb-porta="9" data-gb-nueva="3">
       <span class="tag">Esencial</span>
-      <div class="price"><span class="n sm" data-price="">$199</span><small>/mes</small></div>
+      <div class="price"><s class="was" data-was=""></s><span class="n sm" data-price="">$199</span><small>/mes</small></div>
       <p class="price-note" data-note=""></p>
       <span class="gb"><b data-gb="">9 GB</b> · redes ilimitadas</span>
       <span class="gb-cap" data-gb-cap=""></span>
@@ -329,7 +341,7 @@ section.wrap{padding-top:clamp(48px,6.5vh,72px);padding-bottom:clamp(48px,6.5vh,
     <div class="plan star" data-r="" style="--r:1;" data-plan="" data-nombre="Completo" data-pub="349" data-dxn="280" data-gb-porta="36" data-gb-nueva="12">
       <span class="ribbon">El más elegido</span>
       <span class="tag">Completo</span>
-      <div class="price"><span class="n sm" data-price="">$349</span><small>/mes</small></div>
+      <div class="price"><s class="was" data-was=""></s><span class="n sm" data-price="">$349</span><small>/mes</small></div>
       <p class="price-note" data-note=""></p>
       <span class="gb"><b data-gb="">36 GB</b> · redes ilimitadas</span>
       <span class="gb-cap" data-gb-cap=""></span>
@@ -338,7 +350,7 @@ section.wrap{padding-top:clamp(48px,6.5vh,72px);padding-bottom:clamp(48px,6.5vh,
     </div>
     <div class="plan" data-r="" style="--r:2;" data-plan="" data-nombre="Máximo" data-pub="449" data-dxn="400" data-gb-porta="105" data-gb-nueva="35">
       <span class="tag">Máximo</span>
-      <div class="price"><span class="n sm" data-price="">$449</span><small>/mes</small></div>
+      <div class="price"><s class="was" data-was=""></s><span class="n sm" data-price="">$449</span><small>/mes</small></div>
       <p class="price-note" data-note=""></p>
       <span class="gb"><b data-gb="">105 GB</b> · redes ilimitadas</span>
       <span class="gb-cap" data-gb-cap=""></span>
@@ -524,12 +536,16 @@ document.querySelectorAll("[data-wa]").forEach(a => {
       const precio = anual ? dxn : pub;
 
       card.querySelector("[data-price]").textContent = mx(precio);
+      /* El precio de lista solo existe en modo anual; en mensual se vacía
+         (y no en display:none) para que el <s> conserve caja y la línea
+         pueda animarse al volver a entrar. */
+      card.querySelector("[data-was]").textContent = anual ? mx(pub) : "";
       card.querySelector("[data-gb]").textContent = gb + " GB";
       card.querySelector("[data-gb-cap]").textContent = porta
         ? "portando tu número — el triple de datos"
         : "en línea nueva · " + card.dataset.gbPorta + " GB si portas tu número";
       card.querySelector("[data-note]").innerHTML = anual
-        ? "Pagas <b>" + mx(dxn * 12) + "</b> por 12 meses (" + mx(dxn) + "/mes) · ahorras " + mx((pub - dxn) * 12) + " contra " + mx(pub) + " al mes."
+        ? "Pagas <b>" + mx(dxn * 12) + "</b> por 12 meses · ahorras " + mx((pub - dxn) * 12) + " al año."
         : "Con descuento por nómina: <b>" + mx(dxn) + "/mes</b>. Mismo precio si pagas el año completo.";
 
       const linea = porta ? "portando mi número" : "en línea nueva";
@@ -539,6 +555,12 @@ document.querySelectorAll("[data-wa]").forEach(a => {
       const cta = card.querySelector("[data-plan-cta]");
       cta.dataset.wa = msg;
       cta.href = waUrl(msg);
+    });
+    /* La clase va en el frame siguiente: si se pone junto con el texto del
+       precio de lista, el navegador colapsa ambos cambios en un solo
+       recálculo y la tachadura aparece de golpe en vez de dibujarse. */
+    requestAnimationFrame(function(){
+      cards.forEach(card => card.classList.toggle("is-anual", anual));
     });
   }
 
