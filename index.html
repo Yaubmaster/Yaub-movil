@@ -3,7 +3,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Yaub Móvil — Telefonía que conversa contigo</title>
-<meta name="description" content="Yaub Móvil: 36 GB con redes sociales ilimitadas desde $280/mes con descuento por nómina. Activa, porta y recarga tu línea por WhatsApp con Yaub Pal. Respaldados por Red Altán.">
+<meta name="description" content="Yaub Móvil: planes de 9, 36 y 105 GB con redes sociales ilimitadas desde $155/mes con descuento por nómina o pago anual. El triple de datos al portar tu número. Activa, porta y recarga por WhatsApp con Yaub Pal. Respaldados por Red Altán.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700;800&display=swap">
@@ -219,6 +219,45 @@ section.wrap{padding-top:clamp(48px,6.5vh,72px);padding-bottom:clamp(48px,6.5vh,
   .vs{grid-template-columns:1fr;gap:32px;}
   .rs-icons{margin-left:0;}
 }
+/* ============================================================
+   Planes mensuales: 3 niveles ($199/$349/$449 al público) con dos
+   switches que reescriben precio y GB sin recargar la página:
+     · pago  → mensual (precio público) | anual (queda al precio de nómina)
+     · línea → portabilidad (×3 de datos) | línea nueva (un tercio)
+   La rejilla de planes se declara con .plans-3 / .plans-2 para no
+   depender del 1.2fr 1.2fr 0.9fr 0.9fr de la referencia (que asumía
+   dos mensuales + dos prepagos en una sola fila).
+   ============================================================ */
+.plans.plans-3{grid-template-columns:repeat(3,minmax(0,1fr));}
+.plans.plans-2{grid-template-columns:repeat(2,minmax(0,1fr));max-width:680px;}
+@media (max-width:900px){
+  .plans.plans-3,.plans.plans-2{grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+@media (max-width:640px){
+  .plans.plans-3,.plans.plans-2{grid-template-columns:minmax(0,1fr);}
+}
+.plan-switches{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px;}
+.switch{display:inline-flex;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:5px;gap:4px;box-shadow:0 10px 24px rgba(20,20,31,0.05);max-width:100%;flex-wrap:wrap;}
+.switch button{font-family:var(--font);font-size:13.5px;font-weight:700;color:var(--ink-2);background:none;border:none;cursor:pointer;padding:10px 18px;border-radius:999px;display:inline-flex;align-items:center;gap:8px;transition:background .3s,color .3s;}
+.switch button:hover{color:var(--ink);}
+.switch button.on{background:var(--ink);color:#fff;}
+.switch button .pill{font-size:10.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:3px 8px;border-radius:999px;background:rgba(101,163,13,0.16);color:var(--lime);}
+.switch button.on .pill{background:rgba(255,255,255,0.18);color:#fff;}
+.plan .price-note{font-size:12.5px;font-weight:600;color:var(--ink-3);line-height:1.45;}
+.plan .price-note b{color:var(--ink-2);}
+.plan .gb-cap{font-size:12.5px;font-weight:700;color:var(--ink-3);line-height:1.4;margin-top:-4px;}
+.plan .price .n.sm{font-size:clamp(30px,3vw,40px);}
+.plans-sep{margin-top:38px;font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);}
+.plan-legal{margin-top:20px;font-size:13px;color:var(--ink-3);line-height:1.6;max-width:70ch;}
+/* En móvil los switches ocupan el ancho completo y reparten sus dos
+   opciones 50/50: si se dejan en línea con flex-wrap, la opción
+   inactiva cae sola y deja de leerse como un selector. */
+@media (max-width:640px){
+  .plan-switches{flex-direction:column;gap:10px;}
+  .switch{width:100%;flex-wrap:nowrap;}
+  .switch button{flex:1 1 0;min-width:0;justify-content:center;flex-wrap:wrap;gap:6px;padding:10px 12px;font-size:13px;text-align:center;}
+  .switch button .pill{font-size:9.5px;padding:3px 7px;}
+}
 </style>
 </head>
 <body>
@@ -240,7 +279,7 @@ section.wrap{padding-top:clamp(48px,6.5vh,72px);padding-bottom:clamp(48px,6.5vh,
     <div>
       <span class="badge" data-r="" style="--r:0;"><span class="dot"></span>La nueva telefonía con IA</span>
       <h1 data-r="" style="--r:1;">Telefonía que <span class="cy">contesta al instante</span>, conecta mejor y <span style="color:var(--lime);">cuesta menos</span>.</h1>
-      <p class="sub" data-r="" style="--r:2;">36 GB manteniendo tu mismo número, redes sociales ilimitadas y un agente de IA que activa, porta y recarga tu línea por WhatsApp. Sin filas, sin esperas, sin letras chiquitas.</p>
+      <p class="sub" data-r="" style="--r:2;">Hasta 105 GB manteniendo tu mismo número, redes sociales ilimitadas y un agente de IA que activa, porta y recarga tu línea por WhatsApp. Sin filas, sin esperas, sin letras chiquitas.</p>
       <div class="cta-row" data-r="" style="--r:3;">
         <a class="btn btn-solo" href="#" data-wa="Hola 👋 Quiero cambiarme a Yaub Móvil por mi cuenta">Quiero cambiarme solo
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
@@ -263,34 +302,65 @@ section.wrap{padding-top:clamp(48px,6.5vh,72px);padding-bottom:clamp(48px,6.5vh,
 
 <section class="wrap" id="planes">
   <p class="kicker" data-r="">Planes vigentes</p>
-  <h2 data-r="">Un solo plan estrella. <span style="color:var(--cyan);">Dos formas de tenerlo.</span></h2>
-  <p class="lead" data-r="">El mismo plan de 36 GB: más barato si tu empresa está afiliada al descuento por nómina. Los 36 GB aplican portando tu número — te cambias y mantienes el mismo. En línea nueva incluye 12 GB.</p>
-  <div class="plans">
-    <div class="plan star" data-r="" style="--r:0;">
-      <span class="ribbon">Descuento por nómina</span>
-      <span class="tag">Empresas afiliadas</span>
-      <div class="price"><span class="n">$280</span><small>/mes</small></div>
-      <span class="gb">36 GB · redes ilimitadas</span>
-      <ul><li>Mantén tu número: 36 GB · línea nueva: 12 GB</li><li>Llamadas y SMS ilimitados</li><li>eSIM o SIM física</li><li>Se descuenta solo de tu nómina</li></ul>
-      <div class="go"><a href="#" data-wa="Hola 👋 Trabajo en una empresa afiliada y quiero el plan de $280 con descuento por nómina">Lo quiero</a></div>
+  <h2 data-r="">Tres planes mensuales. <span style="color:var(--cyan);">El triple de datos si traes tu número.</span></h2>
+  <p class="lead" data-r="">Todos con redes sociales, llamadas y SMS ilimitados. Al portar tu número te damos el triple de datos; en línea nueva recibes un tercio. Y si tu empresa está afiliada al descuento por nómina —o pagas 12 meses por adelantado— te queda al precio de nómina.</p>
+
+  <div class="plan-switches" data-r="">
+    <div class="switch" data-switch="pago" role="group" aria-label="Forma de pago">
+      <button type="button" class="on" data-val="mensual" aria-pressed="true">Pago mensual</button>
+      <button type="button" data-val="anual" aria-pressed="false">Pago anual <span class="pill">precio nómina</span></button>
     </div>
-    <div class="plan" data-r="" style="--r:1;">
-      <span class="tag">Venta libre</span>
-      <div class="price"><span class="n">$349</span><small>/mes</small></div>
-      <span class="gb">36 GB · redes ilimitadas</span>
-      <ul><li>Mantén tu número: 36 GB · línea nueva: 12 GB</li><li>Llamadas y SMS ilimitados</li><li>eSIM o SIM física</li><li>Sin plazos forzosos</li></ul>
-      <div class="go"><a href="#" data-wa="Hola 👋 Quiero el plan de $349 de venta libre de Yaub Móvil">Lo quiero</a></div>
+    <div class="switch" data-switch="linea" role="group" aria-label="Tipo de línea">
+      <button type="button" class="on" data-val="porta" aria-pressed="true">Traigo mi número <span class="pill">×3 datos</span></button>
+      <button type="button" data-val="nueva" aria-pressed="false">Línea nueva</button>
     </div>
-    <div class="plan" data-r="" style="--r:2;">
+  </div>
+
+  <div class="plans plans-3">
+    <div class="plan" data-r="" style="--r:0;" data-plan="" data-nombre="Esencial" data-pub="199" data-dxn="155" data-gb-porta="9" data-gb-nueva="3">
+      <span class="tag">Esencial</span>
+      <div class="price"><span class="n sm" data-price="">$199</span><small>/mes</small></div>
+      <p class="price-note" data-note=""></p>
+      <span class="gb"><b data-gb="">9 GB</b> · redes ilimitadas</span>
+      <span class="gb-cap" data-gb-cap=""></span>
+      <ul><li>Llamadas y SMS ilimitados</li><li>eSIM o SIM física</li><li>Sin plazos forzosos</li></ul>
+      <div class="go"><a href="#" data-plan-cta="" data-wa="Hola 👋 Quiero el plan Esencial de Yaub Móvil">Lo quiero</a></div>
+    </div>
+    <div class="plan star" data-r="" style="--r:1;" data-plan="" data-nombre="Completo" data-pub="349" data-dxn="280" data-gb-porta="36" data-gb-nueva="12">
+      <span class="ribbon">El más elegido</span>
+      <span class="tag">Completo</span>
+      <div class="price"><span class="n sm" data-price="">$349</span><small>/mes</small></div>
+      <p class="price-note" data-note=""></p>
+      <span class="gb"><b data-gb="">36 GB</b> · redes ilimitadas</span>
+      <span class="gb-cap" data-gb-cap=""></span>
+      <ul><li>Llamadas y SMS ilimitados</li><li>eSIM o SIM física</li><li>Disponible con descuento por nómina</li></ul>
+      <div class="go"><a href="#" data-plan-cta="" data-wa="Hola 👋 Quiero el plan Completo de Yaub Móvil">Lo quiero</a></div>
+    </div>
+    <div class="plan" data-r="" style="--r:2;" data-plan="" data-nombre="Máximo" data-pub="449" data-dxn="400" data-gb-porta="105" data-gb-nueva="35">
+      <span class="tag">Máximo</span>
+      <div class="price"><span class="n sm" data-price="">$449</span><small>/mes</small></div>
+      <p class="price-note" data-note=""></p>
+      <span class="gb"><b data-gb="">105 GB</b> · redes ilimitadas</span>
+      <span class="gb-cap" data-gb-cap=""></span>
+      <ul><li>Llamadas y SMS ilimitados</li><li>eSIM o SIM física</li><li>Para quien trabaja desde el celular</li></ul>
+      <div class="go"><a href="#" data-plan-cta="" data-wa="Hola 👋 Quiero el plan Máximo de Yaub Móvil">Lo quiero</a></div>
+    </div>
+  </div>
+
+  <p class="plan-legal" data-r="">Los GB del plan aplican al portar tu número (×3). En línea nueva recibes un tercio: 3 GB, 12 GB o 35 GB según el plan. El precio de nómina aplica si tu empresa está afiliada, o para cualquiera que contrate 12 meses por adelantado.</p>
+
+  <p class="plans-sep" data-r="">¿Solo quieres probar? Prepago por días</p>
+  <div class="plans plans-2">
+    <div class="plan" data-r="" style="--r:0;">
       <span class="tag">7 días</span>
-      <div class="price"><span class="n">$62</span><small>/7 días</small></div>
+      <div class="price"><span class="n sm">$62</span><small>/7 días</small></div>
       <span class="gb">2 GB</span>
       <ul><li>Llamadas y SMS</li><li>Ideal para probar Yaub</li></ul>
       <div class="go"><a href="#" data-recarga-open="" data-recarga-cv="276">Lo quiero</a></div>
     </div>
-    <div class="plan" data-r="" style="--r:3;">
+    <div class="plan" data-r="" style="--r:1;">
       <span class="tag">15 días</span>
-      <div class="price"><span class="n">$108</span><small>/15 días</small></div>
+      <div class="price"><span class="n sm">$108</span><small>/15 días</small></div>
       <span class="gb">5 GB</span>
       <ul><li>Llamadas y SMS</li><li>Flexible, sin compromiso</li></ul>
       <div class="go"><a href="#" data-recarga-open="" data-recarga-cv="278">Lo quiero</a></div>
@@ -316,7 +386,7 @@ section.wrap{padding-top:clamp(48px,6.5vh,72px);padding-bottom:clamp(48px,6.5vh,
       <p class="line"><b>$70</b> a la semana vía nómina</p>
       <div class="big cy">36 <small>GB</small></div>
       <p class="cap">al mes · <b style="color:var(--cyan);">$70 = 9 GB a la semana</b></p>
-      <ul><li>36 GB a velocidad plena, sin cortes</li><li>Mantienes tu mismo número</li><li>Llamadas y SMS ilimitados</li><li>Se descuenta solo de tu nómina</li></ul>
+      <ul><li>36 GB a velocidad plena, sin cortes</li><li>Mantienes tu mismo número</li><li>Llamadas y SMS ilimitados</li><li>Se descuenta solo de tu nómina — o pagas el año y te sale al mismo precio</li></ul>
     </div>
   </div>
   <div class="rs-band" data-r="">
@@ -428,6 +498,66 @@ document.querySelectorAll("[data-wa]").forEach(a => {
 /* Ya no hay [data-waform]: los formularios de cobertura y compatibilidad se
    resuelven en la página (herramientas.js) y el de recarga abre la pasarela
    (recarga.js). WhatsApp queda para comprar, no para consultar. */
+/* ============================================================
+   PLANES MENSUALES — precio y GB se calculan aquí, no se escriben
+   a mano en cada tarjeta, para que las dos reglas del producto
+   vivan en un solo lugar:
+     1) Portabilidad = ×3 de datos. Línea nueva = un tercio
+        (los data-gb-* de la tarjeta ya traen ambos valores).
+     2) El precio de venta al público baja al precio de nómina si
+        el cliente contrata 12 meses por adelantado.
+   Para cambiar precios o GB, edita los data-* de la tarjeta.
+   ============================================================ */
+(function(){
+  const mx = n => "$" + n.toLocaleString("es-MX");
+  const cards = Array.from(document.querySelectorAll("[data-plan]"));
+  if (!cards.length) return;
+  const state = { pago: "mensual", linea: "porta" };
+
+  function render(){
+    const anual = state.pago === "anual";
+    const porta = state.linea === "porta";
+    cards.forEach(card => {
+      const pub = +card.dataset.pub, dxn = +card.dataset.dxn;
+      const nombre = card.dataset.nombre;
+      const gb = porta ? card.dataset.gbPorta : card.dataset.gbNueva;
+      const precio = anual ? dxn : pub;
+
+      card.querySelector("[data-price]").textContent = mx(precio);
+      card.querySelector("[data-gb]").textContent = gb + " GB";
+      card.querySelector("[data-gb-cap]").textContent = porta
+        ? "portando tu número — el triple de datos"
+        : "en línea nueva · " + card.dataset.gbPorta + " GB si portas tu número";
+      card.querySelector("[data-note]").innerHTML = anual
+        ? "Pagas <b>" + mx(dxn * 12) + "</b> por 12 meses (" + mx(dxn) + "/mes) · ahorras " + mx((pub - dxn) * 12) + " contra " + mx(pub) + " al mes."
+        : "Con descuento por nómina: <b>" + mx(dxn) + "/mes</b>. Mismo precio si pagas el año completo.";
+
+      const linea = porta ? "portando mi número" : "en línea nueva";
+      const msg = anual
+        ? "Hola 👋 Quiero el plan " + nombre + " de Yaub Móvil en pago anual (" + mx(dxn) + "/mes, " + gb + " GB " + linea + ")"
+        : "Hola 👋 Quiero el plan " + nombre + " de Yaub Móvil de " + mx(pub) + "/mes (" + gb + " GB " + linea + ")";
+      const cta = card.querySelector("[data-plan-cta]");
+      cta.dataset.wa = msg;
+      cta.href = waUrl(msg);
+    });
+  }
+
+  document.querySelectorAll("[data-switch]").forEach(sw => {
+    sw.addEventListener("click", e => {
+      const btn = e.target.closest("button[data-val]");
+      if (!btn || btn.classList.contains("on")) return;
+      sw.querySelectorAll("button").forEach(b => {
+        const on = b === btn;
+        b.classList.toggle("on", on);
+        b.setAttribute("aria-pressed", String(on));
+      });
+      state[sw.dataset.switch] = btn.dataset.val;
+      render();
+    });
+  });
+
+  render();
+})();
 /* reveal on scroll */
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: 0.15 });
 document.querySelectorAll("[data-r]").forEach(el => io.observe(el));
