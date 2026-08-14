@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Términos y condiciones — Yaub Móvil</title>
+<meta name="description" content="Términos y condiciones del servicio móvil de Yaub Móvil: planes, precios, portabilidad, descuento por nómina, pago anual, cobertura sobre Red Altán, equipos, recargas, cancelación y datos personales.">
+<meta name="robots" content="index,follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700;800&display=swap">
+
+<!-- ============================================================
+     TÉRMINOS Y CONDICIONES — documento completo.
+
+     PENDIENTES DE LEGAL antes de publicar: todo lo marcado con la
+     clase .tbd (aparece resaltado en amarillo en pantalla, justo para
+     que nadie lo suba sin llenarlo). Son datos que no viven en el
+     repo ni en la página: razón social, RFC, domicilio fiscal, correo
+     legal, autorización IFT, URL del aviso de privacidad, política de
+     devolución del pago anual y qué pasa con el precio de nómina
+     cuando alguien deja la empresa afiliada.
+
+     Todo lo demás está redactado a partir de lo que Yaub Móvil ya
+     anuncia en index.html (planes, precios, GB, portabilidad ×3,
+     nómina/anual, Red Altán, prepagos) y de las reglas generales que
+     aplican a cualquier servicio móvil en México.
+     ============================================================ -->
+<style>
+:root{
+  --bg:#F7F8FB; --surface:#FFFFFF; --ink:#14141F; --ink-2:rgba(20,20,31,0.64); --ink-3:rgba(20,20,31,0.42);
+  --line:rgba(20,20,31,0.08); --cyan:#0891B2; --cyan-b:#22D3EE; --lime:#65A30D;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --font:"Geist","Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;overflow-x:clip;}
+body{background:var(--bg);color:var(--ink);font-family:var(--font);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+a{color:var(--cyan);text-decoration:none;}
+a:hover{color:#7C3AED;}
+.wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+nav{position:sticky;top:0;z-index:20;background:rgba(247,248,251,0.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line);}
+.navin{max-width:1120px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;gap:12px;}
+.navin img{height:34px;width:auto;}
+.navin .wm{font-weight:800;font-size:19px;letter-spacing:-0.02em;}
+.navin .wm em{font-style:normal;font-weight:400;color:var(--cyan);}
+.nav-cta{margin-left:auto;display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:#fff;font-weight:700;font-size:14px;padding:10px 18px;border-radius:999px;white-space:nowrap;transition:transform .3s var(--ease),box-shadow .3s;}
+.nav-cta:hover{color:#fff;transform:translateY(-2px);box-shadow:0 10px 24px rgba(20,20,31,0.22);}
+header.doc{padding:clamp(36px,6vh,64px) 0 10px;}
+.kicker{font-size:13px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:10px;}
+h1{font-size:clamp(30px,4.4vw,46px);font-weight:800;letter-spacing:-0.025em;line-height:1.06;margin-bottom:12px;}
+.sub{color:var(--ink-2);font-size:16px;line-height:1.6;max-width:64ch;}
+.meta{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap;font-size:12.5px;font-weight:700;color:var(--ink-3);}
+.meta span{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:7px 14px;}
+/* índice */
+.toc{margin:28px 0 8px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:22px 26px;box-shadow:0 14px 36px rgba(20,20,31,0.05);}
+.toc p{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:12px;}
+.toc ol{list-style:none;counter-reset:t;columns:2;column-gap:32px;}
+.toc li{counter-increment:t;font-size:13.5px;line-height:1.5;margin-bottom:8px;break-inside:avoid;}
+.toc li a::before{content:counter(t) ". ";color:var(--ink-3);font-weight:700;}
+.toc li a{color:var(--ink-2);font-weight:600;}
+.toc li a:hover{color:var(--cyan);}
+/* cuerpo */
+main{padding-bottom:40px;}
+section.cl{padding:26px 0 0;scroll-margin-top:76px;}
+section.cl h2{font-size:clamp(19px,2.2vw,24px);font-weight:800;letter-spacing:-0.02em;line-height:1.2;margin-bottom:12px;display:flex;gap:12px;}
+section.cl h2 .num{color:var(--cyan);flex:none;}
+section.cl p,section.cl li{font-size:14.5px;line-height:1.72;color:var(--ink-2);}
+section.cl p{margin-bottom:12px;}
+section.cl b{color:var(--ink);}
+section.cl ul{list-style:none;margin:0 0 14px;display:flex;flex-direction:column;gap:9px;}
+section.cl ul li{display:flex;gap:10px;}
+section.cl ul li::before{content:"—";color:var(--cyan);font-weight:800;flex:none;}
+section.cl ol{margin:0 0 14px 20px;display:flex;flex-direction:column;gap:9px;}
+.tbd{background:rgba(234,179,8,0.22);border-bottom:2px solid rgba(161,98,7,0.55);color:#854D0E;font-weight:700;padding:0 4px;border-radius:3px;}
+/* tabla de planes */
+.tw{overflow-x:auto;margin:6px 0 16px;border:1px solid var(--line);border-radius:16px;background:var(--surface);}
+table{border-collapse:collapse;width:100%;min-width:560px;}
+th,td{text-align:left;font-size:13.5px;padding:12px 16px;border-bottom:1px solid var(--line);white-space:nowrap;}
+th{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);background:rgba(20,20,31,0.02);}
+td{color:var(--ink-2);}
+td:first-child{font-weight:800;color:var(--ink);}
+tr:last-child td{border-bottom:none;}
+.note{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--cyan);border-radius:14px;padding:16px 20px;margin:4px 0 14px;font-size:13.5px;line-height:1.65;color:var(--ink-2);}
+footer{padding:34px 0 44px;color:var(--ink-3);font-size:13px;border-top:1px solid var(--line);margin-top:32px;}
+.foot-in{max-width:900px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+.foot-in img{height:26px;width:auto;opacity:.9;}
+.foot-in .sp{margin-left:auto;display:flex;gap:18px;flex-wrap:wrap;}
+@media (max-width:720px){
+  .toc ol{columns:1;}
+  .foot-in .sp{margin-left:0;}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none !important;transition:none !important;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="navin">
+    <a href="index.html" style="display:flex;align-items:center;gap:12px;color:var(--ink);">
+      <img src="assets/yaubmovil-logo-dark.png" alt="Yaub Móvil">
+      <span class="wm">yaub <em>móvil</em></span>
+    </a>
+    <a class="nav-cta" href="#" data-wa="Hola 👋 Tengo una duda sobre los términos y condiciones de Yaub Móvil">Hablar con Yaub Pal</a>
+  </div>
+</nav>
+
+<header class="doc wrap">
+  <p class="kicker">Documento legal</p>
+  <h1>Términos y condiciones del servicio Yaub Móvil</h1>
+  <p class="sub">Estos términos regulan la contratación y el uso del servicio de telefonía móvil Yaub Móvil. Al contratar, activar o usar una línea Yaub Móvil aceptas lo que aquí se establece. Léelos completos: aquí está todo lo que aplica a tu plan, sin letras chiquitas.</p>
+  <div class="meta">
+    <span>Última actualización: 14 de agosto de 2026</span>
+    <span>Aplica a: planes mensuales y recargas</span>
+    <span>Red: Altán Redes</span>
+  </div>
+
+  <nav class="toc" aria-label="Índice">
+    <p>Contenido</p>
+    <ol>
+      <li><a href="#c1">Quién presta el servicio</a></li>
+      <li><a href="#c2">Definiciones</a></li>
+      <li><a href="#c3">Objeto y aceptación</a></li>
+      <li><a href="#c4">Requisitos para contratar</a></li>
+      <li><a href="#c5">Contratación y activación</a></li>
+      <li><a href="#c6">Planes, precios y qué incluyen</a></li>
+      <li><a href="#c7">Datos incluidos y portabilidad</a></li>
+      <li><a href="#c8">Descuento por nómina</a></li>
+      <li><a href="#c9">Pago anual anticipado</a></li>
+      <li><a href="#c10">Facturación, ciclo y renovación</a></li>
+      <li><a href="#c11">Formas de pago</a></li>
+      <li><a href="#c12">Recargas y paquetes por días</a></li>
+      <li><a href="#c13">Redes sociales incluidas</a></li>
+      <li><a href="#c14">Velocidad y calidad del servicio</a></li>
+      <li><a href="#c15">Cobertura</a></li>
+      <li><a href="#c16">Equipos, SIM y eSIM</a></li>
+      <li><a href="#c17">Uso permitido del servicio</a></li>
+      <li><a href="#c18">Suspensión y terminación</a></li>
+      <li><a href="#c19">Cancelación y devoluciones</a></li>
+      <li><a href="#c20">Portabilidad de salida</a></li>
+      <li><a href="#c21">Robo, extravío y reposición</a></li>
+      <li><a href="#c22">Atención a clientes</a></li>
+      <li><a href="#c23">Datos personales</a></li>
+      <li><a href="#c24">Yaub Pal y canales automatizados</a></li>
+      <li><a href="#c25">Responsabilidad</a></li>
+      <li><a href="#c26">Cambios a estos términos</a></li>
+      <li><a href="#c27">Ley aplicable y jurisdicción</a></li>
+    </ol>
+  </nav>
+</header>
+
+<main class="wrap">
+
+<section class="cl" id="c1">
+  <h2><span class="num">1.</span> Quién presta el servicio</h2>
+  <p>El servicio Yaub Móvil es prestado por <span class="tbd">[RAZÓN SOCIAL COMPLETA]</span>, con RFC <span class="tbd">[RFC]</span> y domicilio en <span class="tbd">[DOMICILIO FISCAL]</span>, en su carácter de operador móvil virtual, con la autorización correspondiente ante el Instituto Federal de Telecomunicaciones <span class="tbd">[NÚMERO Y FECHA DE AUTORIZACIÓN IFT]</span>.</p>
+  <p>Yaub Móvil opera sobre la red mayorista de <b>Altán Redes</b>. La infraestructura, cobertura y capacidad de red son provistas por Altán Redes; la relación comercial y de servicio la mantienes con Yaub Móvil.</p>
+</section>
+
+<section class="cl" id="c2">
+  <h2><span class="num">2.</span> Definiciones</h2>
+  <ul>
+    <li><b>Plan:</b> paquete mensual de datos, minutos y SMS contratado con Yaub Móvil.</li>
+    <li><b>Portabilidad:</b> trámite por el cual conservas tu número telefónico al cambiarte de compañía.</li>
+    <li><b>Línea nueva:</b> alta de servicio con un número asignado por Yaub Móvil, sin traer un número de otra compañía.</li>
+    <li><b>Precio de lista:</b> precio de venta al público del plan, pagado mes a mes.</li>
+    <li><b>Precio preferente:</b> precio menor al de lista, aplicable por descuento por nómina o por pago anual anticipado.</li>
+    <li><b>Recarga:</b> paquete de vigencia limitada que se aplica sobre una línea Yaub Móvil ya activa.</li>
+    <li><b>Yaub Pal:</b> el agente de atención de Yaub Móvil que opera por WhatsApp.</li>
+  </ul>
+</section>
+
+<section class="cl" id="c3">
+  <h2><span class="num">3.</span> Objeto y aceptación</h2>
+  <p>Estos términos regulan la contratación, activación y uso del servicio móvil de Yaub Móvil, incluidos los planes mensuales y las recargas por días. Al contratar un plan, activar una SIM o eSIM, realizar una recarga o usar la línea, aceptas estos términos en su totalidad.</p>
+  <p>Si contratas a nombre de una empresa o de un tercero, declaras contar con facultades para obligarlos.</p>
+</section>
+
+<section class="cl" id="c4">
+  <h2><span class="num">4.</span> Requisitos para contratar</h2>
+  <ul>
+    <li>Ser mayor de edad y contar con capacidad legal para contratar.</li>
+    <li>Proporcionar datos verdaderos y completos, así como identificación oficial vigente cuando se requiera para el alta o la portabilidad.</li>
+    <li>Contar con un equipo liberado y compatible con la red, conforme a la cláusula 16.</li>
+    <li>Estar en zona con cobertura, conforme a la cláusula 15.</li>
+  </ul>
+  <p>Yaub Móvil puede rechazar o cancelar una solicitud cuando los datos proporcionados sean falsos o incompletos, cuando el pago no se acredite, o cuando el equipo o la zona no permitan prestar el servicio.</p>
+</section>
+
+<section class="cl" id="c5">
+  <h2><span class="num">5.</span> Contratación y activación</h2>
+  <p>Los planes mensuales se contratan por WhatsApp con Yaub Pal, al número <b>+52 55 8962 7209</b>, o a través del área de Recursos Humanos de tu empresa cuando aplique el descuento por nómina. Las recargas por días se pagan en línea desde yaubmovil.mx.</p>
+  <p>La activación se realiza mediante eSIM o SIM física, según lo que soporte tu equipo. En altas con portabilidad, el servicio queda activo una vez que concluye el trámite de portabilidad conforme a la cláusula 7.</p>
+  <p>El plan y el precio aplicables son los que se te confirman al contratar. Esa confirmación, junto con estos términos, integra tu contrato.</p>
+</section>
+
+<section class="cl" id="c6">
+  <h2><span class="num">6.</span> Planes, precios y qué incluyen</h2>
+  <p>Precios en pesos mexicanos, por mes de servicio. Los GB de la columna «portando tu número» aplican cuando traes tu número de otra compañía; los de «línea nueva» cuando el número es nuevo, conforme a la cláusula 7.</p>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Plan</th><th>Precio de lista</th><th>Precio preferente</th><th>Portando tu número</th><th>Línea nueva</th></tr></thead>
+      <tbody>
+        <tr><td>Esencial</td><td>$199 / mes</td><td>$155 / mes</td><td>9 GB</td><td>3 GB</td></tr>
+        <tr><td>Completo</td><td>$349 / mes</td><td>$280 / mes</td><td>36 GB</td><td>12 GB</td></tr>
+        <tr><td>Máximo</td><td>$449 / mes</td><td>$400 / mes</td><td>105 GB</td><td>35 GB</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Los tres planes incluyen <b>llamadas y SMS ilimitados</b> y <b>redes sociales ilimitadas</b> conforme a la cláusula 13. El precio preferente se obtiene por descuento por nómina (cláusula 8) o por pago anual anticipado (cláusula 9); ambos caminos llevan al mismo precio y no son acumulables entre sí.</p>
+  <p>Los precios publicados son los vigentes a la fecha de actualización de este documento y pueden modificarse conforme a la cláusula 26. El precio aplicable a tu línea es el confirmado al contratar y se respeta durante el periodo pagado.</p>
+  <p><span class="tbd">[CONFIRMAR: si los precios publicados incluyen IVA o se expresan más IVA]</span></p>
+</section>
+
+<section class="cl" id="c7">
+  <h2><span class="num">7.</span> Datos incluidos y portabilidad</h2>
+  <p>Los GB anunciados como principales de cada plan —9 GB, 36 GB y 105 GB— corresponden a altas <b>con portabilidad</b>: es decir, cuando traes tu número de otra compañía a Yaub Móvil.</p>
+  <p>En altas de <b>línea nueva</b>, el plan incluye una tercera parte de esos datos: 3 GB, 12 GB y 35 GB respectivamente. Todo lo demás del plan —llamadas, SMS y redes sociales ilimitadas— es idéntico en ambos casos.</p>
+  <div class="note">Para portar tu número necesitas el NIP de portabilidad, que obtienes gratis marcando <b>051</b> desde la línea que vas a cambiar. El trámite lo hace Yaub Móvil por ti; conforme a la regulación aplicable, la portabilidad se realiza dentro de las 24 horas hábiles siguientes a la solicitud procedente.</div>
+  <p>Los datos incluidos son de uso mensual y no acumulables al siguiente periodo, salvo que Yaub Móvil indique lo contrario por escrito.</p>
+</section>
+
+<section class="cl" id="c8">
+  <h2><span class="num">8.</span> Descuento por nómina</h2>
+  <p>El precio preferente por nómina —$155, $280 y $400 al mes según el plan— aplica para el personal de empresas afiliadas al convenio de descuento por nómina con Yaub Móvil.</p>
+  <ul>
+    <li>El cobro se realiza mediante descuento en la nómina del empleado, a través de la empresa afiliada, en los periodos que la empresa determine.</li>
+    <li>La afiliación de la empresa y la autorización de descuento del empleado son requisitos para mantener el precio preferente.</li>
+    <li>La empresa afiliada es responsable de enterar a Yaub Móvil los importes descontados a su personal.</li>
+    <li><span class="tbd">[CONFIRMAR: qué ocurre cuando el empleado deja la empresa afiliada o se cancela el convenio — si la línea migra al precio de lista, en qué plazo, y si se ofrece la opción de pago anual para conservar el precio]</span></li>
+  </ul>
+</section>
+
+<section class="cl" id="c9">
+  <h2><span class="num">9.</span> Pago anual anticipado</h2>
+  <p>Cualquier persona, sin necesidad de pertenecer a una empresa afiliada, obtiene el precio preferente pagando <b>12 meses por adelantado</b>:</p>
+  <div class="tw">
+    <table>
+      <thead><tr><th>Plan</th><th>Pago anual</th><th>Equivale a</th><th>Ahorro contra pago mensual</th></tr></thead>
+      <tbody>
+        <tr><td>Esencial</td><td>$1,860</td><td>$155 / mes</td><td>$528 al año</td></tr>
+        <tr><td>Completo</td><td>$3,360</td><td>$280 / mes</td><td>$828 al año</td></tr>
+        <tr><td>Máximo</td><td>$4,800</td><td>$400 / mes</td><td>$588 al año</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>El pago anual se liquida en una sola exhibición al contratar y cubre 12 meses continuos de servicio a partir de la activación. Durante ese periodo el precio no cambia, aunque se modifiquen los precios de lista.</p>
+  <p>Al concluir los 12 meses, el servicio continúa bajo la modalidad que elijas: renovar el pago anual al precio vigente en ese momento, o pasar a pago mensual al precio de lista. Yaub Móvil te avisará antes del vencimiento.</p>
+</section>
+
+<section class="cl" id="c10">
+  <h2><span class="num">10.</span> Facturación, ciclo y renovación</h2>
+  <p>El plan se presta por periodos de <b>30 días</b> contados a partir de la activación, o conforme al calendario de nómina cuando aplique el descuento por nómina.</p>
+  <p>El plan se renueva automáticamente al inicio de cada periodo mientras no se cancele conforme a la cláusula 19 y siempre que el pago se acredite. Si el pago no se acredita, aplica la cláusula 18.</p>
+  <p>Puedes solicitar factura con tus datos fiscales por WhatsApp con Yaub Pal, dentro del mes calendario en que se realizó el pago.</p>
+</section>
+
+<section class="cl" id="c11">
+  <h2><span class="num">11.</span> Formas de pago</h2>
+  <ul>
+    <li><b>Descuento por nómina:</b> a través de la empresa afiliada, conforme a la cláusula 8.</li>
+    <li><b>Pago anual anticipado:</b> en una sola exhibición al contratar, conforme a la cláusula 9.</li>
+    <li><b>Pago mensual:</b> por los medios de pago habilitados por Yaub Móvil al momento de contratar.</li>
+    <li><b>Recargas:</b> en línea desde yaubmovil.mx, con tarjeta, a través de la pasarela de pagos que opera Yaub Móvil.</li>
+  </ul>
+  <p>Los pagos se acreditan de forma automática. Si un pago no se refleja, escríbenos por WhatsApp con tu número de línea y el comprobante.</p>
+</section>
+
+<section class="cl" id="c12">
+  <h2><span class="num">12.</span> Recargas y paquetes por días</h2>
+  <p>Los paquetes de <b>$62 (2 GB, 7 días)</b> y <b>$108 (5 GB, 15 días)</b> son recargas que se aplican sobre líneas Yaub Móvil <b>ya activas</b>; no sirven para dar de alta una línea nueva ni sustituyen a un plan mensual.</p>
+  <p>Cada recarga tiene la vigencia indicada, contada a partir de su acreditación. Los datos no consumidos al vencer la vigencia no son acumulables ni reembolsables. El catálogo de recargas disponibles y sus precios son los que se muestran en la pasarela al momento de pagar.</p>
+</section>
+
+<section class="cl" id="c13">
+  <h2><span class="num">13.</span> Redes sociales incluidas</h2>
+  <p>El consumo de datos de las redes sociales incluidas <b>no descuenta de los GB de tu plan</b>. Las aplicaciones incluidas son las que se muestran en yaubmovil.mx: Facebook, Messenger, Instagram, X, WhatsApp, Snapchat y Telegram.</p>
+  <p>El listado de aplicaciones incluidas puede actualizarse conforme cambien los acuerdos con las plataformas y con Altán Redes; el listado vigente es el publicado en yaubmovil.mx. El detalle de qué usos entran en cada aplicación te lo confirma Yaub Pal por WhatsApp antes de contratar.</p>
+  <p><span class="tbd">[CONFIRMAR CON RED: si el beneficio excluye reproducción de video, llamadas de voz/video dentro de esas apps, contenido de terceros enlazado desde ellas o uso como módem — y redactar aquí la exclusión exacta]</span></p>
+</section>
+
+<section class="cl" id="c14">
+  <h2><span class="num">14.</span> Velocidad y calidad del servicio</h2>
+  <p>Los GB incluidos en tu plan se navegan a <b>velocidad plena</b>, sin reducción de velocidad ni cortes mientras tengas GB disponibles en el periodo.</p>
+  <p>Al agotar los GB del periodo puedes esperar la renovación de tu plan o aplicar una recarga conforme a la cláusula 12.</p>
+  <p>La velocidad real depende de factores fuera del control de Yaub Móvil: la zona y la carga de la red en ese momento, la tecnología disponible en el sitio, el equipo que usas y las condiciones físicas del lugar. Las velocidades máximas teóricas de la tecnología no constituyen una velocidad garantizada.</p>
+</section>
+
+<section class="cl" id="c15">
+  <h2><span class="num">15.</span> Cobertura</h2>
+  <p>El servicio se presta dentro de la cobertura de <b>Altán Redes</b> y está sujeto a la disponibilidad de red en cada zona. Antes de contratar, valida tu código postal en el verificador de cobertura de yaubmovil.mx.</p>
+  <p>La cobertura puede variar por trabajos de mantenimiento, ampliaciones o causas de fuerza mayor. Yaub Móvil no garantiza cobertura en interiores, sótanos, zonas rurales sin infraestructura o lugares donde la señal se vea obstruida.</p>
+</section>
+
+<section class="cl" id="c16">
+  <h2><span class="num">16.</span> Equipos, SIM y eSIM</h2>
+  <ul>
+    <li>Tu equipo debe estar <b>liberado</b> (sin bloqueo de otra compañía) y ser <b>compatible</b> con las bandas de la red. Puedes revisarlo con tu IMEI en yaubmovil.mx; marca <b>*#06#</b> en tu teléfono para consultarlo.</li>
+    <li>La activación puede ser con <b>eSIM</b> —si tu equipo la soporta— o con <b>SIM física</b>.</li>
+    <li>La SIM y el perfil de eSIM son para uso personal en el equipo asociado a la línea; no deben cederse ni comercializarse.</li>
+    <li>Yaub Móvil no vende ni garantiza equipos: por fallas del teléfono, acude con tu fabricante o distribuidor.</li>
+  </ul>
+</section>
+
+<section class="cl" id="c17">
+  <h2><span class="num">17.</span> Uso permitido del servicio</h2>
+  <p>El servicio es para uso personal y no comercial. Queda prohibido:</p>
+  <ul>
+    <li>Revender el servicio, los datos, los minutos o los SMS incluidos.</li>
+    <li>Usar la línea en equipos de ruteo de tráfico, SIM box, gateways GSM o cualquier esquema de terminación de tráfico.</li>
+    <li>Enviar mensajería masiva, no solicitada o fraudulenta.</li>
+    <li>Usar el servicio para actividades ilícitas o para vulnerar la red o los sistemas de Yaub Móvil o de Altán Redes.</li>
+    <li>Suplantar la identidad de otra persona en la contratación o en la portabilidad.</li>
+  </ul>
+  <p>El incumplimiento de esta cláusula permite a Yaub Móvil suspender o terminar el servicio conforme a la cláusula 18, sin devolución de los importes ya devengados.</p>
+</section>
+
+<section class="cl" id="c18">
+  <h2><span class="num">18.</span> Suspensión y terminación</h2>
+  <p>Yaub Móvil puede suspender o terminar el servicio cuando:</p>
+  <ul>
+    <li>No se acredite el pago del periodo correspondiente.</li>
+    <li>Se incumpla la cláusula 17.</li>
+    <li>Los datos proporcionados resulten falsos, o se detecte suplantación en la contratación o portabilidad.</li>
+    <li>Lo ordene una autoridad competente.</li>
+  </ul>
+  <p>Salvo en casos de fraude, uso ilícito u orden de autoridad, Yaub Móvil te avisará antes de suspender y te dará oportunidad de regularizar el pago.</p>
+</section>
+
+<section class="cl" id="c19">
+  <h2><span class="num">19.</span> Cancelación y devoluciones</h2>
+  <p>Los planes mensuales <b>no tienen plazo forzoso</b>: puedes cancelar cuando quieras, avisando por WhatsApp con Yaub Pal antes del inicio del siguiente periodo. La cancelación surte efecto al terminar el periodo ya pagado; el periodo en curso no se prorratea.</p>
+  <p>Las recargas por días no son reembolsables una vez acreditadas.</p>
+  <p><span class="tbd">[CONFIRMAR: política de devolución del pago anual cuando el cliente cancela antes de los 12 meses — si se devuelve la parte no devengada, si se recalcula al precio de lista por los meses usados, y en qué plazo se reembolsa]</span></p>
+  <p>Si el servicio no pudo activarse por falta de cobertura o incompatibilidad del equipo detectadas después del pago, Yaub Móvil devuelve el importe pagado por el periodo no prestado.</p>
+</section>
+
+<section class="cl" id="c20">
+  <h2><span class="num">20.</span> Portabilidad de salida</h2>
+  <p>Puedes portar tu número a otra compañía en cualquier momento, sin penalización. Solo necesitas tu NIP de portabilidad, que obtienes gratis marcando <b>051</b> desde tu línea Yaub Móvil.</p>
+  <p>Portar tu número a otra compañía da por terminado el servicio con Yaub Móvil. Los importes correspondientes al periodo ya pagado no se devuelven, salvo lo previsto en la cláusula 19.</p>
+</section>
+
+<section class="cl" id="c21">
+  <h2><span class="num">21.</span> Robo, extravío y reposición</h2>
+  <p>En caso de robo o extravío de tu equipo o SIM, repórtalo de inmediato por WhatsApp con Yaub Pal para suspender la línea. La suspensión evita el uso indebido, pero no interrumpe por sí sola el cobro del plan contratado.</p>
+  <p>La reposición de SIM o el reenvío de un perfil de eSIM se realiza previa validación de identidad del titular. <span class="tbd">[CONFIRMAR: si la reposición tiene costo y cuál]</span></p>
+</section>
+
+<section class="cl" id="c22">
+  <h2><span class="num">22.</span> Atención a clientes</h2>
+  <p>Atendemos por WhatsApp con Yaub Pal en <b>+52 55 8962 7209</b>, y desde la app de Yaub Móvil. También puedes escribir a <span class="tbd">[CORREO DE ATENCIÓN]</span>.</p>
+  <p>Como usuario de un servicio de telecomunicaciones en México cuentas con los derechos previstos en la Ley Federal de Telecomunicaciones y Radiodifusión, en la Ley Federal de Protección al Consumidor y en la Carta de Derechos Mínimos de los Usuarios publicada por el Instituto Federal de Telecomunicaciones. Si una queja no queda resuelta con nosotros, puedes acudir a la Procuraduría Federal del Consumidor.</p>
+</section>
+
+<section class="cl" id="c23">
+  <h2><span class="num">23.</span> Datos personales</h2>
+  <p>Los datos personales que nos proporcionas se tratan para dar de alta y operar tu línea, procesar pagos, realizar la portabilidad, brindarte atención y cumplir obligaciones legales.</p>
+  <p>El tratamiento se rige por el aviso de privacidad de Yaub Móvil, disponible en <span class="tbd">[URL DEL AVISO DE PRIVACIDAD]</span>, donde se detallan las finalidades, las transferencias y el procedimiento para ejercer tus derechos de acceso, rectificación, cancelación y oposición.</p>
+</section>
+
+<section class="cl" id="c24">
+  <h2><span class="num">24.</span> Yaub Pal y canales automatizados</h2>
+  <p>Yaub Pal es un agente de atención automatizado que opera por WhatsApp y que puede activar líneas, iniciar portabilidades, aplicar recargas y resolver dudas. Al escribirle aceptas que la conversación se procese para atenderte y dejar constancia de las operaciones que solicites.</p>
+  <p>Las operaciones confirmadas por este canal —altas, cambios de plan, recargas y cancelaciones— tienen la misma validez que las realizadas por cualquier otro canal de Yaub Móvil. Si en algún momento prefieres atención humana, pídelo en el mismo chat.</p>
+</section>
+
+<section class="cl" id="c25">
+  <h2><span class="num">25.</span> Responsabilidad</h2>
+  <p>Yaub Móvil responde por la prestación del servicio en los términos de este documento y de la legislación aplicable. No somos responsables por fallas atribuibles a tu equipo, por interrupciones causadas por la red mayorista o por caso fortuito o fuerza mayor, ni por el contenido o los servicios de terceros a los que accedas usando tus datos.</p>
+  <p>Nada en esta cláusula limita los derechos que la ley te reconoce como consumidor.</p>
+</section>
+
+<section class="cl" id="c26">
+  <h2><span class="num">26.</span> Cambios a estos términos</h2>
+  <p>Yaub Móvil puede modificar estos términos, los planes y los precios. Los cambios se publican en esta página con su fecha de actualización y aplican a partir de entonces para nuevas contrataciones y renovaciones.</p>
+  <p>Si un cambio te afecta y no lo aceptas, puedes cancelar conforme a la cláusula 19 o portar tu número conforme a la cláusula 20. El precio de un pago anual vigente no cambia durante los 12 meses cubiertos.</p>
+</section>
+
+<section class="cl" id="c27">
+  <h2><span class="num">27.</span> Ley aplicable y jurisdicción</h2>
+  <p>Estos términos se rigen por las leyes de los Estados Unidos Mexicanos. Para cualquier controversia, las partes se someten a la competencia de la Procuraduría Federal del Consumidor y, en su caso, a los tribunales competentes de <span class="tbd">[CIUDAD / ENTIDAD]</span>, renunciando a cualquier otro fuero.</p>
+</section>
+
+</main>
+
+<footer>
+  <div class="foot-in">
+    <img src="assets/yaubmovil-logo-dark.png" alt="Yaub Móvil">
+    <span>© 2026 Yaub Móvil · sobre Red Altán · yaubmovil.mx</span>
+    <span class="sp"><a href="index.html">Inicio</a><a href="index.html#planes">Planes</a><a href="#" data-wa="Hola 👋 Tengo una duda sobre los términos y condiciones de Yaub Móvil">Dudas</a></span>
+  </div>
+</footer>
+
+<script>
+/* Mismo número y mismo formato que index.html. Fuente de verdad:
+   whatsapp_numbers en yaub-platform-prod. */
+const WA_NUMBER = "5215589627209";
+function waUrl(msg){return "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent(msg);}
+document.querySelectorAll("[data-wa]").forEach(a => {
+  a.href = waUrl(a.dataset.wa);
+  a.target = "_blank"; a.rel = "noopener";
+});
+</script>
+</body></html>
