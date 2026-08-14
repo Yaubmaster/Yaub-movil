@@ -251,6 +251,12 @@ section.wrap{padding-top:clamp(48px,6.5vh,72px);padding-bottom:clamp(48px,6.5vh,
    (vacío en modo mensual, así no ocupa ancho) y la línea se dibuja con un
    ::after que va de width:0 a 100%: tachar "en vivo" explica el descuento
    mejor que sustituir el número de golpe. */
+/* "Desde" solo acompaña al precio grande cuando el grande ES el más
+   barato (modo anual, que es el que abre por default). En pago mensual
+   el número grande es el de lista, así que la etiqueta se oculta y el
+   precio bajo se sigue anunciando en la nota. */
+.plan .price .from{display:none;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);align-self:center;}
+.plan.is-anual .price .from{display:inline-block;}
 .plan .price .was{position:relative;font-size:clamp(17px,1.7vw,22px);font-weight:800;letter-spacing:-0.02em;color:var(--ink-3);text-decoration:none;opacity:0;transform:translateY(3px);transition:opacity .3s var(--ease),transform .3s var(--ease);}
 .plan .price .was::after{content:"";position:absolute;left:-3px;top:52%;width:0;height:2.5px;border-radius:2px;background:#DC2626;transition:width .45s var(--ease) .15s;}
 .plan.is-anual .price .was{opacity:1;transform:none;}
@@ -259,6 +265,26 @@ section.wrap{padding-top:clamp(48px,6.5vh,72px);padding-bottom:clamp(48px,6.5vh,
   .plan.is-anual .price .was{opacity:1;transform:none;}
   .plan.is-anual .price .was::after{width:calc(100% + 6px);}
 }
+/* Énfasis en el costo por GB: es el argumento que separa a los tres
+   planes entre sí (a más GB, más barato el giga), y el que gana contra
+   la recarga semanal. Se recalcula con los switches, así que también
+   deja ver cuánto mejora el giga al portar el número o pagar anual.
+   La etiqueta "el más barato" se pone sola en el plan con el menor
+   costo por GB — no se hardcodea, para que siga siendo cierta si
+   cambian los precios. */
+.ppgb{align-self:flex-start;display:inline-flex;align-items:baseline;gap:7px;flex-wrap:wrap;background:rgba(101,163,13,0.12);border:1px solid rgba(101,163,13,0.30);color:#4D7C0F;font-size:17px;font-weight:800;letter-spacing:-0.02em;padding:8px 13px;border-radius:13px;transition:background .35s,border-color .35s,box-shadow .35s;}
+.ppgb .lbl{font-size:10.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;opacity:.78;}
+.ppgb .flag{display:none;}
+.best-gb .ppgb{background:linear-gradient(120deg,rgba(101,163,13,0.20),rgba(132,204,22,0.09));border-color:rgba(101,163,13,0.52);box-shadow:0 8px 20px rgba(101,163,13,0.16);}
+.ppgb.bad{background:rgba(220,38,38,0.09);border-color:rgba(220,38,38,0.26);color:#B91C1C;}
+.vs-card .ppgb{margin-top:10px;}
+.best-gb .ppgb .flag{display:inline-block;font-style:normal;font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:var(--lime);color:#fff;padding:3px 8px;border-radius:999px;}
+/* Velocidad y cobertura: van en todos los planes, así que no compiten
+   con los ✓ de la tarjeta — quedan en su propia franja al pie. */
+.plan .perks{display:flex;flex-direction:column;gap:7px;margin-top:4px;padding-top:13px;border-top:1px dashed var(--line);}
+.plan .perk{display:flex;align-items:center;gap:9px;font-size:12.5px;font-weight:600;color:var(--ink-2);line-height:1.3;}
+.plan .perk svg{width:16px;height:16px;flex:none;color:var(--cyan);}
+.plan .perk b{color:var(--ink);font-weight:800;}
 .plans-sep{margin-top:38px;font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);}
 .plan-legal{margin-top:20px;font-size:13px;color:var(--ink-3);line-height:1.6;max-width:70ch;}
 /* En móvil los switches ocupan el ancho completo y reparten sus dos
@@ -315,12 +341,12 @@ section.wrap{padding-top:clamp(48px,6.5vh,72px);padding-bottom:clamp(48px,6.5vh,
 <section class="wrap" id="planes">
   <p class="kicker" data-r="">Planes vigentes</p>
   <h2 data-r="">Tres planes mensuales. <span style="color:var(--cyan);">El triple de datos si traes tu número.</span></h2>
-  <p class="lead" data-r="">Todos con redes sociales, llamadas y SMS ilimitados. Al portar tu número te damos el triple de datos; en línea nueva recibes un tercio. Y si tu empresa está afiliada al descuento por nómina —o pagas 12 meses por adelantado— te queda al precio de nómina.</p>
+  <p class="lead" data-r="">Los tres navegan a <b style="color:var(--ink);">máxima velocidad</b> sobre <b style="color:var(--ink);">Red Altán</b>, la de mayor cobertura de México, con redes sociales, llamadas y SMS ilimitados. Fíjate en el <b style="color:var(--ink);">costo por GB</b>: entre más GB, más barato te sale el giga. Al portar tu número te damos el triple de datos; en línea nueva, un tercio.</p>
 
   <div class="plan-switches" data-r="">
     <div class="switch" data-switch="pago" role="group" aria-label="Forma de pago">
-      <button type="button" class="on" data-val="mensual" aria-pressed="true">Pago mensual</button>
-      <button type="button" data-val="anual" aria-pressed="false">Pago anual <span class="pill">precio nómina</span></button>
+      <button type="button" data-val="mensual" aria-pressed="false">Pago mensual</button>
+      <button type="button" class="on" data-val="anual" aria-pressed="true">Pago anual <span class="pill">precio nómina</span></button>
     </div>
     <div class="switch" data-switch="linea" role="group" aria-label="Tipo de línea">
       <button type="button" class="on" data-val="porta" aria-pressed="true">Traigo mi número <span class="pill">×3 datos</span></button>
@@ -331,30 +357,45 @@ section.wrap{padding-top:clamp(48px,6.5vh,72px);padding-bottom:clamp(48px,6.5vh,
   <div class="plans plans-3">
     <div class="plan" data-r="" style="--r:0;" data-plan="" data-nombre="Esencial" data-pub="199" data-dxn="155" data-gb-porta="9" data-gb-nueva="3">
       <span class="tag">Esencial</span>
-      <div class="price"><s class="was" data-was=""></s><span class="n sm" data-price="">$199</span><small>/mes</small></div>
+      <div class="price"><span class="from">Desde</span><s class="was" data-was=""></s><span class="n sm" data-price="">$199</span><small>/mes</small></div>
       <p class="price-note" data-note=""></p>
       <span class="gb"><b data-gb="">9 GB</b> · redes ilimitadas</span>
       <span class="gb-cap" data-gb-cap=""></span>
+      <span class="ppgb"><span class="lbl">sale a</span><b data-ppgb="">$0</b><span class="lbl">por GB</span><i class="flag">el más barato</i></span>
       <ul><li>Llamadas y SMS ilimitados</li><li>eSIM o SIM física</li><li>Sin plazos forzosos</li></ul>
+      <div class="perks">
+        <span class="perk"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"></path></svg><span>Navegas a <b>máxima velocidad</b>, sin cortes ni recortes</span></span>
+        <span class="perk"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="14" width="3.2" height="6" rx="1"></rect><rect x="8.4" y="10" width="3.2" height="10" rx="1"></rect><rect x="13.8" y="6" width="3.2" height="14" rx="1"></rect><rect x="19.2" y="2" width="3.2" height="18" rx="1"></rect></svg><span><b>Máxima cobertura</b> — Red Altán</span></span>
+      </div>
       <div class="go"><a href="#" data-plan-cta="" data-wa="Hola 👋 Quiero el plan Esencial de Yaub Móvil">Lo quiero</a></div>
     </div>
     <div class="plan star" data-r="" style="--r:1;" data-plan="" data-nombre="Completo" data-pub="349" data-dxn="280" data-gb-porta="36" data-gb-nueva="12">
       <span class="ribbon">El más elegido</span>
       <span class="tag">Completo</span>
-      <div class="price"><s class="was" data-was=""></s><span class="n sm" data-price="">$349</span><small>/mes</small></div>
+      <div class="price"><span class="from">Desde</span><s class="was" data-was=""></s><span class="n sm" data-price="">$349</span><small>/mes</small></div>
       <p class="price-note" data-note=""></p>
       <span class="gb"><b data-gb="">36 GB</b> · redes ilimitadas</span>
       <span class="gb-cap" data-gb-cap=""></span>
+      <span class="ppgb"><span class="lbl">sale a</span><b data-ppgb="">$0</b><span class="lbl">por GB</span><i class="flag">el más barato</i></span>
       <ul><li>Llamadas y SMS ilimitados</li><li>eSIM o SIM física</li><li>Disponible con descuento por nómina</li></ul>
+      <div class="perks">
+        <span class="perk"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"></path></svg><span>Navegas a <b>máxima velocidad</b>, sin cortes ni recortes</span></span>
+        <span class="perk"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="14" width="3.2" height="6" rx="1"></rect><rect x="8.4" y="10" width="3.2" height="10" rx="1"></rect><rect x="13.8" y="6" width="3.2" height="14" rx="1"></rect><rect x="19.2" y="2" width="3.2" height="18" rx="1"></rect></svg><span><b>Máxima cobertura</b> — Red Altán</span></span>
+      </div>
       <div class="go"><a href="#" data-plan-cta="" data-wa="Hola 👋 Quiero el plan Completo de Yaub Móvil">Lo quiero</a></div>
     </div>
     <div class="plan" data-r="" style="--r:2;" data-plan="" data-nombre="Máximo" data-pub="449" data-dxn="400" data-gb-porta="105" data-gb-nueva="35">
       <span class="tag">Máximo</span>
-      <div class="price"><s class="was" data-was=""></s><span class="n sm" data-price="">$449</span><small>/mes</small></div>
+      <div class="price"><span class="from">Desde</span><s class="was" data-was=""></s><span class="n sm" data-price="">$449</span><small>/mes</small></div>
       <p class="price-note" data-note=""></p>
       <span class="gb"><b data-gb="">105 GB</b> · redes ilimitadas</span>
       <span class="gb-cap" data-gb-cap=""></span>
+      <span class="ppgb"><span class="lbl">sale a</span><b data-ppgb="">$0</b><span class="lbl">por GB</span><i class="flag">el más barato</i></span>
       <ul><li>Llamadas y SMS ilimitados</li><li>eSIM o SIM física</li><li>Para quien trabaja desde el celular</li></ul>
+      <div class="perks">
+        <span class="perk"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"></path></svg><span>Navegas a <b>máxima velocidad</b>, sin cortes ni recortes</span></span>
+        <span class="perk"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="14" width="3.2" height="6" rx="1"></rect><rect x="8.4" y="10" width="3.2" height="10" rx="1"></rect><rect x="13.8" y="6" width="3.2" height="14" rx="1"></rect><rect x="19.2" y="2" width="3.2" height="18" rx="1"></rect></svg><span><b>Máxima cobertura</b> — Red Altán</span></span>
+      </div>
       <div class="go"><a href="#" data-plan-cta="" data-wa="Hola 👋 Quiero el plan Máximo de Yaub Móvil">Lo quiero</a></div>
     </div>
   </div>
@@ -390,14 +431,16 @@ section.wrap{padding-top:clamp(48px,6.5vh,72px);padding-bottom:clamp(48px,6.5vh,
       <p class="line">Recargas <b>$50</b> a la semana</p>
       <div class="big">0.5 <small>GB</small></div>
       <p class="cap">por esos $50 de la semana</p>
+      <span class="ppgb bad"><span class="lbl">te sale a</span><b>$100.00</b><span class="lbl">por GB</span></span>
       <ul><li>Se te acaban los datos en días</li><li>Recargar una y otra vez</li><li>Redes sociales limitadas</li></ul>
     </div>
-    <div class="vs-card good" data-r="" style="--r:1;">
+    <div class="vs-card good best-gb" data-r="" style="--r:1;">
       <span class="badge2">Yaub Móvil</span>
       <span class="who"><img src="assets/yaubmovil-logo-dark.png" alt="Yaub Móvil"> Con Yaub</span>
       <p class="line"><b>$70</b> a la semana vía nómina</p>
       <div class="big cy">36 <small>GB</small></div>
       <p class="cap">al mes · <b style="color:var(--cyan);">$70 = 9 GB a la semana</b></p>
+      <span class="ppgb"><span class="lbl">te sale a</span><b>$7.78</b><span class="lbl">por GB</span><i class="flag">13× más barato</i></span>
       <ul><li>36 GB a velocidad plena, sin cortes</li><li>Mantienes tu mismo número</li><li>Llamadas y SMS ilimitados</li><li>Se descuenta solo de tu nómina — o pagas el año y te sale al mismo precio</li></ul>
     </div>
   </div>
@@ -522,19 +565,29 @@ document.querySelectorAll("[data-wa]").forEach(a => {
    ============================================================ */
 (function(){
   const mx = n => "$" + n.toLocaleString("es-MX");
+  /* El costo por GB casi nunca es entero, así que va con dos decimales
+     fijos: "$9.69 por GB" compara mejor que "$9.7" o "$10". */
+  const mxc = n => "$" + n.toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   const cards = Array.from(document.querySelectorAll("[data-plan]"));
   if (!cards.length) return;
-  const state = { pago: "mensual", linea: "porta" };
+  /* Abre en ANUAL a propósito: es el precio más bajo de cada plan, y así
+     lo primero que se ve grande es el "desde". */
+  const state = { pago: "anual", linea: "porta" };
 
   function render(){
     const anual = state.pago === "anual";
     const porta = state.linea === "porta";
-    cards.forEach(card => {
+    const costos = cards.map(card => (anual ? +card.dataset.dxn : +card.dataset.pub) /
+      +(porta ? card.dataset.gbPorta : card.dataset.gbNueva));
+    const mejor = Math.min.apply(null, costos);
+    cards.forEach((card, i) => {
       const pub = +card.dataset.pub, dxn = +card.dataset.dxn;
       const nombre = card.dataset.nombre;
       const gb = porta ? card.dataset.gbPorta : card.dataset.gbNueva;
       const precio = anual ? dxn : pub;
 
+      card.querySelector("[data-ppgb]").textContent = mxc(costos[i]);
+      card.classList.toggle("best-gb", costos[i] === mejor);
       card.querySelector("[data-price]").textContent = mx(precio);
       /* El precio de lista solo existe en modo anual; en mensual se vacía
          (y no en display:none) para que el <s> conserve caja y la línea
@@ -546,7 +599,7 @@ document.querySelectorAll("[data-wa]").forEach(a => {
         : "en línea nueva · " + card.dataset.gbPorta + " GB si portas tu número";
       card.querySelector("[data-note]").innerHTML = anual
         ? "Pagas <b>" + mx(dxn * 12) + "</b> por 12 meses · ahorras " + mx((pub - dxn) * 12) + " al año."
-        : "Con descuento por nómina: <b>" + mx(dxn) + "/mes</b>. Mismo precio si pagas el año completo.";
+        : "Mes a mes, sin plazo. <b>" + mx(dxn) + "/mes</b> con nómina o pagando el año.";
 
       const linea = porta ? "portando mi número" : "en línea nueva";
       const msg = anual
