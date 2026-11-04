@@ -3,7 +3,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Yaub Móvil — Telefonía que conversa contigo</title>
-<meta name="description" content="Yaub Móvil: planes de 9, 36 y 105 GB con redes sociales ilimitadas desde $155/mes con descuento por nómina o pago anual. El triple de datos al portar tu número. Activa, porta y recarga por WhatsApp con Yaub Pal. Respaldados por Red Altán.">
+<meta name="description" content="Yaub Móvil: planes de 9, 36 y 70 GB con redes sociales ilimitadas desde $155/mes con descuento por nómina o pago anual. Hasta el triple de datos al portar tu número. Activa, porta y recarga por WhatsApp con Yaub Pal. Respaldados por Red Altán.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700;800&display=swap">
@@ -223,7 +223,7 @@ section.wrap{padding-top:clamp(48px,6.5vh,72px);padding-bottom:clamp(48px,6.5vh,
    Planes mensuales: 3 niveles ($199/$349/$449 al público) con dos
    switches que reescriben precio y GB sin recargar la página:
      · pago  → mensual (precio público) | anual (queda al precio de nómina)
-     · línea → portabilidad (×3 de datos) | línea nueva (un tercio)
+     · línea → portabilidad (×3 de datos; ×2 en Máximo) | línea nueva
    La rejilla de planes se declara con .plans-3 / .plans-2 para no
    depender del 1.2fr 1.2fr 0.9fr 0.9fr de la referencia (que asumía
    dos mensuales + dos prepagos en una sola fila).
@@ -348,7 +348,7 @@ section.wrap{padding-top:clamp(48px,6.5vh,72px);padding-bottom:clamp(48px,6.5vh,
     <div>
       <span class="badge" data-r="" style="--r:0;"><span class="dot"></span>La nueva telefonía con IA</span>
       <h1 data-r="" style="--r:1;">Telefonía que <span class="cy">contesta al instante</span>, conecta mejor y <span style="color:var(--lime);">cuesta menos</span>.</h1>
-      <p class="sub" data-r="" style="--r:2;">Hasta 105 GB manteniendo tu mismo número, redes sociales ilimitadas y un agente de IA que activa, porta y recarga tu línea por WhatsApp. Sin filas, sin esperas, sin letras chiquitas.</p>
+      <p class="sub" data-r="" style="--r:2;">Hasta 70 GB manteniendo tu mismo número, redes sociales ilimitadas y un agente de IA que activa, porta y recarga tu línea por WhatsApp. Sin filas, sin esperas, sin letras chiquitas.</p>
       <div class="cta-row" data-r="" style="--r:3;">
         <a class="btn btn-solo" href="#" data-wa="Hola 👋 Quiero cambiarme a Yaub Móvil por mi cuenta">Quiero cambiarme solo
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
@@ -371,8 +371,8 @@ section.wrap{padding-top:clamp(48px,6.5vh,72px);padding-bottom:clamp(48px,6.5vh,
 
 <section class="wrap" id="planes">
   <p class="kicker" data-r="">Planes vigentes</p>
-  <h2 data-r="">Tres planes mensuales. <span style="color:var(--cyan);">El triple de datos si traes tu número.</span></h2>
-  <p class="lead" data-r="">Los tres navegan a <b style="color:var(--ink);">máxima velocidad</b> sobre <b style="color:var(--ink);">Red Altán</b>, la de mayor cobertura de México, con redes sociales, llamadas y SMS ilimitados. Fíjate en el <b style="color:var(--ink);">costo por GB</b>: entre más GB, más barato te sale el giga. Al portar tu número te damos el triple de datos; en línea nueva, un tercio.</p>
+  <h2 data-r="">Tres planes mensuales. <span style="color:var(--cyan);">Hasta el triple de datos si traes tu número.</span></h2>
+  <p class="lead" data-r="">Los tres navegan a <b style="color:var(--ink);">máxima velocidad</b> sobre <b style="color:var(--ink);">Red Altán</b>, la de mayor cobertura de México, con redes sociales, llamadas y SMS ilimitados. Fíjate en el <b style="color:var(--ink);">costo por GB</b>: entre más GB, más barato te sale el giga. Al portar tu número te damos el triple de datos en Esencial y Completo, y el doble en Máximo.</p>
 
   <div class="plan-switches" data-r="">
     <div class="switch" data-switch="pago" role="group" aria-label="Forma de pago">
@@ -380,7 +380,7 @@ section.wrap{padding-top:clamp(48px,6.5vh,72px);padding-bottom:clamp(48px,6.5vh,
       <button type="button" class="on" data-val="anual" aria-pressed="true">Pago anual <span class="pill">precio nómina</span></button>
     </div>
     <div class="switch" data-switch="linea" role="group" aria-label="Tipo de línea">
-      <button type="button" class="on" data-val="porta" aria-pressed="true">Traigo mi número <span class="pill">×3 datos</span></button>
+      <button type="button" class="on" data-val="porta" aria-pressed="true">Traigo mi número <span class="pill">hasta ×3 datos</span></button>
       <button type="button" data-val="nueva" aria-pressed="false">Línea nueva</button>
     </div>
   </div>
@@ -417,9 +417,9 @@ section.wrap{padding-top:clamp(48px,6.5vh,72px);padding-bottom:clamp(48px,6.5vh,
       <p class="price-note" data-note=""></p>
       <div class="go"><a href="#" data-plan-cta="" data-wa="Hola 👋 Quiero el plan Completo de Yaub Móvil">Lo quiero</a></div>
     </div>
-    <div class="plan" data-r="" style="--r:2;" data-plan="" data-nombre="Máximo" data-pub="449" data-dxn="400" data-gb-porta="105" data-gb-nueva="35">
+    <div class="plan" data-r="" style="--r:2;" data-plan="" data-nombre="Máximo" data-pub="449" data-dxn="400" data-gb-porta="70" data-gb-nueva="35">
       <span class="tag">Máximo</span>
-      <div class="gb-big"><b data-gb="">105</b><span>GB</span></div>
+      <div class="gb-big"><b data-gb="">70</b><span>GB</span></div>
       <span class="gb-sub">redes sociales <b>ilimitadas</b></span>
       <span class="gb-cap" data-gb-cap=""></span>
       <span class="ppgb"><span class="lbl">sale a</span><b data-ppgb="">$0</b><span class="lbl">por GB</span><i class="flag">el más barato</i></span>
@@ -434,7 +434,7 @@ section.wrap{padding-top:clamp(48px,6.5vh,72px);padding-bottom:clamp(48px,6.5vh,
     </div>
   </div>
 
-  <p class="plan-legal" data-r="">Los GB del plan aplican al portar tu número (×3). En línea nueva recibes un tercio: 3 GB, 12 GB o 35 GB según el plan. El precio de nómina aplica si tu empresa está afiliada, o para cualquiera que contrate 12 meses por adelantado. <a href="terminos.html">Ver términos y condiciones</a>.</p>
+  <p class="plan-legal" data-r="">Los GB del plan aplican al portar tu número: el triple en Esencial y Completo, el doble en Máximo. En línea nueva recibes 3 GB, 12 GB o 35 GB según el plan. El precio de nómina aplica si tu empresa está afiliada, o para cualquiera que contrate 12 meses por adelantado. <a href="terminos.html">Ver términos y condiciones</a>.</p>
 
   <p class="plans-sep" data-r="">¿Solo quieres probar? Prepago por días</p>
   <div class="plans plans-2">
@@ -556,7 +556,7 @@ section.wrap{padding-top:clamp(48px,6.5vh,72px);padding-bottom:clamp(48px,6.5vh,
   <div class="legal-box" data-r="">
     <ol>
       <li><b>Precios.</b> En pesos mexicanos, por mes de servicio. Los de esta página son los vigentes a la fecha de publicación y pueden cambiar; el precio que aplica es el que se te confirma al contratar.</li>
-      <li><b>Datos y portabilidad.</b> Los 9, 36 y 105 GB aplican al <b>portar tu número</b> desde otra compañía. En línea nueva el plan incluye un tercio: 3, 12 y 35 GB respectivamente.</li>
+      <li><b>Datos y portabilidad.</b> Los 9, 36 y 70 GB aplican al <b>portar tu número</b> desde otra compañía. En línea nueva el plan incluye 3, 12 y 35 GB respectivamente (el triple al portar en Esencial y Completo, el doble en Máximo).</li>
       <li><b>Precio con descuento por nómina.</b> $155, $280 y $400 al mes aplican para personal de empresas afiliadas al convenio, y se cobran vía nómina a través de la empresa.</li>
       <li><b>Precio con pago anual.</b> Cualquier persona obtiene ese mismo precio pagando 12 meses por adelantado: $1,860, $3,360 o $4,800 según el plan, liquidados al contratar.</li>
       <li><b>Pago mes a mes.</b> Sin plazo forzoso, el precio es el de venta al público: $199, $349 o $449 al mes.</li>
@@ -622,8 +622,9 @@ document.querySelectorAll("[data-wa]").forEach(a => {
    PLANES MENSUALES — precio y GB se calculan aquí, no se escriben
    a mano en cada tarjeta, para que las dos reglas del producto
    vivan en un solo lugar:
-     1) Portabilidad = ×3 de datos. Línea nueva = un tercio
-        (los data-gb-* de la tarjeta ya traen ambos valores).
+     1) Portabilidad = más datos que línea nueva: ×3 en Esencial y
+        Completo, ×2 en Máximo (los data-gb-* de la tarjeta traen
+        ambos valores; el "doble/triple" se deriva de ellos).
      2) El precio de venta al público baja al precio de nómina si
         el cliente contrata 12 meses por adelantado.
    Para cambiar precios o GB, edita los data-* de la tarjeta.
@@ -634,6 +635,11 @@ document.querySelectorAll("[data-wa]").forEach(a => {
      fijos: "$9.69 por GB" compara mejor que "$9.7" o "$10". */
   const mxc = n => "$" + n.toLocaleString("es-MX", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   const cards = Array.from(document.querySelectorAll("[data-plan]"));
+  /* "el doble" / "el triple": sale de la proporción porta ÷ nueva. */
+  const mult = card => {
+    const r = Math.round(+card.dataset.gbPorta / +card.dataset.gbNueva);
+    return r === 2 ? "el doble" : r === 3 ? "el triple" : "×" + r;
+  };
   if (!cards.length) return;
   /* Abre en ANUAL a propósito: es el precio más bajo de cada plan, y así
      lo primero que se ve grande es el "desde". */
@@ -661,7 +667,7 @@ document.querySelectorAll("[data-wa]").forEach(a => {
       /* Solo el número: el "GB" es un <span> aparte, a otro tamaño. */
       card.querySelector("[data-gb]").textContent = gb;
       card.querySelector("[data-gb-cap]").textContent = porta
-        ? "portando tu número — el triple de datos"
+        ? "portando tu número — " + mult(card) + " de datos"
         : "en línea nueva · " + card.dataset.gbPorta + " GB si portas tu número";
       card.querySelector("[data-note]").innerHTML = anual
         ? "Pagas <b>" + mx(dxn * 12) + "</b> por 12 meses · ahorras " + mx((pub - dxn) * 12) + " al año."
