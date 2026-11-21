@@ -1,0 +1,23 @@
+// yaubmovil.mx se sirve desde Cloudflare Workers (antes Vercel). SCRUM-75.
+// El sitio es estático: se publica tal cual desde la raíz del repo, sin build. Lo que NO se publica
+// (configuración del Worker, notas internas, archivos de git) está en .assetsignore.
+// worker.js solo manda www.yaubmovil.mx al dominio sin www, como hacía Vercel; lo demás son los archivos.
+{
+  "$schema": "https://unpkg.com/wrangler/config-schema.json",
+  "name": "yaub-movil",
+  "account_id": "5b949a34f95cacc109d59ae3b15ae13b",
+  "compatibility_date": "2026-11-20",
+  "main": "./worker.js",
+  "assets": {
+    "directory": ".",
+    "binding": "ASSETS",
+    "not_found_handling": "none",
+    "run_worker_first": true
+  },
+  "routes": [
+    { "pattern": "yaubmovil.mx", "custom_domain": true },
+    { "pattern": "www.yaubmovil.mx", "custom_domain": true }
+  ],
+  "workers_dev": true,
+  "observability": { "enabled": true }
+}

@@ -19,9 +19,13 @@ Landing oficial de **Yaub Móvil**, el primer MVNO mexicano con un agente IA con
 
 ## Cómo deployar
 
-1. Sube todos los archivos al repo manteniendo la estructura.
-2. Renombra `Yaub Movil Landing.html` → `index.html` si quieres que sea la home.
-3. Apunta tu dominio (ej. `yaub.ai/movil`) al repo desde Vercel / Netlify / GitHub Pages.
+`yaubmovil.mx` se sirve desde **Cloudflare Workers** (Worker `yaub-movil`; antes Vercel). Cada merge a la rama de
+producción se publica solo con Workers Builds. No hay build: se publican los archivos tal cual desde la raíz del repo.
+
+- `wrangler.jsonc`: nombre del Worker y dominios (`yaubmovil.mx` y `www.yaubmovil.mx`).
+- `worker.js`: solo manda `www.` al dominio sin `www`.
+- `.assetsignore`: lo que NO se publica (este README, notas internas, configuración).
+- Probar en local: `npx wrangler dev` y abrir http://localhost:8787.
 
 ## Funcionalidad
 
